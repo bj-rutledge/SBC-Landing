@@ -1,14 +1,24 @@
 // src/pages/contact-us.tsx
 import * as React from "react";
 import Layout from "../components/Layout";
-import { Box, Heading, Text, FormControl, FormLabel, Input, Textarea, Button } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Text,
+  FormControl,
+  FormLabel,
+  Input,
+  Textarea,
+  Button,
+} from "@chakra-ui/react";
 
 const ContactUsPage = () => (
   <Layout>
     <Box p={5}>
       <Heading as="h1">Contact Us</Heading>
       <Text mt={4}>
-        We'd love to hear from you! Please fill out the form below and we'll get in touch with you as soon as possible.
+        We'd love to hear from you! Please fill out the form below and we'll get
+        in touch with you as soon as possible.
       </Text>
       <Box mt={8}>
         <FormControl id="name" isRequired>
