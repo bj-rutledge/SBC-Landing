@@ -1,9 +1,14 @@
 /**
  * src/theme.tsx
  * Created by BJ Rutledge
- * Date:2024-12-11
+ * Date: 2024-12-11
  **/
 import { extendTheme } from "@chakra-ui/react";
+
+const fonts = {
+  heading: `'Open Sans', sans-serif`,
+  body: `'Open Sans', sans-serif`,
+};
 
 const colors = {
   green: {
@@ -42,23 +47,37 @@ const colors = {
     800: "#787878",
     900: "#656565",
   },
+  text: {
+    primary: "#00021a",
+    secondary: "#0048b3",
+  },
 };
 
 const theme = extendTheme({
   colors,
-  fonts: {
-    heading: "Georgia, serif",
-    body: "Arial, sans-serif",
-  },
+  fonts,
   styles: {
     global: {
       "html, body": {
-        color: colors.blue[900],
+        color: "text.primary",
         bg: colors.white[50],
         lineHeight: "tall",
+        fontFamily: `'Open Sans', sans-serif`, // Ensure global font family
       },
       a: {
-        color: colors.green[600],
+        color: "text.secondary",
+      },
+    },
+  },
+  components: {
+    Heading: {
+      baseStyle: {
+        fontFamily: `'Open Sans', sans-serif`, // Override for Heading component
+      },
+    },
+    Text: {
+      baseStyle: {
+        fontFamily: `'Open Sans', sans-serif`, // Override for Text component
       },
     },
   },
