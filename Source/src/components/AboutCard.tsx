@@ -17,7 +17,7 @@ const Card: React.FC<CardProps> = ({ imageSrc, name, description }) => {
       boxShadow="md"
       p={4}
       textAlign="center"
-      height="450px" // Set a fixed height
+      height="470px" // Set a fixed height
       display="flex"
       flexDirection="column"
       justifyContent="start" // Ensure content starts at the top

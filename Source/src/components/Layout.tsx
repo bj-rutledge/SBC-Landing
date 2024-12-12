@@ -15,7 +15,7 @@ import {
   MenuList,
   MenuItem,
   IconButton,
-  useBreakpointValue
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { Link as GatsbyLink } from "gatsby";
 import { HamburgerIcon } from "@chakra-ui/icons";
@@ -103,7 +103,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           )}
         </Flex>
       </header>
-      <Container maxW="container.lg" px={{ base: 4, md: 8 }} flex="1" mt={[4, 8]}>
+      <Container 
+        maxW="container.lg" 
+        px={{ base: 4, md: 8 }} 
+        flex="1" 
+        mt={[4, 8]}
+        display="flex"
+        justifyContent="center" 
+        alignItems="center"
+      >
         <main>{children}</main>
       </Container>
       <footer>

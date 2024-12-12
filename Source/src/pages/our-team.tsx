@@ -23,6 +23,7 @@ const OurTeamPage = () => (
       <Text mt={4} color={'primary'}>
         We take immense pride in our strong community of professionals who are at the heart of everything we do. Located in Sedro Woolley, WA, SBC continues to innovate and lead in the construction industry, always putting our people first.
       </Text>
+
       <Box mt={8}>
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={4}>
           <MotionBox
@@ -33,7 +34,7 @@ const OurTeamPage = () => (
             <Card 
               imageSrc={james}
               name='James Pfaff'
-              description='With a diverse 20-year career in construction and wall panel design, James has designed over 23 million square feet of residential space, leveraging his hands-on experience in framing, siding, roofing, and finish work, and his expertise in using AutoCAD for wall panel design.'
+              description='With a diverse 25-year plus career in construction and wall panel design, James has designed over 23 million square feet of residential space, leveraging his hands-on experience in framing, siding, roofing, and finish work, and his expertise in using AutoCAD for wall panel design.'
             />
           </MotionBox>
           <MotionBox
@@ -43,7 +44,7 @@ const OurTeamPage = () => (
           >
             <Card 
               imageSrc={julia}
-              name='Julia Pfaff'
+              name='Julia Phay Pfaff'
               description='Julia is our office Manager, and is dedicated to making Sound Building Components a safe and welcoming environment where employees are proud of the work they accomplish.'
             />
           </MotionBox>
