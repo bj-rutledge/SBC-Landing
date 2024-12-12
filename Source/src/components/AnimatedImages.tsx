@@ -1,12 +1,17 @@
 import * as React from "react";
 import { motion } from "framer-motion";
+import Illaria05 from '../images/Illaria05.jpg';
+import Illaria06 from '../images/Illaria06.jpg';
+import QATA_August_2013___1sm from '../images/QATA_August_2013___1sm.jpg';
+import QATA_June_2013_Aerial_2sm from '../images/QATA_June_2013_Aerial_2sm.jpg';
+import Queen_Anne_Towne_July_2013_1sm from '../images/Queen_Anne_Towne_July_2013_1sm.jpg';
 
 const images = [
-  '/static/Illaria05.jpg',
-  '/static/Illaria06.jpg',
-  '/static/QATA_August_2013___1sm.jpg',
-  '/static/QATA_June_2013_Aerial_2sm.jpg',
-  '/static/Queen_Anne_Towne_July_2013_1sm.jpg'
+  Illaria05,
+  Illaria06,
+  QATA_August_2013___1sm,
+  QATA_June_2013_Aerial_2sm,
+  Queen_Anne_Towne_July_2013_1sm,
 ];
 
 const transitionDuration = 1.5; // Duration of fade in/out
@@ -16,12 +21,13 @@ const AnimatedImages = () => {
   const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
 
   React.useEffect(() => {
-    if (currentImageIndex < images.length - 1) {
-      const timeout = setTimeout(() => {
-        setCurrentImageIndex((prevIndex) => prevIndex + 1);
-      }, (transitionDuration + stayDuration) * 1000);
-      return () => clearTimeout(timeout);
-    }
+    const timeout = setTimeout(() => {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      );
+    }, (transitionDuration + stayDuration) * 1000);
+
+    return () => clearTimeout(timeout);
   }, [currentImageIndex]);
 
   return (
