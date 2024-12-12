@@ -3,6 +3,7 @@ import type { GatsbySSR } from "gatsby";
 import { ColorModeScript } from "@chakra-ui/react";
 import { WrapRootElement } from "./src/provider";
 import customTheme from "./src/theme";
+import "./src/global.css";
 
 export const onRenderBody: GatsbySSR["onRenderBody"] = ({
   setPreBodyComponents,

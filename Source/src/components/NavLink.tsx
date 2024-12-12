@@ -1,3 +1,7 @@
+/**
+ * Created by BJ Rutledge
+ * Date:2024-12-10
+ **/
 import * as React from "react";
 import { Box, Link as ChakraLink } from "@chakra-ui/react";
 import { Link as GatsbyLink } from "gatsby";

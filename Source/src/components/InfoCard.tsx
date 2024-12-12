@@ -1,7 +1,6 @@
 // src/components/InfoCard.tsx
 import React from 'react';
 import { Box, Image, Text, Heading, Link } from '@chakra-ui/react';
-
 type InfoCardProps = {
   imageUrl: string;
   title: string;

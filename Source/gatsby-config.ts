@@ -1,3 +1,9 @@
+/**
+ * Created by BJ Rutledge
+ * Date:2024-12-08
+ * Gatsby config 
+ **/
+
 import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
@@ -27,7 +33,7 @@ const config: GatsbyConfig = {
         background_color: '#ffffff',
         theme_color: '#319795', 
         display: 'standalone',
-        icon: './src/images/favicon.png', // Path to your favicon
+        icon: './src/images/favicon.png', 
       },
     },
     // Other plugins...

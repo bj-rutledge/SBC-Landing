@@ -1,10 +1,14 @@
+/**
+ * Created by BJ Rutledge
+ * Date:2024-12-10
+ **/
 import * as React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import type { WrapRootElementBrowserArgs } from "gatsby";
-import { customTheme } from "./theme";
+import theme from "./theme";
+
 export const WrapRootElement = ({
   element,
 }: Pick<WrapRootElementBrowserArgs, "element">) => (
-  // Or ChakraBaseProvider if you only want to compile the default Chakra theme tokens
-  <ChakraProvider theme={customTheme}>{element}</ChakraProvider>
+  <ChakraProvider theme={theme}>{element}</ChakraProvider>
 );

@@ -6,8 +6,19 @@
 
 import * as React from "react";
 import { ReactNode } from "react";
-import { Box, Container, Flex, useBreakpointValue } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Flex,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  IconButton,
+  useBreakpointValue
+} from "@chakra-ui/react";
 import { Link as GatsbyLink } from "gatsby";
+import { HamburgerIcon } from "@chakra-ui/icons";
 import NavLink from "./NavLink"; // Import the NavLink component
 
 interface LayoutProps {
@@ -15,19 +26,19 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const navSpacing = useBreakpointValue({ base: "1", md: "2" });
+  const isMobile = useBreakpointValue({ base: true, md: false });
 
   return (
-    <Box>
+    <Box display="flex" flexDirection="column" minHeight="100vh">
       <header>
         <Flex
           as="nav"
-          p={4}
+          p={[2, 4]} // Responsive padding
           bg="green.500"
           color="white"
           justify="space-between"
           align="center"
-          height="60px"
+          height={{ base: "auto", md: "60px" }} // Adjust height for mobile
         >
           <Box as="h1" mb={{ base: 4, md: 0 }} height="100%">
             <GatsbyLink
@@ -37,23 +48,62 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               Sound Building Components Inc.
             </GatsbyLink>
           </Box>
-          <Flex
-            as="ul"
-            listStyleType="none"
-            m={0}
-            p={0}
-            flexDirection={{ base: "column", md: "row" }}
-            alignItems="stretch"
-            height="100%"
-          >
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/projects">Projects</NavLink>
-            <NavLink to="/our-team">Our Team</NavLink>
-            <NavLink to="/contact-us">Contact Us</NavLink>
-          </Flex>
+
+          {isMobile ? (
+            <Menu>
+              <MenuButton
+                as={IconButton}
+                icon={<HamburgerIcon />}
+                variant="outline"
+                aria-label="Options"
+                bg="green.500"
+                color="white"
+                border="none"
+                _hover={{ bg: "green.600" }}
+                _expanded={{ bg: "green.600" }}
+              />
+              <MenuList bg="white" color="black">
+                <MenuItem as={GatsbyLink} to="/" _hover={{ bg: "green.100" }}>
+                  Home
+                </MenuItem>
+                <MenuItem as={GatsbyLink} to="/projects" _hover={{ bg: "green.100" }}>
+                  Projects
+                </MenuItem>
+                <MenuItem as={GatsbyLink} to="/our-team" _hover={{ bg: "green.100" }}>
+                  Our Team
+                </MenuItem>
+                <MenuItem as={GatsbyLink} to="/contact-us" _hover={{ bg: "green.100" }}>
+                  Contact Us
+                </MenuItem>
+              </MenuList>
+            </Menu>
+          ) : (
+            <Flex
+              as="ul"
+              listStyleType="none"
+              m={0}
+              p={0}
+              flexDirection={{ base: "column", md: "row" }}
+              alignItems={{ base: "start", md: "center" }} // Adjust alignment for mobile
+              height="100%"
+            >
+              <Box as="li" mb={{ base: "1rem", md: 0 }} mr={{ md: "2rem" }}>
+                <NavLink to="/">Home</NavLink>
+              </Box>
+              <Box as="li" mb={{ base: "1rem", md: 0 }} mr={{ md: "2rem" }}>
+                <NavLink to="/projects">Projects</NavLink>
+              </Box>
+              <Box as="li" mb={{ base: "1rem", md: 0 }} mr={{ md: "2rem" }}>
+                <NavLink to="/our-team">Our Team</NavLink>
+              </Box>
+              <Box as="li" mb={{ base: "1rem", md: 0 }}>
+                <NavLink to="/contact-us">Contact Us</NavLink>
+              </Box>
+            </Flex>
+          )}
         </Flex>
       </header>
-      <Container maxW="container.lg" px={{ base: 4, md: 8 }}>
+      <Container maxW="container.lg" px={{ base: 4, md: 8 }} flex="1" mt={[4, 8]}>
         <main>{children}</main>
       </Container>
       <footer>
