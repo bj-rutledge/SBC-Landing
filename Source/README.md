@@ -23,4 +23,3 @@ Sound Building Components Inc. (SBC) is dedicated to modernizing the “Wall Pan
 - **Framer Motion**: An animation library for React.
 - **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript.
 - **GraphQL**: A query language for APIs.
-

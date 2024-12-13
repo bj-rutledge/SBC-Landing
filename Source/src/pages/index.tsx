@@ -9,7 +9,13 @@ import AnimatedImages from "../components/AnimatedImages"; // Import the new com
 
 const IndexPage = () => (
   <Layout>
-    <Box width="100vw" height="100vh" display={'flex'} justifyContent={'center'} alignItems={'center'}>
+    <Box
+      width="100vw"
+      height="100vh"
+      display={"flex"}
+      justifyContent={"center"}
+      alignItems={"center"}
+    >
       <AnimatedImages />
     </Box>
   </Layout>

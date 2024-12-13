@@ -35,9 +35,7 @@ const Card: React.FC<CardProps> = ({ imageSrc, name, description }) => {
           <Text fontWeight="bold" fontSize="xl">
             {name}
           </Text>
-          <Text>
-            {description}
-          </Text>
+          <Text>{description}</Text>
         </VStack>
       </Flex>
     </Box>

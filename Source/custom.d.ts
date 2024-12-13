@@ -7,6 +7,6 @@
  * TypeScript linting errors when using gatsby-plugin-image.
  */
 
-declare module '*.jpg';
-declare module '*.jpeg';
-declare module '*.png';
+declare module "*.jpg";
+declare module "*.jpeg";
+declare module "*.png";

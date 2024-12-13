@@ -1,8 +1,3 @@
-/**
- * src/components/layout.tsx
- * Created by BJ Rutledge
- * Date: 2024-12-11
- **/
 import * as React from "react";
 import { ReactNode } from "react";
 import {
@@ -67,13 +62,25 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <MenuItem as={GatsbyLink} to="/" _hover={{ bg: "green.100" }}>
                   Home
                 </MenuItem>
-                <MenuItem as={GatsbyLink} to="/projects" _hover={{ bg: "green.100" }}>
+                <MenuItem
+                  as={GatsbyLink}
+                  to="/projects"
+                  _hover={{ bg: "green.100" }}
+                >
                   Projects
                 </MenuItem>
-                <MenuItem as={GatsbyLink} to="/our-team" _hover={{ bg: "green.100" }}>
+                <MenuItem
+                  as={GatsbyLink}
+                  to="/our-team"
+                  _hover={{ bg: "green.100" }}
+                >
                   Our Team
                 </MenuItem>
-                <MenuItem as={GatsbyLink} to="/contact-us" _hover={{ bg: "green.100" }}>
+                <MenuItem
+                  as={GatsbyLink}
+                  to="/contact-us"
+                  _hover={{ bg: "green.100" }}
+                >
                   Contact Us
                 </MenuItem>
               </MenuList>
@@ -96,29 +103,27 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           )}
         </Flex>
       </header>
-      <MotionBox 
+      <MotionBox
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         flex="1"
       >
-        <Container 
-          maxW="container.lg" 
-          px={{ base: 4, md: 8 }} 
-          flex="1" 
+        <Box
+          width="100%" // Ensure it takes the full width of the container
+          flex="1"
           mt={[4, 8]}
           display="flex"
-          justifyContent="center" 
-          alignItems="center"
+          flexDirection="column"
         >
-          <main>{children}</main>
-        </Container>
-        <footer>
-          <Box p={4} bg="gray.800" color="white" textAlign="center">
-            © {new Date().getFullYear()} Sound Building Components Inc.
-          </Box>
-        </footer>
+          <main style={{ flex: '1' }}>{children}</main>
+        </Box>
       </MotionBox>
+      <footer style={{ flexShrink: 0 }}>
+        <Box p={4} bg="gray.800" color="white" textAlign="center">
+          © {new Date().getFullYear()} Sound Building Components Inc.
+        </Box>
+      </footer>
     </Box>
   );
 };

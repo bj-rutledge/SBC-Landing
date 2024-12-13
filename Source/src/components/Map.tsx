@@ -1,97 +1,82 @@
 /**
  * Created by BJ Rutledge
- * Date:2024-12-13
+ * Date:2024-12-12
+ * Refactored for MFD and proper rendering 2024-12-13
  **/
-import React, { useEffect, useState } from 'react';
-import ReactDOMServer from 'react-dom/server';
-import { Box, Select, Heading, Flex } from '@chakra-ui/react';
-import InfoCard from './InfoCard';
-import { Location } from './helpers/types';
-// interface Location {
-//   address: string;
-//   title: string;
-//   subtitle: string;
-//   phone: string;
-//   email: string;
-//   funFacts: string;
-//   imageUrl: string;
-//   content: string;
-// }
+import React, { useEffect, useState } from "react";
+import ReactDOMServer from "react-dom/server";
+import { Box, Select, Heading, Flex } from "@chakra-ui/react";
+import InfoCard from "./InfoCard";
+import { Location } from "./helpers/types";
+import useWindowSize from "../hooks/useWindowSize";
 
-/**
- * When assigning initMap to window, vsCode 
- * draws a squiggly line suggesting an error, 
- * this is just to avoid the squigly! 🤣
- */
 declare global {
   interface Window {
     initMap: () => void;
   }
 }
 
-
-
-type Region = 'washington' | 'hawaii';
+type Region = "washington" | "hawaii";
 
 const locations: Record<Region, Location[]> = {
   washington: [
     {
-      address: '123 Example St, Seattle, WA 98101',
-      title: 'Job Location 1',
-      subtitle: 'Project Alpha',
-      phone: '123-456-7890',
-      email: 'info@joblocation1.com',
-      funFacts: 'This location was completed in 2020 and features sustainable building materials.',
-      imageUrl: 'https://www.certifymeonline.net/wp-content/uploads/2021/09/shutterstock_1247187910-e1632964983297.jpg',
-      content: 'Some Content!'
+      address: "123 Example St, Seattle, WA 98101",
+      title: "Job Location 1",
+      subtitle: "Project Alpha",
+      phone: "123-456-7890",
+      email: "info@joblocation1.com",
+      funFacts: "This location was completed in 2020 and features sustainable building materials.",
+      imageUrl: "https://www.certifymeonline.net/wp-content/uploads/2021/09/shutterstock_1247187910-e1632964983297.jpg",
+      content: "Some Content!",
     },
     {
-      address: '456 Another St, Seattle, WA 98102',
-      title: 'Job Location 2',
-      subtitle: 'Project Beta',
-      phone: '987-654-3210', 
-      email: 'info@joblocation2.com',
-      funFacts: 'This project won the best architecture award in 2019.',
-      imageUrl: 'https://www.canam-construction.com/wp-content/uploads/2021/06/img1415.jpg',
-      content: ''
-    }
+      address: "456 Another St, Seattle, WA 98102",
+      title: "Job Location 2",
+      subtitle: "Project Beta",
+      phone: "987-654-3210",
+      email: "info@joblocation2.com",
+      funFacts: "This project won the best architecture award in 2019.",
+      imageUrl: "https://www.canam-construction.com/wp-content/uploads/2021/06/img1415.jpg",
+      content: "",
+    },
   ],
   hawaii: [
     {
-      address: 'Example St, Honolulu, HI 96813',
-      title: 'Hawaii Job 1',
-      subtitle: 'Project Aloha',
-      phone: '808-123-4567',
-      email: 'info@hawaiijob1.com',
-      funFacts: 'This job features breathtaking ocean views.',
-      imageUrl: 'https://www.canam-construction.com/wp-content/uploads/2021/06/img1415.jpg',
-      content: ''
+      address: "Example St, Honolulu, HI 96813",
+      title: "Hawaii Job 1",
+      subtitle: "Project Aloha",
+      phone: "808-123-4567",
+      email: "info@hawaiijob1.com",
+      funFacts: "This job features breathtaking ocean views.",
+      imageUrl: "https://www.canam-construction.com/wp-content/uploads/2021/06/img1415.jpg",
+      content: "",
     },
     {
-      address: 'Another St, Maui, HI 96793',
-      title: 'Hawaii Job 2',
-      subtitle: 'Project Paradise',
-      phone: '808-987-6543',
-      email: 'info@hawaiijob2.com',
-      funFacts: 'This project includes eco-friendly construction methods.',
-      imageUrl: 'https://www.goconstruct.org/media/ec0pubko/hbf-construction-work-on-a-redrow-site-min.jpg?anchor=center&mode=crop&width=455&height=295&rnd=132659746009270000',
-      content: ''
-    }
-  ]
+      address: "Another St, Maui, HI 96793",
+      title: "Hawaii Job 2",
+      subtitle: "Project Paradise",
+      phone: "808-987-6543",
+      email: "info@hawaiijob2.com",
+      funFacts: "This project includes eco-friendly construction methods.",
+      imageUrl: "https://www.goconstruct.org/media/ec0pubko/hbf-construction-work-on-a-redrow-site-min.jpg?anchor=center&mode=crop&width=455&height=295&rnd=132659746009270000",
+      content: "",
+    },
+  ],
 };
 
 const Map: React.FC = () => {
   const [map, setMap] = useState<google.maps.Map | null>(null);
   const [geocoder, setGeocoder] = useState<google.maps.Geocoder | null>(null);
-  const [selectedRegion, setSelectedRegion] = useState<Region>('washington');
+  const [selectedRegion, setSelectedRegion] = useState<Region>("washington");
 
   useEffect(() => {
     const initMap = () => {
-      const mapElement = document.getElementById('map');
+      const mapElement = document.getElementById("map");
       if (mapElement) {
         const mapInstance = new window.google.maps.Map(mapElement, {
           center: { lat: 47.6062, lng: -122.3321 },
-          zoom: 10
+          zoom: 10,
         });
         setMap(mapInstance);
         setGeocoder(new window.google.maps.Geocoder());
@@ -104,19 +89,13 @@ const Map: React.FC = () => {
     window.initMap = initMap;
 
     const loadScript = () => {
-      if (!document.getElementById('google-maps-script')) {
-        const script = document.createElement('script');
-        script.id = 'google-maps-script';
+      if (!document.getElementById("google-maps-script")) {
+        const script = document.createElement("script");
+        script.id = "google-maps-script";
         script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyBcES1hGuygyYXwZswFCQP4yC6iSqvmCU8&callback=initMap`;
         script.async = true;
         script.defer = true;
         document.head.appendChild(script);
-        
-        script.onload = () => {
-          if (typeof window !== 'undefined' && window.google) {
-            initMap();
-          }
-        };
       } else {
         if (window.google) {
           initMap();
@@ -135,10 +114,12 @@ const Map: React.FC = () => {
 
   const loadLocations = (region: Region) => {
     if (map) {
-      map.setCenter(region === 'washington' ? { lat: 47.6062, lng: -122.3321 } : { lat: 20.789, lng: -156.407 });
-      map.setZoom(region === 'washington' ? 10 : 7);
+      map.setCenter(
+        region === "washington" ? { lat: 47.6062, lng: -122.3321 } : { lat: 20.789, lng: -156.407 }
+      );
+      map.setZoom(region === "washington" ? 10 : 7);
 
-      locations[region].forEach(location => {
+      locations[region].forEach((location) => {
         geocodeAddress(location);
       });
     }
@@ -147,11 +128,11 @@ const Map: React.FC = () => {
   const geocodeAddress = (location: Location) => {
     if (geocoder && map) {
       geocoder.geocode({ address: location.address }, (results, status) => {
-        if (status === 'OK' && results && results[0]) {
+        if (status === "OK" && results && results[0]) {
           const marker = new window.google.maps.Marker({
             map: map,
             position: results[0].geometry.location,
-            title: location.title
+            title: location.title,
           });
 
           const contentString = ReactDOMServer.renderToString(
@@ -167,10 +148,10 @@ const Map: React.FC = () => {
           );
 
           const infoWindow = new window.google.maps.InfoWindow({
-            content: contentString
+            content: contentString,
           });
 
-          marker.addListener('click', () => {
+          marker.addListener("click", () => {
             infoWindow.open(map, marker);
           });
         } else {
@@ -179,21 +160,266 @@ const Map: React.FC = () => {
       });
     }
   };
+
+  const windowSize = useWindowSize();
+  const isMobile = windowSize.width <= 768;
+
   return (
-    <Flex direction="column" width="100vh" minHeight="80vh" p={4}>
-      <Heading as="h1" mb={4}>
+    <Flex direction="column" width="100%" minHeight="80vh" p={4}>
+      <Heading as="h1" mb={5}>
         Our Job Locations
       </Heading>
-      <Select value={selectedRegion} onChange={(e) => setSelectedRegion(e.target.value as Region)} mb={4}>
+      <Select
+        value={selectedRegion}
+        onChange={(e) => setSelectedRegion(e.target.value as Region)}
+        mb={4}
+      >
         <option value="washington">Washington</option>
         <option value="hawaii">Hawaii</option>
       </Select>
-      <Box id="map" flexGrow="1" height="66vh" width="100%" />
+      <Box
+        id="map"
+        flexGrow="1"
+        height="66vh" // Set a fixed height
+        width={isMobile ? "90vw" : `${Math.min(windowSize.width * 0.95, 1200)}px`} // Adjust width based on screen size
+        mx="auto" // Center the map horizontally
+      />
     </Flex>
   );
-  
-  
-  
 };
 
 export default Map;
+
+
+// import React, { useEffect, useState } from "react";
+// import ReactDOMServer from "react-dom/server";
+// import { Box, Select, Heading, Flex } from "@chakra-ui/react";
+// import InfoCard from "./InfoCard";
+// import { Location } from "./helpers/types";
+// import useWindowSize from "../hooks/useWindowSize";
+// // interface Location {
+// //   address: string;
+// //   title: string;
+// //   subtitle: string;
+// //   phone: string;
+// //   email: string;
+// //   funFacts: string;
+// //   imageUrl: string;
+// //   content: string;
+// // }
+
+// /**
+//  * When assigning initMap to window, vsCode
+//  * draws a squiggly line suggesting an error,
+//  * this is just to avoid the squigly! 🤣
+//  */
+// declare global {
+//   interface Window {
+//     initMap: () => void;
+//   }
+// }
+
+// type Region = "washington" | "hawaii";
+
+// const locations: Record<Region, Location[]> = {
+//   washington: [
+//     {
+//       address: "123 Example St, Seattle, WA 98101",
+//       title: "Job Location 1",
+//       subtitle: "Project Alpha",
+//       phone: "123-456-7890",
+//       email: "info@joblocation1.com",
+//       funFacts:
+//         "This location was completed in 2020 and features sustainable building materials.",
+//       imageUrl:
+//         "https://www.certifymeonline.net/wp-content/uploads/2021/09/shutterstock_1247187910-e1632964983297.jpg",
+//       content: "Some Content!",
+//     },
+//     {
+//       address: "456 Another St, Seattle, WA 98102",
+//       title: "Job Location 2",
+//       subtitle: "Project Beta",
+//       phone: "987-654-3210",
+//       email: "info@joblocation2.com",
+//       funFacts: "This project won the best architecture award in 2019.",
+//       imageUrl:
+//         "https://www.canam-construction.com/wp-content/uploads/2021/06/img1415.jpg",
+//       content: "",
+//     },
+//   ],
+//   hawaii: [
+//     {
+//       address: "Example St, Honolulu, HI 96813",
+//       title: "Hawaii Job 1",
+//       subtitle: "Project Aloha",
+//       phone: "808-123-4567",
+//       email: "info@hawaiijob1.com",
+//       funFacts: "This job features breathtaking ocean views.",
+//       imageUrl:
+//         "https://www.canam-construction.com/wp-content/uploads/2021/06/img1415.jpg",
+//       content: "",
+//     },
+//     {
+//       address: "Another St, Maui, HI 96793",
+//       title: "Hawaii Job 2",
+//       subtitle: "Project Paradise",
+//       phone: "808-987-6543",
+//       email: "info@hawaiijob2.com",
+//       funFacts: "This project includes eco-friendly construction methods.",
+//       imageUrl:
+//         "https://www.goconstruct.org/media/ec0pubko/hbf-construction-work-on-a-redrow-site-min.jpg?anchor=center&mode=crop&width=455&height=295&rnd=132659746009270000",
+//       content: "",
+//     },
+//   ],
+// };
+
+// const Map: React.FC = () => {
+//   const [map, setMap] = useState<google.maps.Map | null>(null);
+//   const [geocoder, setGeocoder] = useState<google.maps.Geocoder | null>(null);
+//   const [selectedRegion, setSelectedRegion] = useState<Region>("washington");
+
+//   useEffect(() => {
+//     const initMap = () => {
+//       const mapElement = document.getElementById("map");
+//       if (mapElement) {
+//         const mapInstance = new window.google.maps.Map(mapElement, {
+//           center: { lat: 47.6062, lng: -122.3321 },
+//           zoom: 10,
+//         });
+//         setMap(mapInstance);
+//         setGeocoder(new window.google.maps.Geocoder());
+//       } else {
+//         console.error("Map container element not found");
+//       }
+//     };
+
+//     // Store initMap globally, in the event users refresh the screen
+//     window.initMap = initMap;
+
+//     const loadScript = () => {
+//       if (!document.getElementById("google-maps-script")) {
+//         const script = document.createElement("script");
+//         script.id = "google-maps-script";
+//         script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyBcES1hGuygyYXwZswFCQP4yC6iSqvmCU8&callback=initMap`;
+//         script.async = true;
+//         script.defer = true;
+//         document.head.appendChild(script);
+
+//         script.onload = () => {
+//           if (typeof window !== "undefined" && window.google) {
+//             initMap();
+//           }
+//         };
+//       } else {
+//         if (window.google) {
+//           initMap();
+//         }
+//       }
+//     };
+
+//     loadScript();
+//   }, []);
+
+//   useEffect(() => {
+//     if (map && geocoder) {
+//       loadLocations(selectedRegion);
+//     }
+//   }, [map, geocoder, selectedRegion]);
+
+//   const loadLocations = (region: Region) => {
+//     if (map) {
+//       map.setCenter(
+//         region === "washington"
+//           ? { lat: 47.6062, lng: -122.3321 }
+//           : { lat: 20.789, lng: -156.407 }
+//       );
+//       map.setZoom(region === "washington" ? 10 : 7);
+
+//       locations[region].forEach((location) => {
+//         geocodeAddress(location);
+//       });
+//     }
+//   };
+
+//   const geocodeAddress = (location: Location) => {
+//     if (geocoder && map) {
+//       geocoder.geocode({ address: location.address }, (results, status) => {
+//         if (status === "OK" && results && results[0]) {
+//           const marker = new window.google.maps.Marker({
+//             map: map,
+//             position: results[0].geometry.location,
+//             title: location.title,
+//           });
+
+//           const contentString = ReactDOMServer.renderToString(
+//             <InfoCard
+//               imageUrl={location.imageUrl}
+//               title={location.title}
+//               subtitle={location.subtitle}
+//               address={location.address}
+//               phone={location.phone}
+//               email={location.email}
+//               funFacts={location.funFacts}
+//             />
+//           );
+
+//           const infoWindow = new window.google.maps.InfoWindow({
+//             content: contentString,
+//           });
+
+//           marker.addListener("click", () => {
+//             infoWindow.open(map, marker);
+//           });
+//         } else {
+//           console.error(
+//             `Geocode was not successful for the following reason: ${status}`
+//           );
+//         }
+//       });
+//     }
+//   };
+
+//   const windowSize = useWindowSize();
+//   const isMobile = windowSize.width <= 768;
+
+//   return (
+//     <Flex direction="column" width="100%" minHeight="80vh" p={4}>
+//       <Heading as="h1" mb={5}>
+//         Our Job Locations
+//       </Heading>
+//       <Select
+//         value={selectedRegion}
+//         onChange={(e) => setSelectedRegion(e.target.value as Region)}
+//         mb={4}
+//       >
+//         <option value="washington">Washington</option>
+//         <option value="hawaii">Hawaii</option>
+//       </Select>
+//       <Box
+//         id="map"
+//         flexGrow="1"
+//         height="66vh" // Set a fixed height
+//         width={
+//           isMobile ? "90vw" : `${Math.min(windowSize.width * 0.95, 1200)}px`
+//         } // Adjust width based on screen size
+//         mx="auto" // Center the map horizontally
+//       />
+//     </Flex>
+//   );
+
+//   // return (
+//   //   <Flex direction="column" width="100vh" minHeight="80vh" p={4}>
+//   //     <Heading as="h1" mb={4}>
+//   //       Our Job Locations
+//   //     </Heading>
+//   //     <Select value={selectedRegion} onChange={(e) => setSelectedRegion(e.target.value as Region)} mb={4}>
+//   //       <option value="washington">Washington</option>
+//   //       <option value="hawaii">Hawaii</option>
+//   //     </Select>
+
+//   //     <Box id="map" flexGrow="1" height="66vh" width="100%" />
+//   //   </Flex>
+//   // );
+// };
+
+// export default Map;
