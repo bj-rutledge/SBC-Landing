@@ -16,6 +16,7 @@ import {
   MenuItem,
   IconButton,
   useBreakpointValue,
+  UnorderedList,
 } from "@chakra-ui/react";
 import { Link as GatsbyLink } from "gatsby";
 import { HamburgerIcon } from "@chakra-ui/icons";
@@ -78,28 +79,20 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </MenuList>
             </Menu>
           ) : (
-            <Flex
-              as="ul"
-              listStyleType="none"
+            <UnorderedList
               m={0}
               p={0}
+              display="flex"
               flexDirection={{ base: "column", md: "row" }}
               alignItems={{ base: "start", md: "center" }} // Adjust alignment for mobile
               height="100%"
+              styleType="none"
             >
-              <Box as="li" mb={{ base: "1rem", md: 0 }} mr={{ md: "2rem" }}>
-                <NavLink to="/">Home</NavLink>
-              </Box>
-              <Box as="li" mb={{ base: "1rem", md: 0 }} mr={{ md: "2rem" }}>
-                <NavLink to="/projects">Projects</NavLink>
-              </Box>
-              <Box as="li" mb={{ base: "1rem", md: 0 }} mr={{ md: "2rem" }}>
-                <NavLink to="/our-team">Our Team</NavLink>
-              </Box>
-              <Box as="li" mb={{ base: "1rem", md: 0 }}>
-                <NavLink to="/contact-us">Contact Us</NavLink>
-              </Box>
-            </Flex>
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/projects">Projects</NavLink>
+              <NavLink to="/our-team">Our Team</NavLink>
+              <NavLink to="/contact-us">Contact Us</NavLink>
+            </UnorderedList>
           )}
         </Flex>
       </header>
