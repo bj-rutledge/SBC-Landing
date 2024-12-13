@@ -3,7 +3,6 @@
  * Created by BJ Rutledge
  * Date: 2024-12-11
  **/
-
 import * as React from "react";
 import { ReactNode } from "react";
 import {
@@ -20,6 +19,7 @@ import {
 } from "@chakra-ui/react";
 import { Link as GatsbyLink } from "gatsby";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import MotionBox from "./MotionBox"; // Import your custom MotionBox
 import NavLink from "./NavLink"; // Import the NavLink component
 
 interface LayoutProps {
@@ -96,22 +96,29 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           )}
         </Flex>
       </header>
-      <Container 
-        maxW="container.lg" 
-        px={{ base: 4, md: 8 }} 
-        flex="1" 
-        mt={[4, 8]}
-        display="flex"
-        justifyContent="center" 
-        alignItems="center"
+      <MotionBox 
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        flex="1"
       >
-        <main>{children}</main>
-      </Container>
-      <footer>
-        <Box p={4} bg="gray.800" color="white" textAlign="center">
-          © {new Date().getFullYear()} Sound Building Components Inc.
-        </Box>
-      </footer>
+        <Container 
+          maxW="container.lg" 
+          px={{ base: 4, md: 8 }} 
+          flex="1" 
+          mt={[4, 8]}
+          display="flex"
+          justifyContent="center" 
+          alignItems="center"
+        >
+          <main>{children}</main>
+        </Container>
+        <footer>
+          <Box p={4} bg="gray.800" color="white" textAlign="center">
+            © {new Date().getFullYear()} Sound Building Components Inc.
+          </Box>
+        </footer>
+      </MotionBox>
     </Box>
   );
 };

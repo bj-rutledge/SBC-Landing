@@ -1,6 +1,10 @@
 
-import { exitCode } from "process";
-import { Locations } from "./types/Location";
+/**
+ * Created by BJ Rutledge
+ * Date: 2024-12-13
+ * Map marker locations
+ **/
+import { Locations } from "./types";
 
 const locations: Locations = {
     washington: [
