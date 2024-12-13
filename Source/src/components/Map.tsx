@@ -1,28 +1,108 @@
 /**
  * Created by BJ Rutledge
- * Date:2024-12-12
+ * Date:2024-12-13
  **/
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOMServer from 'react-dom/server';
+import { Box, Select, Heading, Flex } from '@chakra-ui/react';
 import InfoCard from './InfoCard';
-import { Location } from './helpers/types/Location';
-import locations from './helpers/locations';
-import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect';
+import { Location } from './helpers/types';
+// interface Location {
+//   address: string;
+//   title: string;
+//   subtitle: string;
+//   phone: string;
+//   email: string;
+//   funFacts: string;
+//   imageUrl: string;
+//   content: string;
+// }
 
+/**
+ * When assigning initMap to window, vsCode 
+ * draws a squiggly line suggesting an error, 
+ * this is just to avoid the squigly! 🤣
+ */
 declare global {
   interface Window {
-    google: typeof google;
     initMap: () => void;
   }
 }
 
+
+
+type Region = 'washington' | 'hawaii';
+
+const locations: Record<Region, Location[]> = {
+  washington: [
+    {
+      address: '123 Example St, Seattle, WA 98101',
+      title: 'Job Location 1',
+      subtitle: 'Project Alpha',
+      phone: '123-456-7890',
+      email: 'info@joblocation1.com',
+      funFacts: 'This location was completed in 2020 and features sustainable building materials.',
+      imageUrl: 'https://www.certifymeonline.net/wp-content/uploads/2021/09/shutterstock_1247187910-e1632964983297.jpg',
+      content: 'Some Content!'
+    },
+    {
+      address: '456 Another St, Seattle, WA 98102',
+      title: 'Job Location 2',
+      subtitle: 'Project Beta',
+      phone: '987-654-3210', 
+      email: 'info@joblocation2.com',
+      funFacts: 'This project won the best architecture award in 2019.',
+      imageUrl: 'https://www.canam-construction.com/wp-content/uploads/2021/06/img1415.jpg',
+      content: ''
+    }
+  ],
+  hawaii: [
+    {
+      address: 'Example St, Honolulu, HI 96813',
+      title: 'Hawaii Job 1',
+      subtitle: 'Project Aloha',
+      phone: '808-123-4567',
+      email: 'info@hawaiijob1.com',
+      funFacts: 'This job features breathtaking ocean views.',
+      imageUrl: 'https://www.canam-construction.com/wp-content/uploads/2021/06/img1415.jpg',
+      content: ''
+    },
+    {
+      address: 'Another St, Maui, HI 96793',
+      title: 'Hawaii Job 2',
+      subtitle: 'Project Paradise',
+      phone: '808-987-6543',
+      email: 'info@hawaiijob2.com',
+      funFacts: 'This project includes eco-friendly construction methods.',
+      imageUrl: 'https://www.goconstruct.org/media/ec0pubko/hbf-construction-work-on-a-redrow-site-min.jpg?anchor=center&mode=crop&width=455&height=295&rnd=132659746009270000',
+      content: ''
+    }
+  ]
+};
+
 const Map: React.FC = () => {
   const [map, setMap] = useState<google.maps.Map | null>(null);
   const [geocoder, setGeocoder] = useState<google.maps.Geocoder | null>(null);
-  const [selectedRegion, setSelectedRegion] = useState<'washington' | 'hawaii'>('washington');
-  const [markers, setMarkers] = useState<google.maps.Marker[]>([]);
+  const [selectedRegion, setSelectedRegion] = useState<Region>('washington');
 
-  useIsomorphicLayoutEffect(() => {
+  useEffect(() => {
+    const initMap = () => {
+      const mapElement = document.getElementById('map');
+      if (mapElement) {
+        const mapInstance = new window.google.maps.Map(mapElement, {
+          center: { lat: 47.6062, lng: -122.3321 },
+          zoom: 10
+        });
+        setMap(mapInstance);
+        setGeocoder(new window.google.maps.Geocoder());
+      } else {
+        console.error("Map container element not found");
+      }
+    };
+
+    // Store initMap globally, in the event users refresh the screen
+    window.initMap = initMap;
+
     const loadScript = () => {
       if (!document.getElementById('google-maps-script')) {
         const script = document.createElement('script');
@@ -31,53 +111,48 @@ const Map: React.FC = () => {
         script.async = true;
         script.defer = true;
         document.head.appendChild(script);
+        
+        script.onload = () => {
+          if (typeof window !== 'undefined' && window.google) {
+            initMap();
+          }
+        };
+      } else {
+        if (window.google) {
+          initMap();
+        }
       }
-    };
-
-    window.initMap = () => {
-      const mapInstance = new window.google.maps.Map(document.getElementById('map') as HTMLElement, {
-        center: { lat: 47.6062, lng: -122.3321 },
-        zoom: 10
-      });
-      setMap(mapInstance);
-      setGeocoder(new window.google.maps.Geocoder());
     };
 
     loadScript();
   }, []);
 
-  useIsomorphicLayoutEffect(() => {
+  useEffect(() => {
     if (map && geocoder) {
       loadLocations(selectedRegion);
     }
   }, [map, geocoder, selectedRegion]);
 
-  const loadLocations = (region: 'washington' | 'hawaii') => {
+  const loadLocations = (region: Region) => {
     if (map) {
-      // Remove existing markers from the map
-      markers.forEach(marker => marker.setMap(null));
-      setMarkers([]);
+      map.setCenter(region === 'washington' ? { lat: 47.6062, lng: -122.3321 } : { lat: 20.789, lng: -156.407 });
+      map.setZoom(region === 'washington' ? 10 : 7);
 
-      const bounds = new window.google.maps.LatLngBounds();
       locations[region].forEach(location => {
-        geocodeAddress(location, bounds);
+        geocodeAddress(location);
       });
     }
   };
 
-  const geocodeAddress = (location: Location, bounds: google.maps.LatLngBounds) => {
+  const geocodeAddress = (location: Location) => {
     if (geocoder && map) {
       geocoder.geocode({ address: location.address }, (results, status) => {
         if (status === 'OK' && results && results[0]) {
-
           const marker = new window.google.maps.Marker({
             map: map,
             position: results[0].geometry.location,
             title: location.title
           });
-
-          bounds.extend(results[0].geometry.location);
-          map.fitBounds(bounds);
 
           const contentString = ReactDOMServer.renderToString(
             <InfoCard
@@ -98,28 +173,27 @@ const Map: React.FC = () => {
           marker.addListener('click', () => {
             infoWindow.open(map, marker);
           });
-
-          // Add marker to state for future removal
-          setMarkers(prevMarkers => [...prevMarkers, marker]);
         } else {
           console.error(`Geocode was not successful for the following reason: ${status}`);
         }
       });
     }
   };
-
   return (
-    <div>
-      <h1>Our Job Locations</h1>
-      <select value={selectedRegion} onChange={(e) => setSelectedRegion(e.target.value as 'washington' | 'hawaii')}>
+    <Flex direction="column" width="100vh" minHeight="80vh" p={4}>
+      <Heading as="h1" mb={4}>
+        Our Job Locations
+      </Heading>
+      <Select value={selectedRegion} onChange={(e) => setSelectedRegion(e.target.value as Region)} mb={4}>
         <option value="washington">Washington</option>
         <option value="hawaii">Hawaii</option>
-      </select>
-      <div className="map-container">
-        <div id="map"></div>
-      </div>
-    </div>
+      </Select>
+      <Box id="map" flexGrow="1" height="66vh" width="100%" />
+    </Flex>
   );
+  
+  
+  
 };
 
 export default Map;
