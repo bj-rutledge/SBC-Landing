@@ -12,7 +12,8 @@ const ProjectsPage = () => (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 3 }} // Increase duration to 2 seconds
+      transition={{ duration: 2 }} // Increase duration for longer fade-in
+      style={{ width: "100%" }} // Ensure it takes the full width of the container
     >
       <Map />
     </motion.div>
