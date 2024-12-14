@@ -9,7 +9,14 @@ export type Location = {
   content: string;
 };
 
-export type Locations = {
-  washington: Location[];
-  hawaii: Location[];
+export type Region = "washington" | "hawaii";
+
+export type MapInfoCard = {
+  imageSrc: string;
+  title: string;
+  subtitle?: string;
+  address: string;
+  phone: string;
+  email: string;
+  funFacts?: string;
 };

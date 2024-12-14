@@ -116,7 +116,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           display="flex"
           flexDirection="column"
         >
-          <main style={{ flex: '1' }}>{children}</main>
+          <main style={{ flex: "1" }}>{children}</main>
         </Box>
       </MotionBox>
       <footer style={{ flexShrink: 0 }}>

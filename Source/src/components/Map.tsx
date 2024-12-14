@@ -3,12 +3,19 @@
  * Date:2024-12-12
  * Refactored for MFD and proper rendering 2024-12-13
  **/
+
 import React, { useEffect, useState } from "react";
-import ReactDOMServer from "react-dom/server";
+import ReactDOM from "react-dom"; // Explicitly import ReactDOM
 import { Box, Select, Heading, Flex } from "@chakra-ui/react";
-import InfoCard from "./InfoCard";
+import InfoCard from "./MapInfoCard";
 import { Location } from "./helpers/types";
 import useWindowSize from "../hooks/useWindowSize";
+
+// Import local images
+import Img1 from "../images/Illaria05.jpg";
+import Img2 from "../images/Illaria06.jpg";
+import Img3 from "../images/QATA_August_2013___1sm.jpg";
+import Img4 from "../images/QATA_June_2013_Aerial_2sm.jpg";
 
 declare global {
   interface Window {
@@ -27,7 +34,7 @@ const locations: Record<Region, Location[]> = {
       phone: "123-456-7890",
       email: "info@joblocation1.com",
       funFacts: "This location was completed in 2020 and features sustainable building materials.",
-      imageSrc: "https://www.certifymeonline.net/wp-content/uploads/2021/09/shutterstock_1247187910-e1632964983297.jpg",
+      imageSrc: Img1,
       content: "Some Content!",
     },
     {
@@ -37,7 +44,7 @@ const locations: Record<Region, Location[]> = {
       phone: "987-654-3210",
       email: "info@joblocation2.com",
       funFacts: "This project won the best architecture award in 2019.",
-      imageSrc: "https://www.canam-construction.com/wp-content/uploads/2021/06/img1415.jpg",
+      imageSrc: Img2,
       content: "",
     },
   ],
@@ -49,7 +56,7 @@ const locations: Record<Region, Location[]> = {
       phone: "808-123-4567",
       email: "info@hawaiijob1.com",
       funFacts: "This job features breathtaking ocean views.",
-      imageSrc: "https://www.canam-construction.com/wp-content/uploads/2021/06/img1415.jpg",
+      imageSrc: Img3,
       content: "",
     },
     {
@@ -59,7 +66,7 @@ const locations: Record<Region, Location[]> = {
       phone: "808-987-6543",
       email: "info@hawaiijob2.com",
       funFacts: "This project includes eco-friendly construction methods.",
-      imageSrc: "https://www.goconstruct.org/media/ec0pubko/hbf-construction-work-on-a-redrow-site-min.jpg?anchor=center&mode=crop&width=455&height=295&rnd=132659746009270000",
+      imageSrc: Img4,
       content: "",
     },
   ],
@@ -85,7 +92,6 @@ const Map: React.FC = () => {
       }
     };
 
-    // Store initMap globally, in the event users refresh the screen
     window.initMap = initMap;
 
     const loadScript = () => {
@@ -135,23 +141,23 @@ const Map: React.FC = () => {
             title: location.title,
           });
 
-          const contentString = ReactDOMServer.renderToString(
-            <InfoCard
-              imageSrc={location.imageSrc}
-              title={location.title}
-              subtitle={location.subtitle}
-              address={location.address}
-              phone={location.phone}
-              email={location.email}
-              funFacts={location.funFacts}
-            />
-          );
-
-          const infoWindow = new window.google.maps.InfoWindow({
-            content: contentString,
-          });
+          const infoWindow = new window.google.maps.InfoWindow();
 
           marker.addListener("click", () => {
+            const content = document.createElement("div");
+            ReactDOM.render(
+              <InfoCard
+                imageSrc={location.imageSrc}
+                title={location.title}
+                subtitle={location.subtitle}
+                address={location.address}
+                phone={location.phone}
+                email={location.email}
+                funFacts={location.funFacts}
+              />,
+              content
+            );
+            infoWindow.setContent(content);
             infoWindow.open(map, marker);
           });
         } else {
@@ -189,4 +195,3 @@ const Map: React.FC = () => {
 };
 
 export default Map;
-

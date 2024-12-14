@@ -1,10 +1,10 @@
 /**
  * Created by BJ Rutledge
  * Date:2024-12-13
- * 
- * This component wraps the Chakra UI `Image` component to ensure it only 
- * renders on the client side. 
- * This avoids warnings and issues related to the use of `useLayoutEffect` 
+ *
+ * This component wraps the Chakra UI `Image` component to ensure it only
+ * renders on the client side.
+ * This avoids warnings and issues related to the use of `useLayoutEffect`
  * during server-side rendering.
  */
 
@@ -14,7 +14,7 @@ import useIsMounted from "../hooks/useIsMounted";
 
 const ClientImage: React.FC<ImageProps> = (props) => {
   const isMounted = useIsMounted();
-
+  console.log('isMounted', isMounted);
   return isMounted ? <Image {...props} /> : null;
 };
 
