@@ -10,6 +10,8 @@ import MotionBox from "../components/MotionBox";
 import gregImg from "../images/greg.jpg";
 import julia from "../images/julia.jpg";
 import james from "../images/james.jpg";
+import ClientImage from "../components/ClientImage"; // Import the ClientImage component
+
 const OurTeamPage = () => (
   <Layout>
     <Box p={5}>
@@ -48,6 +50,7 @@ const OurTeamPage = () => (
               imageSrc={james}
               name="James Pfaff"
               description="With a diverse 25-year plus career in construction and wall panel design, James has designed over 23 million square feet of residential space, leveraging his hands-on experience in framing, siding, roofing, and finish work, and his expertise in using AutoCAD for wall panel design."
+              ImageComponent={ClientImage} // Use ClientImage for loading the image
             />
           </MotionBox>
           <MotionBox
@@ -59,6 +62,7 @@ const OurTeamPage = () => (
               imageSrc={julia}
               name="Julia Phay Pfaff"
               description="Julia is our office Manager, and is dedicated to making Sound Building Components a safe and welcoming environment where employees are proud of the work they accomplish."
+              ImageComponent={ClientImage} // Use ClientImage for loading the image
             />
           </MotionBox>
           <MotionBox
@@ -70,6 +74,7 @@ const OurTeamPage = () => (
               imageSrc={gregImg}
               name="Greg Norvell"
               description="Greg, starting in the Wall Panel Industry in 1992, has spent 28 years building and shipping panelized homes and apartments to Alaska, Japan, and Greater Seattle, proving his dedication to quality, excellent managerial skills, and timely project completion."
+              ImageComponent={ClientImage} // Use ClientImage for loading the image
             />
           </MotionBox>
         </SimpleGrid>
@@ -78,5 +83,4 @@ const OurTeamPage = () => (
   </Layout>
 );
 
-// AIzaSyBcES1hGuygyYXwZswFCQP4yC6iSqvmCU8
 export default OurTeamPage;

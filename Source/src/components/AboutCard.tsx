@@ -1,14 +1,24 @@
-// src/components/Card.tsx
+/**
+ * Created by BJ Rutledge
+ * Date:2024-12-12
+ * This component represents a card that displays an image, a name, and a description.
+ * It uses a custom ImageComponent prop to render images, allowing flexibility in how 
+ * images are rendered.
+ * This is particularly useful for ensuring images are only rendered on the client side, 
+ * which helps avoid server-side rendering issues related to the use of `useLayoutEffect`.
+ */
+
 import * as React from "react";
-import { Box, Image, Text, VStack, Flex } from "@chakra-ui/react";
+import { Box, Text, VStack, Flex } from "@chakra-ui/react";
 
 interface CardProps {
   imageSrc: string;
   name: string;
   description: string;
+  ImageComponent: React.ElementType; // Accept an ImageComponent prop
 }
 
-const Card: React.FC<CardProps> = ({ imageSrc, name, description }) => {
+const Card: React.FC<CardProps> = ({ imageSrc, name, description, ImageComponent }) => {
   return (
     <Box
       borderWidth="1px"
@@ -22,7 +32,7 @@ const Card: React.FC<CardProps> = ({ imageSrc, name, description }) => {
       flexDirection="column"
       justifyContent="start" // Ensure content starts at the top
     >
-      <Image
+      <ImageComponent
         src={imageSrc}
         alt={name}
         boxSize="150px"
