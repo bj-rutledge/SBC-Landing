@@ -1,7 +1,8 @@
-// src/components/InfoCard.tsx
 import React from "react";
-import { Box, Image, Text, Heading, Link } from "@chakra-ui/react";
-type InfoCardProps = {
+import { Box, Text, Heading, Link } from "@chakra-ui/react";
+import ClientImage from "./ClientImage"; // Import the ClientImage component
+
+type MapInfoCard = {
   imageSrc: string;
   title: string;
   subtitle?: string;
@@ -11,7 +12,7 @@ type InfoCardProps = {
   funFacts?: string;
 };
 
-const InfoCard: React.FC<InfoCardProps> = ({
+const InfoCard: React.FC<MapInfoCard> = ({
   imageSrc,
   title,
   subtitle,
@@ -22,14 +23,16 @@ const InfoCard: React.FC<InfoCardProps> = ({
 }) => {
   return (
     <Box className="info-window">
-      <Image src={imageSrc} alt={title} />
+      <ClientImage src={imageSrc} alt={title} /> {/* Use ClientImage instead of Image */}
       <Box className="info-window-content" p={4}>
         <Heading as="h2" size="md">
           {title}
         </Heading>
-        <Heading as="h4" size="sm" mt={2}>
-          {subtitle}
-        </Heading>
+        {subtitle && (
+          <Heading as="h4" size="sm" mt={2}>
+            {subtitle}
+          </Heading>
+        )}
         <Text>
           <strong>Address:</strong> {address}
         </Text>
