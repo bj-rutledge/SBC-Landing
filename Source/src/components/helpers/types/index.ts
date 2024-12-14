@@ -5,7 +5,7 @@ export type Location = {
   phone: string;
   email: string;
   funFacts: string;
-  imageUrl: string;
+  imageSrc: string;
   content: string;
 };
 

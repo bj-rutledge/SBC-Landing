@@ -1,5 +1,6 @@
 import * as React from "react";
 import { motion } from "framer-motion";
+import ClientImage from "./ClientImage"; // Import the ClientImage component
 import Illaria05 from "../images/Illaria05.jpg";
 import Illaria06 from "../images/Illaria06.jpg";
 import QATA_August_2013___1sm from "../images/QATA_August_2013___1sm.jpg";
@@ -57,7 +58,7 @@ const AnimatedImages = () => {
             alignItems: "center",
           }}
         >
-          <img
+          <ClientImage
             src={src}
             alt={`Image ${index + 1}`}
             style={{

@@ -2,7 +2,7 @@
 import React from "react";
 import { Box, Image, Text, Heading, Link } from "@chakra-ui/react";
 type InfoCardProps = {
-  imageUrl: string;
+  imageSrc: string;
   title: string;
   subtitle?: string;
   address: string;
@@ -12,7 +12,7 @@ type InfoCardProps = {
 };
 
 const InfoCard: React.FC<InfoCardProps> = ({
-  imageUrl,
+  imageSrc,
   title,
   subtitle,
   address,
@@ -22,7 +22,7 @@ const InfoCard: React.FC<InfoCardProps> = ({
 }) => {
   return (
     <Box className="info-window">
-      <Image src={imageUrl} alt={title} />
+      <Image src={imageSrc} alt={title} />
       <Box className="info-window-content" p={4}>
         <Heading as="h2" size="md">
           {title}
