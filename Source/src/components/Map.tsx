@@ -7,7 +7,7 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom"; // Explicitly import ReactDOM
 import { Box, Select, Heading, Flex } from "@chakra-ui/react";
-import InfoCard from "./MapInfoCard";
+import MapInfoCard from "./MapInfoCard";
 import { Location } from "./helpers/types";
 import useWindowSize from "../hooks/useWindowSize";
 
@@ -146,7 +146,7 @@ const Map: React.FC = () => {
           marker.addListener("click", () => {
             const content = document.createElement("div");
             ReactDOM.render(
-              <InfoCard
+              <MapInfoCard
                 imageSrc={location.imageSrc}
                 title={location.title}
                 subtitle={location.subtitle}
