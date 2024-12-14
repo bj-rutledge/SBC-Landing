@@ -5,7 +5,7 @@
  **/
 
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom"; // Explicitly import ReactDOM
+import { createRoot } from "react-dom/client"; // Import createRoot
 import { Box, Select, Heading, Flex } from "@chakra-ui/react";
 import MapInfoCard from "./MapInfoCard";
 import { Location } from "./helpers/types";
@@ -145,7 +145,8 @@ const Map: React.FC = () => {
 
           marker.addListener("click", () => {
             const content = document.createElement("div");
-            ReactDOM.render(
+            const root = createRoot(content); // Use createRoot instead of ReactDOM.render
+            root.render(
               <MapInfoCard
                 imageSrc={location.imageSrc}
                 title={location.title}
@@ -154,8 +155,7 @@ const Map: React.FC = () => {
                 phone={location.phone}
                 email={location.email}
                 funFacts={location.funFacts}
-              />,
-              content
+              />
             );
             infoWindow.setContent(content);
             infoWindow.open(map, marker);
