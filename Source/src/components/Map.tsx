@@ -169,20 +169,23 @@ const Map: React.FC = () => {
 
   const windowSize = useWindowSize();
   const isMobile = windowSize.width <= 768;
-
   return (
-    <Flex direction="column" width="100%" minHeight="80vh" p={4}>
-      <Heading as="h1" mb={5}>
+    <Flex direction="column" width="100%" minHeight="80vh" p={4} alignItems="center">
+      <Heading as="h1" mb={5} textAlign="center">
         Our Job Locations
       </Heading>
-      <Select
-        value={selectedRegion}
-        onChange={(e) => setSelectedRegion(e.target.value as Region)}
-        mb={4}
-      >
-        <option value="washington">Washington</option>
-        <option value="hawaii">Hawaii</option>
-      </Select>
+      <Box width={isMobile ? "90vw" : `${Math.min(windowSize.width * 0.95, 1200)}px`} mx="auto">
+        <Select
+          value={selectedRegion}
+          onChange={(e) => setSelectedRegion(e.target.value as Region)}
+          mb={4}
+          width="200px" // Make the dropdown list smaller
+          alignSelf="flex-start" // Left justify the dropdown list
+        >
+          <option value="washington">Washington</option>
+          <option value="hawaii">Hawaii</option>
+        </Select>
+      </Box>
       <Box
         id="map"
         flexGrow="1"
@@ -192,6 +195,8 @@ const Map: React.FC = () => {
       />
     </Flex>
   );
+  
+  
 };
 
 export default Map;
