@@ -7,10 +7,13 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client"; // Import createRoot
 import { Box, Select, Heading, Flex } from "@chakra-ui/react";
-import MapInfoCard from "./MapInfoCard";
+// import MapInfoCard from "./MapInfoCard";
+import MapInfoCardAerialView from "./MapInfoCardArialView";
+// import MapInfoCardStreetView from "./MapInfoCardStreetview";
 import { Location } from "../types";
 import useWindowSize from "../hooks/useWindowSize";
 import locations from "./data/locations"; // Import locations
+const key = 'AIzaSyBcES1hGuygyYXwZswFCQP4yC6iSqvmCU8';
 
 declare global {
   interface Window {
@@ -41,12 +44,11 @@ const Map: React.FC = () => {
     };
 
     window.initMap = initMap;
-
     const loadScript = () => {
       if (!document.getElementById("google-maps-script")) {
         const script = document.createElement("script");
         script.id = "google-maps-script";
-        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyBcES1hGuygyYXwZswFCQP4yC6iSqvmCU8&callback=initMap`;
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap`;
         script.async = true;
         script.defer = true;
         document.head.appendChild(script);
@@ -95,8 +97,8 @@ const Map: React.FC = () => {
             const content = document.createElement("div");
             const root = createRoot(content); // Use createRoot instead of ReactDOM.render
             root.render(
-              <MapInfoCard
-                imageSrc={location.imageSrc}
+              <MapInfoCardAerialView
+                // imageSrc={location.imageSrc}
                 title={location.title}
                 subtitle={location.subtitle}
                 address={location.address}
