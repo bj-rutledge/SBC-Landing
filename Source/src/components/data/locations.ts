@@ -3,15 +3,14 @@ import Img2 from "../../images/Illaria06.jpg";
 import Img3 from "../../images/QATA_August_2013___1sm.jpg";
 import Img4 from "../../images/QATA_June_2013_Aerial_2sm.jpg";
 import {Location} from "../../types";
-
-type Region = "washington" | "hawaii";
+import { Region } from '../../types';
 
 const locations: Record<Region, Location[]> = {
   washington: [
     {
-      address: "123 Example St, Seattle, WA 98101",
-      title: "Job Location 1",
-      subtitle: "Project Alpha",
+      address: "521 S. Weller Seattle WA 98104",
+      title: "Uwajimaya",
+      subtitle: "PacRim / Lockett",
       phone: "123-456-7890",
       email: "info@joblocation1.com",
       funFacts: "This location was completed in 2020 and features sustainable building materials.",
@@ -19,9 +18,9 @@ const locations: Record<Region, Location[]> = {
       content: "Some Content!",
     },
     {
-      address: "456 Another St, Seattle, WA 98102",
-      title: "Job Location 2",
-      subtitle: "Project Beta",
+      address: "22433 NE Marketplace DR REDmond WA 98053",
+      title: "Redmond Ridge The lodge",
+      subtitle: "Simpson Housing",
       phone: "987-654-3210",
       email: "info@joblocation2.com",
       funFacts: "This project won the best architecture award in 2019.",
