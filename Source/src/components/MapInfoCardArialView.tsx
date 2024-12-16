@@ -23,40 +23,40 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
 
   useEffect(() => {
     const fetchAerialViewUrl = async () => {
-      try {
-        const videoResponse = await fetch(
-          `https://aerialview.googleapis.com/v1/videos:lookupVideo?address=${encodeURIComponent(
-            address
-          )}&key=${key}`
-        );
-
-        if (!videoResponse.ok) {
-          const videoError = await videoResponse.json();
-          if (videoResponse.status === 404 && videoError.status === "NOT_FOUND") {
-            setError("Aerial view video not found for this address.");
-            return;
-          } else if (videoResponse.status === 401) {
-            setError("Unauthorized access. Please check your API key.");
-            return;
-          } else {
-            throw new Error(`HTTP error! status: ${videoResponse.status}`);
+        try {
+          const videoResponse = await fetch(
+            `https://aerialview.googleapis.com/v1/videos:lookupVideo?address=${encodeURIComponent(
+              address
+            )}&key=${key}`
+          );
+      
+          if (!videoResponse.ok) {
+            if (videoResponse.status === 404) {
+              setError("No Aerial Video Available");
+              return;
+            } else if (videoResponse.status === 401) {
+              setError("Unauthorized access. Please check your API key.");
+              return;
+            } else {
+              throw new Error(`HTTP error! status: ${videoResponse.status}`);
+            }
           }
+      
+          const videoData = await videoResponse.json();
+      
+          if (videoData.state === "ACTIVE" && videoData.uris && videoData.uris.MP4_HIGH) {
+            setAerialViewUrl(videoData.uris.MP4_HIGH.landscapeUri);
+          } else if (videoData.state === "PROCESSING") {
+            setError("Aerial view video is still processing. Please check back later.");
+          } else {
+            setError("No Aerial Video Available");
+          }
+        } catch (error) {
+          console.error("Error fetching aerial view:", error);
+          setError("Error fetching aerial view.");
         }
-
-        const videoData = await videoResponse.json();
-
-        if (videoData.state === "ACTIVE" && videoData.uris && videoData.uris.MP4_HIGH) {
-          setAerialViewUrl(videoData.uris.MP4_HIGH.landscapeUri);
-        } else if (videoData.state === "PROCESSING") {
-          setError("Aerial view video is still processing. Please check back later.");
-        } else {
-          setError("Aerial view video not available.");
-        }
-      } catch (error) {
-        console.error("Error fetching aerial view:", error);
-        setError("Error fetching aerial view.");
-      }
-    };
+      };
+      
 
     fetchAerialViewUrl();
   }, [address]);

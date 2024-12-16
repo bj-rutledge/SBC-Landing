@@ -15,8 +15,13 @@ const useReadJsonFile = (): MapInfoCard[] => {
       try {
         const response = await fetch(dataEndoint);
         const jobs = await response.json();
-
-        const mapInfoCards: MapInfoCard[] = jobs.Sheet1.map((job: any) => ({
+        // Filter out jobs with empty addresses and Job Name
+        const validJobs = jobs.Sheet1.filter((job: any) => 
+            job.Address && job.Address.trim() !== '' && 
+            job['Job Name'] && job['Job Name'].trim() !== ''
+          );
+          
+        const mapInfoCards: MapInfoCard[] = validJobs.map((job: any) => ({
           title: job['Job Name'],
           subtitle: `Contractor: ${job.GC}`,
           address: job.Address,
