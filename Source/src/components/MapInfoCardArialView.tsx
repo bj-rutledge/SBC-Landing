@@ -1,20 +1,12 @@
 /**
- * Created by BJ Rutledge
- * Date:2024-12-15
+ * Author: BJ Rutledge
+ * Date: December 15, 2024
  **/
 const key = 'AIzaSyB73He37dJqk3u2WBTWKZltNBK8V2hP6vI';
 import React, { useEffect, useState } from "react";
 import { Box, Text, Heading, Link } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
-
-type MapInfoCard = {
-  title: string;
-  subtitle?: string;
-  address: string;
-  phone: string;
-  email: string;
-  funFacts?: string;
-};
+import { MapInfoCard } from "../types";
 
 const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
   title,
@@ -23,6 +15,8 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
   phone,
   email,
   funFacts,
+  contractor,
+  sqFt
 }) => {
   const [aerialViewUrl, setAerialViewUrl] = useState("");
   const [error, setError] = useState("");
@@ -67,63 +61,70 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
     fetchAerialViewUrl();
   }, [address]);
 
+  const fadeIn = keyframes`
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  `;
 
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`;
-
-return (
-  <Box className="info-window">
-    {aerialViewUrl ? (
-      <Box
-        width="100%"
-        maxWidth="300px"
-        mx="auto"
-        animation={`${fadeIn} 2s ease-in-out`}
-      >
-        <video controls autoPlay loop width="100%">
-          <source src={aerialViewUrl} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </Box>
-    ) : error ? (
-      <Text>{error}</Text>
-    ) : (
-      <Text>Loading aerial view...</Text>
-    )}
-    <Box className="info-window-content" p={4}>
-      <Heading as="h2" size="md">
-        {title}
-      </Heading>
-      {subtitle && (
-        <Heading as="h4" size="sm" mt={2}>
-          {subtitle}
+  return (
+    <Box className="info-window">
+      {aerialViewUrl ? (
+        <Box
+          width="100%"
+          maxWidth="300px"
+          mx="auto"
+          animation={`${fadeIn} 2s ease-in-out`}
+        >
+          <video controls autoPlay loop width="100%">
+            <source src={aerialViewUrl} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </Box>
+      ) : error ? (
+        <Text>{error}</Text>
+      ) : (
+        <Text>Loading aerial view...</Text>
+      )}
+      <Box className="info-window-content" p={4}>
+        <Heading as="h2" size="md">
+          {title}
         </Heading>
-      )}
-      <Text>
-        <strong>Address:</strong> {address}
-      </Text>
-      <Text>
-        <strong>Phone:</strong> <Link href={`tel:${phone}`}>{phone}</Link>
-      </Text>
-      <Text>
-        <strong>Email:</strong> <Link href={`mailto:${email}`}>{email}</Link>
-      </Text>
-      {funFacts && (
+        {subtitle && (
+          <Heading as="h4" size="sm" mt={2}>
+            {subtitle}
+          </Heading>
+        )}
         <Text>
-          <strong>Fun Facts:</strong> {funFacts}
+          <strong>Address:</strong> {address}
         </Text>
-      )}
+        {contractor && (
+          <Text>
+            <strong>Contractor:</strong> {contractor}
+          </Text>
+        )}
+        {sqFt && (
+          <Text>
+            <strong>Square Feet:</strong> {sqFt}
+          </Text>
+        )}
+        <Text>
+          <strong>Phone:</strong> <Link href={`tel:${phone}`}>{phone}</Link>
+        </Text>
+        <Text>
+          <strong>Email:</strong> <Link href={`mailto:${email}`}>{email}</Link>
+        </Text>
+        {funFacts && (
+          <Text>
+            <strong>Fun Facts:</strong> {funFacts}
+          </Text>
+        )}
+      </Box>
     </Box>
-  </Box>
-);
-
-  
+  );
 };
 
 export default MapInfoCardAerialView;
