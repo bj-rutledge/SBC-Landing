@@ -1,22 +1,29 @@
+/**
+ * Created by BJ Rutledge
+ * Date:2024-12-11
+ **/
+
 export type Location = {
   address: string;
   title: string;
-  subtitle: string;
-  phone: string;
-  email: string;
-  funFacts: string;
-  imageSrc: string;
-  content: string;
+  subtitle?: string;
+  contractor?: string;
+  sqFt?: string;
+  phone?: string;
+  email?: string;
+  funFacts?: string;
+  content?: string; 
 };
 
 export type Region = "washington" | "hawaii";
 
-export type MapInfoCard = {
-  imageSrc: string;
+  export type MapInfoCard = {
   title: string;
   subtitle?: string;
   address: string;
-  phone: string;
-  email: string;
+  contractor?: string;
+  sqFt?: string;
+  phone?: string;
+  email?: string;
   funFacts?: string;
 };

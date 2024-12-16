@@ -1,10 +1,11 @@
 /**
- * Created by BJ Rutledge
- * Date: 2024-12-15
+ * Author: BJ Rutledge
+ * Date: December 15, 2024
  **/
 
 import { useState, useEffect } from 'react';
 import { MapInfoCard } from '../../../types';
+const dataEndoint = 'http://localhost:8080/lifetimeJobsCompleted.json'; 
 
 const useReadJsonFile = (): MapInfoCard[] => {
   const [mapInfoCards, setMapInfoCards] = useState<MapInfoCard[]>([]);
@@ -12,16 +13,20 @@ const useReadJsonFile = (): MapInfoCard[] => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('../data/lifetimeJobsCompleted.json');
+        const response = await fetch(dataEndoint);
         const jobs = await response.json();
-
-        const mapInfoCards: MapInfoCard[] = jobs.map((job: any) => ({
-          title: job.title,
-          subtitle: job.subtitle,
-          address: job.address,
-          phone: job.phone,
-          email: job.email,
-          funFacts: job.funFacts,
+        // Filter out jobs with empty addresses and Job Name
+        const validJobs = jobs.Sheet1.filter((job: any) => 
+            job.Address && job.Address.trim() !== '' && 
+            job['Job Name'] && job['Job Name'].trim() !== ''
+          );
+          
+        const mapInfoCards: MapInfoCard[] = validJobs.map((job: any) => ({
+          title: job['Job Name'],
+          subtitle: `Contractor: ${job.GC}`,
+          address: job.Address,
+          contractor: job.GC,
+          funFacts: job['sq/ft'] !== '' ? `Square Feet: ${job['sq/ft']}` : '',
         }));
 
         setMapInfoCards(mapInfoCards);

@@ -1,3 +1,7 @@
+/**
+ * Created by BJ Rutledge
+ * Date: 2024-12-13
+ **/
 import React from "react";
 import { Box, Text, Heading, Link } from "@chakra-ui/react";
 import ClientImage from "./ClientImage"; // Import the ClientImage component

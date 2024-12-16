@@ -1,18 +1,18 @@
 /**
- * Created by BJ Rutledge
- * Date:2024-12-12
- * Refactored for MFD and proper rendering 2024-12-13
+ * Author: BJ Rutledge
+ * Date: December 12, 2024
+ * Refactored for MFD and proper rendering December 13, 2024
  **/
 
 import React, { useEffect, useState } from "react";
-import { createRoot } from "react-dom/client"; // Import createRoot
+import { createRoot } from "react-dom/client";
 import { Box, Select, Heading, Flex } from "@chakra-ui/react";
-// import MapInfoCard from "./MapInfoCard";
 import MapInfoCardAerialView from "./MapInfoCardArialView";
-// import MapInfoCardStreetView from "./MapInfoCardStreetview";
-import { Location } from "../types";
+import { MapInfoCard } from "../types";
 import useWindowSize from "../hooks/useWindowSize";
-import locations from "./data/locations"; // Import locations
+import { contractors } from "./data/contractors"; // Import contractors array
+import useReadJsonFile from "./helpers/readInJobLocations"; // Import custom hook
+
 const key = 'AIzaSyBcES1hGuygyYXwZswFCQP4yC6iSqvmCU8';
 
 declare global {
@@ -21,12 +21,14 @@ declare global {
   }
 }
 
-type Region = "washington" | "hawaii";
-
 const Map: React.FC = () => {
   const [map, setMap] = useState<google.maps.Map | null>(null);
   const [geocoder, setGeocoder] = useState<google.maps.Geocoder | null>(null);
-  const [selectedRegion, setSelectedRegion] = useState<Region>("washington");
+  const [selectedContractor, setSelectedContractor] = useState<string>('');
+  const [markers, setMarkers] = useState<google.maps.Marker[]>([]);
+
+  // Use the custom hook to read job locations
+  const locations = useReadJsonFile();
 
   useEffect(() => {
     const initMap = () => {
@@ -35,6 +37,7 @@ const Map: React.FC = () => {
         const mapInstance = new window.google.maps.Map(mapElement, {
           center: { lat: 47.6062, lng: -122.3321 },
           zoom: 10,
+          mapTypeId: google.maps.MapTypeId.SATELLITE
         });
         setMap(mapInstance);
         setGeocoder(new window.google.maps.Geocoder());
@@ -64,24 +67,33 @@ const Map: React.FC = () => {
 
   useEffect(() => {
     if (map && geocoder) {
-      loadLocations(selectedRegion);
+      loadAllLocations();
     }
-  }, [map, geocoder, selectedRegion]);
+  }, [map, geocoder, locations]);
 
-  const loadLocations = (region: Region) => {
+  useEffect(() => {
     if (map) {
-      map.setCenter(
-        region === "washington" ? { lat: 47.6062, lng: -122.3321 } : { lat: 20.789, lng: -156.407 }
-      );
-      map.setZoom(region === "washington" ? 10 : 7);
+      filterMarkers(selectedContractor);
+    }
+  }, [selectedContractor, map]);
 
-      locations[region].forEach((location) => {
-        geocodeAddress(location);
+  const loadAllLocations = () => {
+    if (map && geocoder) {
+      const allMarkers: google.maps.Marker[] = [];
+      const bounds = new window.google.maps.LatLngBounds();
+
+      locations.forEach((location) => {
+        geocodeAddress(location, allMarkers, bounds);
       });
+
+      setMarkers(allMarkers);
+      if (!bounds.isEmpty()) {
+        map.fitBounds(bounds);
+      }
     }
   };
 
-  const geocodeAddress = (location: Location) => {
+  const geocodeAddress = (location: MapInfoCard, allMarkers: google.maps.Marker[], bounds: google.maps.LatLngBounds) => {
     if (geocoder && map) {
       geocoder.geocode({ address: location.address }, (results, status) => {
         if (status === "OK" && results && results[0]) {
@@ -95,27 +107,71 @@ const Map: React.FC = () => {
 
           marker.addListener("click", () => {
             const content = document.createElement("div");
-            const root = createRoot(content); // Use createRoot instead of ReactDOM.render
+            const root = createRoot(content);
             root.render(
               <MapInfoCardAerialView
-                // imageSrc={location.imageSrc}
                 title={location.title}
                 subtitle={location.subtitle}
                 address={location.address}
+                contractor={location.contractor}
+                sqFt={location.sqFt}
                 phone={location.phone}
                 email={location.email}
                 funFacts={location.funFacts}
+                // content={location.content}
               />
             );
             infoWindow.setContent(content);
             infoWindow.open(map, marker);
           });
+
+          allMarkers.push(marker);
+          const markerPosition = marker.getPosition();
+          if (markerPosition) {
+            bounds.extend(markerPosition);
+          }
         } else {
           console.error(`Geocode was not successful for the following reason: ${status}`);
         }
       });
     }
   };
+
+  const filterMarkers = (contractor: string) => {
+    if (map) {
+      const bounds = new window.google.maps.LatLngBounds();
+      const filteredMarkers = markers.filter(marker => {
+        const location = locations.find(loc => loc.title === marker.getTitle());
+        return location && (!contractor || location.contractor === contractor);
+      });
+  
+      filteredMarkers.forEach(marker => {
+        marker.setMap(map);
+        const markerPosition = marker.getPosition();
+        if (markerPosition) {
+          bounds.extend(markerPosition);
+        }
+      });
+  
+      markers.forEach(marker => {
+        if (!filteredMarkers.includes(marker)) {
+          marker.setMap(null);
+        }
+      });
+      if (filteredMarkers.length === 1) {
+        const markerPosition = filteredMarkers[0].getPosition();
+        if (markerPosition) {
+          map.setCenter(markerPosition);
+          map.setZoom(15); // Adjust the zoom level as needed
+        }
+      } else if (!bounds.isEmpty()) {
+        // Fit bounds if there are multiple markers
+        map.fitBounds(bounds);
+      }
+      
+    }
+  };
+  
 
   const windowSize = useWindowSize();
   const isMobile = windowSize.width <= 768;
@@ -126,22 +182,26 @@ const Map: React.FC = () => {
       </Heading>
       <Box width={isMobile ? "90vw" : `${Math.min(windowSize.width * 0.95, 1200)}px`} mx="auto">
         <Select
-          value={selectedRegion}
-          onChange={(e) => setSelectedRegion(e.target.value as Region)}
+          value={selectedContractor}
+          onChange={(e) => setSelectedContractor(e.target.value)}
           mb={4}
-          width="200px" // Make the dropdown list smaller
-          alignSelf="flex-start" // Left justify the dropdown list
+          width="200px"
+          alignSelf="flex-start"
         >
-          <option value="washington">Washington</option>
-          <option value="hawaii">Hawaii</option>
+          <option value="">All Contractors</option>
+          {contractors.map((contractor) => (
+            <option key={contractor} value={contractor}>
+              {contractor}
+            </option>
+          ))}
         </Select>
       </Box>
       <Box
         id="map"
         flexGrow="1"
-        height="66vh" // Set a fixed height
-        width={isMobile ? "90vw" : `${Math.min(windowSize.width * 0.95, 1200)}px`} // Adjust width based on screen size
-        mx="auto" // Center the map horizontally
+        height="66vh"
+        width={isMobile ? "90vw" : `${Math.min(windowSize.width * 0.95, 1200)}px`}
+        mx="auto"
       />
     </Flex>
   );
