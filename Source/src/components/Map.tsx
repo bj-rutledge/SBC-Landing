@@ -13,7 +13,7 @@ import useWindowSize from "../hooks/useWindowSize";
 import { contractors } from "./data/contractors"; // Import contractors array
 import useReadJsonFile from "./helpers/readInJobLocations"; // Import custom hook
 
-const key = 'AIzaSyBcES1hGuygyYXwZswFCQP4yC6iSqvmCU8';
+const key = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
 
 declare global {
   interface Window {

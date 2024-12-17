@@ -2,7 +2,7 @@
  * Author: BJ Rutledge
  * Date: December 15, 2024
  **/
-const key = 'AIzaSyB73He37dJqk3u2WBTWKZltNBK8V2hP6vI';
+const key = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
 import React, { useEffect, useState } from "react";
 import { Box, Text, Heading, Link } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";

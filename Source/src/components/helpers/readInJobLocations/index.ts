@@ -5,8 +5,8 @@
 
 import { useState, useEffect } from 'react';
 import { MapInfoCard } from '../../../types';
-const dataEndoint = 'http://localhost:8080/lifetimeJobsCompleted.json'; 
-
+const dataEndoint = process.env.GATSBY_COMPLETED_JOBS_ENDPOINT as string; 
+console.log(dataEndoint);
 const useReadJsonFile = (): MapInfoCard[] => {
   const [mapInfoCards, setMapInfoCards] = useState<MapInfoCard[]>([]);
 
