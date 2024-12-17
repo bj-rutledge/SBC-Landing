@@ -15,7 +15,7 @@ export type Location = {
   content?: string; 
 };
 
-export type Region = "washington" | "hawaii";
+// export type Region = "washington" | "hawaii";
 
   export type MapInfoCard = {
   title: string;
@@ -23,7 +23,7 @@ export type Region = "washington" | "hawaii";
   address: string;
   contractor?: string;
   sqFt?: string;
-  phone?: string;
-  email?: string;
+  contractorWebsite?: string;
   funFacts?: string;
+  onClose: () => void;
 };

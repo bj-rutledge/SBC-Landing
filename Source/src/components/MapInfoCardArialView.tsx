@@ -1,49 +1,41 @@
-/**
- * Author: BJ Rutledge
- * Date: December 15, 2024
- **/
-const key = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Box, Text, Heading, Link } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
 import { MapInfoCard } from "../types";
 
+const key = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
+
 const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
   title,
-  subtitle,
   address,
-  phone,
-  email,
+  contractorWebsite,
   funFacts,
   contractor,
-  sqFt
+  sqFt,
+  onClose
 }) => {
   const [aerialViewUrl, setAerialViewUrl] = useState("");
+  const [streetViewUrl, setStreetViewUrl] = useState("");
   const [error, setError] = useState("");
+  const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const fetchAerialViewUrl = async () => {
-        try {
-          const videoResponse = await fetch(
-            `https://aerialview.googleapis.com/v1/videos:lookupVideo?address=${encodeURIComponent(
-              address
-            )}&key=${key}`
-          );
-      
-          if (!videoResponse.ok) {
-            if (videoResponse.status === 404) {
-              setError("No Aerial Video Available");
-              return;
-            } else if (videoResponse.status === 401) {
-              setError("Unauthorized access. Please check your API key.");
-              return;
-            } else {
-              throw new Error(`HTTP error! status: ${videoResponse.status}`);
-            }
+      try {
+        const videoResponse = await fetch(
+          `https://aerialview.googleapis.com/v1/videos:lookupVideo?address=${encodeURIComponent(address)}&key=${key}`
+        );
+
+        if (!videoResponse.ok) {
+          if (videoResponse.status === 404) {
+            setError("No Aerial Video Available");
+          } else if (videoResponse.status === 401) {
+            setError("Unauthorized access. Please check your API key.");
+          } else {
+            throw new Error(`HTTP error! status: ${videoResponse.status}`);
           }
-      
+        } else {
           const videoData = await videoResponse.json();
-      
           if (videoData.state === "ACTIVE" && videoData.uris && videoData.uris.MP4_HIGH) {
             setAerialViewUrl(videoData.uris.MP4_HIGH.landscapeUri);
           } else if (videoData.state === "PROCESSING") {
@@ -51,15 +43,47 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
           } else {
             setError("No Aerial Video Available");
           }
-        } catch (error) {
-          console.error("Error fetching aerial view:", error);
-          setError("Error fetching aerial view.");
         }
-      };
-      
+      } catch (error) {
+        console.error("Error fetching aerial view:", error);
+        setError("Error fetching aerial view.");
+      }
+    };
 
-    fetchAerialViewUrl();
-  }, [address]);
+    const fetchStreetViewUrl = async () => {
+      try {
+        const response = await fetch(
+          `https://maps.googleapis.com/maps/api/streetview?size=600x300&location=${encodeURIComponent(address)}&key=${key}`
+        );
+        if (response.ok) {
+          setStreetViewUrl(response.url);
+        } else {
+          setError("No Street View Available");
+        }
+      } catch (error) {
+        console.error("Error fetching street view:", error);
+        setError("Error fetching street view.");
+      }
+    };
+
+    fetchAerialViewUrl().then(() => {
+      if (!aerialViewUrl) {
+        fetchStreetViewUrl();
+      }
+    });
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (cardRef.current && !cardRef.current.contains(event.target as Node)) {
+        onClose();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [address, aerialViewUrl, onClose]);
 
   const fadeIn = keyframes`
     from {
@@ -71,7 +95,11 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
   `;
 
   return (
-    <Box className="info-window">
+    <Box
+      className="info-window"
+      ref={cardRef}
+      onClick={(e) => e.stopPropagation()} // Stop propagation on click inside the card
+    >
       {aerialViewUrl ? (
         <Box
           width="100%"
@@ -84,20 +112,27 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
             Your browser does not support the video tag.
           </video>
         </Box>
+      ) : streetViewUrl ? (
+        <Box
+          width="100%"
+          maxWidth="300px"
+          mx="auto"
+          animation={`${fadeIn} 2s ease-in-out`}
+        >
+          <img src={streetViewUrl} alt="Street View" width="100%" />
+        </Box>
       ) : error ? (
         <Text>{error}</Text>
       ) : (
-        <Text>Loading aerial view...</Text>
+        <Text>Loading aerial view or street view...</Text>
       )}
       <Box className="info-window-content" p={4}>
-        <Heading as="h2" size="md">
-          {title}
+        <Text fontSize="lg" textAlign="center" fontWeight="bold" mb={6}>
+          Over the last 20 years, we have built a total of 13,584,812 square feet of projects!
+        </Text>
+        <Heading as="h1" size="md" textAlign="center">
+          <strong>{title}</strong>
         </Heading>
-        {subtitle && (
-          <Heading as="h4" size="sm" mt={2}>
-            {subtitle}
-          </Heading>
-        )}
         <Text>
           <strong>Address:</strong> {address}
         </Text>
@@ -111,12 +146,11 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
             <strong>Square Feet:</strong> {sqFt}
           </Text>
         )}
-        <Text>
-          <strong>Phone:</strong> <Link href={`tel:${phone}`}>{phone}</Link>
-        </Text>
-        <Text>
-          <strong>Email:</strong> <Link href={`mailto:${email}`}>{email}</Link>
-        </Text>
+        {contractorWebsite && (
+          <Text>
+            <strong>Contractor Website:</strong> <Link href={contractorWebsite} isExternal>{contractorWebsite}</Link>
+          </Text>
+        )}
         {funFacts && (
           <Text>
             <strong>Fun Facts:</strong> {funFacts}
