@@ -6,10 +6,10 @@ SBC takes immense pride in their strong community of professionals who are at th
 
 ## Table of Contents
 
-- [Sound Building Components Inc. | Sedro Woolley, WA](#sound-building-components-inc--sedro-woolley-wa)
-  - [Table of Contents](#table-of-contents)
-  - [Project Overview](#project-overview)
-  - [Technologies Used](#technologies-used)
+-  [Sound Building Components Inc. | Sedro Woolley, WA](#sound-building-components-inc--sedro-woolley-wa)
+   -  [Table of Contents](#table-of-contents)
+   -  [Project Overview](#project-overview)
+   -  [Technologies Used](#technologies-used)
 
 ## Project Overview
 
@@ -17,9 +17,9 @@ Sound Building Components Inc. (SBC) is dedicated to modernizing the “Wall Pan
 
 ## Technologies Used
 
-- **Gatsby**: A fast, modern site generator for React.
-- **React**: A JavaScript library for building user interfaces.
-- **Chakra UI**: A simple, modular, and accessible component library that gives you the building blocks you need to build your React applications.
-- **Framer Motion**: An animation library for React.
-- **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript.
-- **GraphQL**: A query language for APIs.
+-  **Gatsby**: A fast, modern site generator for React.
+-  **React**: A JavaScript library for building user interfaces.
+-  **Chakra UI**: A simple, modular, and accessible component library that gives you the building blocks you need to build your React applications.
+-  **Framer Motion**: An animation library for React.
+-  **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript.
+-  **GraphQL**: A query language for APIs.

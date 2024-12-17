@@ -8,53 +8,57 @@
  * which helps avoid server-side rendering issues related to the use of `useLayoutEffect`.
  */
 
-import * as React from "react";
-import { Box, Text, VStack, Flex } from "@chakra-ui/react";
+import * as React from 'react';
+import { Box, Text, VStack, Flex } from '@chakra-ui/react';
 
 interface CardProps {
-  imageSrc: string;
-  name: string;
-  description: string;
-  ImageComponent: React.ElementType; // Accept an ImageComponent prop
+   imageSrc: string;
+   name: string;
+   description: string;
+   ImageComponent: React.ElementType; // Accept an ImageComponent prop
 }
 
 const Card: React.FC<CardProps> = ({
-  imageSrc,
-  name,
-  description,
-  ImageComponent,
+   imageSrc,
+   name,
+   description,
+   ImageComponent,
 }) => {
-  return (
-    <Box
-      borderWidth="1px"
-      borderRadius="lg"
-      overflow="hidden"
-      boxShadow="md"
-      p={4}
-      textAlign="center"
-      height="470px" // Set a fixed height
-      display="flex"
-      flexDirection="column"
-      justifyContent="start" // Ensure content starts at the top
-    >
-      <ImageComponent
-        src={imageSrc}
-        alt={name}
-        boxSize="150px"
-        objectFit="cover"
-        boxShadow="lg"
-        alignSelf="center" // Center the image horizontally
-      />
-      <Flex flexDirection="column" justifyContent="space-between" height="100%">
-        <VStack spacing={4} mt={4}>
-          <Text fontWeight="bold" fontSize="xl">
-            {name}
-          </Text>
-          <Text>{description}</Text>
-        </VStack>
-      </Flex>
-    </Box>
-  );
+   return (
+      <Box
+         borderWidth="1px"
+         borderRadius="lg"
+         overflow="hidden"
+         boxShadow="md"
+         p={4}
+         textAlign="center"
+         height="470px" // Set a fixed height
+         display="flex"
+         flexDirection="column"
+         justifyContent="start" // Ensure content starts at the top
+      >
+         <ImageComponent
+            src={imageSrc}
+            alt={name}
+            boxSize="150px"
+            objectFit="cover"
+            boxShadow="lg"
+            alignSelf="center" // Center the image horizontally
+         />
+         <Flex
+            flexDirection="column"
+            justifyContent="space-between"
+            height="100%"
+         >
+            <VStack spacing={4} mt={4}>
+               <Text fontWeight="bold" fontSize="xl">
+                  {name}
+               </Text>
+               <Text>{description}</Text>
+            </VStack>
+         </Flex>
+      </Box>
+   );
 };
 
 export default Card;

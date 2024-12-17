@@ -26,3 +26,5 @@ LICENSE
 public/
 *.log
 *.cache
+*.json
+*.sh
