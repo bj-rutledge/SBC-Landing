@@ -1,9 +1,3 @@
-/**
- * Author: BJ Rutledge
- * Date: December 12, 2024
- * Refactored for MFD and proper rendering December 13, 2024
- **/
-
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { Box, Select, Heading, Flex } from "@chakra-ui/react";
@@ -26,6 +20,7 @@ const Map: React.FC = () => {
   const [geocoder, setGeocoder] = useState<google.maps.Geocoder | null>(null);
   const [selectedContractor, setSelectedContractor] = useState<string>('');
   const [markers, setMarkers] = useState<google.maps.Marker[]>([]);
+  const [activeInfoWindow, setActiveInfoWindow] = useState<google.maps.InfoWindow | null>(null);
 
   // Use the custom hook to read job locations
   const locations = useReadJsonFile();
@@ -51,9 +46,10 @@ const Map: React.FC = () => {
       if (!document.getElementById("google-maps-script")) {
         const script = document.createElement("script");
         script.id = "google-maps-script";
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap`;
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap&loading=async`;
         script.async = true;
         script.defer = true;
+        
         document.head.appendChild(script);
       } else {
         if (window.google) {
@@ -111,18 +107,22 @@ const Map: React.FC = () => {
             root.render(
               <MapInfoCardAerialView
                 title={location.title}
-                subtitle={location.subtitle}
                 address={location.address}
                 contractor={location.contractor}
                 sqFt={location.sqFt}
-                phone={location.phone}
-                email={location.email}
+                contractorWebsite={location.contractorWebsite}
                 funFacts={location.funFacts}
-                // content={location.content}
+                onClose={() => infoWindow.close()}
               />
             );
             infoWindow.setContent(content);
             infoWindow.open(map, marker);
+
+            // Close the previously opened info window
+            if (activeInfoWindow) {
+              activeInfoWindow.close();
+            }
+            setActiveInfoWindow(infoWindow);
           });
 
           allMarkers.push(marker);
