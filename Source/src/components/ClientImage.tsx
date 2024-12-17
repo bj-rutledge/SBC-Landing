@@ -8,14 +8,14 @@
  * during server-side rendering.
  */
 
-import React from "react";
-import { Image, ImageProps } from "@chakra-ui/react";
-import useIsMounted from "../hooks/useIsMounted";
+import React from 'react';
+import { Image, ImageProps } from '@chakra-ui/react';
+import useIsMounted from '../hooks/useIsMounted';
 
 const ClientImage: React.FC<ImageProps> = (props) => {
-  const isMounted = useIsMounted();
-  console.log('isMounted', isMounted);
-  return isMounted ? <Image {...props} /> : null;
+   const isMounted = useIsMounted();
+   console.log('isMounted', isMounted);
+   return isMounted ? <Image {...props} /> : null;
 };
 
 export default ClientImage;
