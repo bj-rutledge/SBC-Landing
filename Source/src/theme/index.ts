@@ -6,8 +6,8 @@
 import { extendTheme } from '@chakra-ui/react';
 
 const fonts = {
-   heading: `'Open Sans', sans-serif`,
-   body: `'Open Sans', sans-serif`,
+   heading: `'Titillium Web', sans-serif`,
+   body: `'Titillium Web', sans-serif`,
 };
 
 const colors = {
@@ -62,7 +62,7 @@ const theme = extendTheme({
             color: 'text.primary',
             bg: colors.white[50],
             lineHeight: 'tall',
-            fontFamily: `'Open Sans', sans-serif`, // Ensure global font family
+            fontFamily: `'Titillium Web', sans-serif`, // Ensure global font family
          },
          a: {
             color: 'text.secondary',
@@ -72,12 +72,12 @@ const theme = extendTheme({
    components: {
       Heading: {
          baseStyle: {
-            fontFamily: `'Open Sans', sans-serif`, // Override for Heading component
+            fontFamily: `'Titillium Web', sans-serif`, // Override for Heading component
          },
       },
       Text: {
          baseStyle: {
-            fontFamily: `'Open Sans', sans-serif`, // Override for Text component
+            fontFamily: `'Titillium Web', sans-serif`, // Override for Text component
          },
       },
    },
