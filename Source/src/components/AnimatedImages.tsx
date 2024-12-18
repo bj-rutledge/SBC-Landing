@@ -3,20 +3,23 @@
  * Date:2024-12-14
  **/
 import * as React from 'react';
-import { motion } from 'framer-motion';
+import { motion, resolveMotionValue } from 'framer-motion';
 import ClientImage from './ClientImage'; // Import the ClientImage component
-import Illaria05 from '../images/Illaria05.jpg';
-import Illaria06 from '../images/Illaria06.jpg';
-import QATA_August_2013___1sm from '../images/QATA_August_2013___1sm.jpg';
-import QATA_June_2013_Aerial_2sm from '../images/QATA_June_2013_Aerial_2sm.jpg';
-import Queen_Anne_Towne_July_2013_1sm from '../images/Queen_Anne_Towne_July_2013_1sm.jpg';
+// import Illaria05 from '../images/Illaria05.jpg';
+// import Illaria06 from '../images/Illaria06.jpg';
+// import QATA_August_2013___1sm from '../images/QATA_August_2013___1sm.jpg';
+// import QATA_June_2013_Aerial_2sm from '../images/QATA_June_2013_Aerial_2sm.jpg';
+// import Queen_Anne_Towne_July_2013_1sm from '../images/Queen_Anne_Towne_July_2013_1sm.jpg';
+import bigCrane from  '../images/landing/craneBG.jpg';
+import eveningSite from '../images/landing/eveningSite.jpg';
+import rollout from '../images/landing/rollout.jpg';
+import sunset from '../images/landing/sunset.jpg';
 
 const images = [
-   Illaria05,
-   Illaria06,
-   QATA_August_2013___1sm,
-   QATA_June_2013_Aerial_2sm,
-   Queen_Anne_Towne_July_2013_1sm,
+bigCrane,
+eveningSite,
+rollout, 
+sunset
 ];
 
 const transitionDuration = 1.5; // Duration of fade in/out
