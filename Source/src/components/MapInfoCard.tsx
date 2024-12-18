@@ -5,16 +5,16 @@
 import React from 'react';
 import { Box, Text, Heading, Link } from '@chakra-ui/react';
 import ClientImage from './ClientImage'; // Import the ClientImage component
-
-type MapInfoCard = {
-   imageSrc: string;
-   title: string;
-   subtitle?: string;
-   address: string;
-   phone: string;
-   email: string;
-   funFacts?: string;
-};
+import { MapInfoCard } from '../types';
+// type MapInfoCard = {
+//    imageSrc: string;
+//    title: string;
+//    subtitle?: string;
+//    address: string;
+//    phone: string;
+//    email: string;
+//    funFacts?: string;
+// };
 
 const InfoCard: React.FC<MapInfoCard> = ({
    imageSrc,
