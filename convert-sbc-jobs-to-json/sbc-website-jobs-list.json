@@ -1,0 +1,2510 @@
+[
+   {
+      "Job Code": "20-K",
+      "Job Name": "Aegis Carkeek park",
+      "Address": "10000 NW Holman RD,  Seattle Wa 98177",
+      "Framer": "Superior ",
+      "GC": "Venture ",
+      "sq/ft": 70831,
+      "Interior LF": 12744,
+      "Exterior LF": 3449,
+      "Designer": "joe",
+      "geoLocation": {
+         "lat": 47.7016388,
+         "lng": -122.361593
+      }
+   },
+   {
+      "Job Code": "17-E",
+      "Job Name": "Rita Street",
+      "Address": "1005 Rita St, Sedro-Woolley WA 98284",
+      "Framer": "BYK",
+      "GC": "BYK",
+      "sq/ft": 42350,
+      "Interior LF": 8202,
+      "Exterior LF": 2505,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 48.5023597,
+         "lng": -122.241866
+      }
+   },
+   {
+      "Job Code": "22-L",
+      "Job Name": "Sawara",
+      "Address": "101 8th Avenue Seattle WA 98104",
+      "Framer": "Superior",
+      "GC": "Marpac",
+      "sq/ft": 94278,
+      "Interior LF": 19125,
+      "Exterior LF": 4180,
+      "Designer": "Mike",
+      "geoLocation": {
+         "lat": 47.6018725,
+         "lng": -122.3229151
+      }
+   },
+   {
+      "Job Code": "23-D ",
+      "Job Name": "Hill top south",
+      "Address": "1011 South L ST, Tacoma WA 98405",
+      "Framer": "Superior ",
+      "GC": "Walsh",
+      "sq/ft": 78300,
+      "Designer": "Stevie",
+      "geoLocation": {
+         "lat": 47.2524514,
+         "lng": -122.4529754
+      }
+   },
+   {
+      "Job Code": "23-D ",
+      "Job Name": "Hill top north",
+      "Address": "1011 South L ST, Tacoma WA 98405",
+      "Framer": "Superior ",
+      "GC": "Walsh",
+      "sq/ft": 128885,
+      "Interior LF": 20575,
+      "Exterior LF": 5600,
+      "Designer": "Stevie",
+      "geoLocation": {
+         "lat": 47.2524514,
+         "lng": -122.4529754
+      }
+   },
+   {
+      "Job Code": "21-B",
+      "Job Name": "Yesler terrace B",
+      "Address": "1020 South main street Seattle wa 98104",
+      "Framer": "Overland",
+      "GC": "compass",
+      "sq/ft": 98181,
+      "Interior LF": 23665,
+      "Exterior LF": 3607,
+      "Designer": "davey",
+      "geoLocation": {
+         "lat": 47.60043899999999,
+         "lng": -122.3185485
+      }
+   },
+   {
+      "Job Code": "16-G",
+      "Job Name": "Bothel Mercantile",
+      "Address": "10201 Main Street  Bothell Wa 98011",
+      "Framer": "Superior",
+      "GC": "Venture",
+      "sq/ft": 80274,
+      "Interior LF": 20572,
+      "Exterior LF": 3523,
+      "Designer": "Mike",
+      "geoLocation": {
+         "lat": 47.7599331,
+         "lng": -122.2034254
+      }
+   },
+   {
+      "Job Code": "14-I",
+      "Job Name": "ANTHEM",
+      "Address": "103 12th Ave, Seattle, WA 98122",
+      "Framer": "SUPERIOR",
+      "GC": "WALSH",
+      "sq/ft": 66072,
+      "Designer": "JAMES / MIKE HELPED EXTERIOR",
+      "geoLocation": {
+         "lat": 47.6020397,
+         "lng": -122.3170778
+      }
+   },
+   {
+      "Job Code": "15-E",
+      "Job Name": "7th & Gilman",
+      "Address": "1050 7th Ave NW, Issaquah, WA 98027",
+      "Framer": "Hallmark",
+      "GC": "Anderson",
+      "sq/ft": 369293,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.5416537,
+         "lng": -122.0470188
+      }
+   },
+   {
+      "Job Code": "19-J",
+      "Job Name": "Lago Apodment",
+      "Address": "10610 Meridian Ave N Seattle Wa",
+      "Framer": "La fond",
+      "GC": "calhoun",
+      "sq/ft": 9728,
+      "Interior LF": 780,
+      "Exterior LF": 892,
+      "Designer": "MIke",
+      "geoLocation": {
+         "lat": 47.7063182,
+         "lng": -122.3336642
+      }
+   },
+   {
+      "Job Code": "18-B Bldg 3",
+      "Job Name": "18-B Main Street Building 3",
+      "Address": "106th Ave NE & Main St, Bellevue, WA 98004",
+      "Framer": "Premier",
+      "GC": "W.G. Clark",
+      "sq/ft": 15870,
+      "Interior LF": 2569,
+      "Exterior LF": 1077,
+      "Designer": "MIke",
+      "geoLocation": {
+         "lat": 47.6101315,
+         "lng": -122.19884
+      }
+   },
+   {
+      "Job Code": "18-B Bldg 2",
+      "Job Name": "18-B Main Street Building 2",
+      "Address": "106th Ave NE & Main St, Bellevue, WA 98004",
+      "Framer": "Premier",
+      "GC": "W.G. Clark",
+      "sq/ft": 63180,
+      "Interior LF": 13256,
+      "Exterior LF": 2546,
+      "Designer": "MIke",
+      "geoLocation": {
+         "lat": 47.6101315,
+         "lng": -122.19884
+      }
+   },
+   {
+      "Job Code": "18-B Bldg 1",
+      "Job Name": "18-B Main Street Building 1",
+      "Address": "106th Ave NE & Main St, Bellevue, WA 98004",
+      "Framer": "Premier",
+      "GC": "W.G. Clark",
+      "sq/ft": 69365,
+      "Interior LF": 14648,
+      "Exterior LF": 2766,
+      "Designer": "Mike",
+      "geoLocation": {
+         "lat": 47.6101315,
+         "lng": -122.19884
+      }
+   },
+   {
+      "Job Code": "17-H",
+      "Job Name": "Northgate Apartments West",
+      "Address": "10715 8th ave ne seattle wa",
+      "Framer": "Superior",
+      "GC": "Venture",
+      "sq/ft": 104386,
+      "Interior LF": 14384,
+      "Exterior LF": 3407,
+      "Designer": "Mike",
+      "geoLocation": {
+         "lat": 47.7073658,
+         "lng": -122.3207886
+      }
+   },
+   {
+      "Job Code": "17-H",
+      "Job Name": "Northgate Apartments East",
+      "Address": "10720 5th ave ne seattle wa",
+      "Framer": "Superior",
+      "GC": "Venture",
+      "sq/ft": 61482,
+      "Interior LF": 10942,
+      "Exterior LF": 2868,
+      "Designer": "Mike",
+      "geoLocation": {
+         "lat": 47.7075088,
+         "lng": -122.3227705
+      }
+   },
+   {
+      "Job Code": "16-J ",
+      "Job Name": "103rd ave",
+      "Address": "1085 103rd Avenue Bellevue, Wa 98004",
+      "Framer": "Premier",
+      "GC": "Chinn",
+      "sq/ft": 111300,
+      "Designer": "Mike/Davey",
+      "geoLocation": {
+         "lat": 47.6008758,
+         "lng": -122.2033574
+      }
+   },
+   {
+      "Job Code": "19-X ",
+      "Job Name": "Auburn Town Center",
+      "Address": "109 S Division St Auburn, WA 98011",
+      "Framer": "Overland",
+      "GC": "Compass Construction",
+      "sq/ft": 193726,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.306081,
+         "lng": -122.230431
+      }
+   },
+   {
+      "Job Code": "22-P",
+      "Job Name": "Africatown",
+      "Address": "1100 23rd Ave Seattle Wa 98122",
+      "Framer": "Superior",
+      "GC": "absher",
+      "sq/ft": 90565,
+      "Interior LF": 19284,
+      "Exterior LF": 4260,
+      "Designer": "Stevie ",
+      "geoLocation": {
+         "lat": 47.6117344,
+         "lng": -122.3026006
+      }
+   },
+   {
+      "Job Code": "19-G",
+      "Job Name": "La Quinta Hotel",
+      "Address": "11430 38th Dr NE. Marysville WA 98271",
+      "Framer": "faber",
+      "GC": "faber",
+      "sq/ft": 50824,
+      "Interior LF": 9400,
+      "Exterior LF": 2638,
+      "Designer": "MIke",
+      "geoLocation": {
+         "lat": 48.0986199,
+         "lng": -122.1800019
+      }
+   },
+   {
+      "Job Code": "19-A bldg A",
+      "Job Name": "Capitol Hill TOD building A",
+      "Address": "118 Braodway E Seattle WA 98102",
+      "Framer": "JRT",
+      "GC": "lease crutcher lewis",
+      "sq/ft": 106504,
+      "Interior LF": 15814,
+      "Exterior LF": 2132,
+      "Designer": "davey",
+      "geoLocation": {
+         "lat": 47.6193284,
+         "lng": -122.3207035
+      }
+   },
+   {
+      "Job Code": "20-F",
+      "Job Name": "Jade Residence",
+      "Address": "11903 NE 128th St, Kirkland WA 98034",
+      "Framer": "superior",
+      "GC": "Terrene Ventures",
+      "sq/ft": 93893,
+      "Interior LF": 21953,
+      "Exterior LF": 4492,
+      "Designer": "mike",
+      "geoLocation": {
+         "lat": 47.7147455,
+         "lng": -122.1819524
+      }
+   },
+   {
+      "Job Code": "16-B ",
+      "Job Name": "Westlake Lot 2",
+      "Address": "1207 Westlake Ave N, Seattle, WA 98109",
+      "Framer": "Overland",
+      "GC": "Holland",
+      "sq/ft": 258916,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.6299635,
+         "lng": -122.3413046
+      }
+   },
+   {
+      "Job Code": "15-F",
+      "Job Name": "85th and 1st",
+      "Address": "121 NW 85th St, Seattle, WA 98117",
+      "Framer": "Pac-Rim",
+      "GC": "Deacon",
+      "sq/ft": 63082,
+      "Designer": "Mike/James started",
+      "geoLocation": {
+         "lat": 47.6904772,
+         "lng": -122.3587054
+      }
+   },
+   {
+      "Job Code": "17-A2",
+      "Job Name": "1232 Harrison Bldg B",
+      "Address": "1212/1232 Harrison Seattle wa",
+      "Framer": "Overland",
+      "GC": "holland",
+      "sq/ft": 56494,
+      "Designer": "Davey",
+      "geoLocation": {
+         "lat": 47.62213329999999,
+         "lng": -122.3326642
+      }
+   },
+   {
+      "Job Code": "17-A1",
+      "Job Name": "1212 Harrison Bldg A",
+      "Address": "1212/1232 Harrison Seattle wa",
+      "Framer": "Overland",
+      "GC": "holland",
+      "sq/ft": 84788,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.62213329999999,
+         "lng": -122.3326642
+      }
+   },
+   {
+      "Job Code": "18-J",
+      "Job Name": "Arabella",
+      "Address": "1221 NE 180th St. Shoreline, WA 98155",
+      "Framer": "Pac-Rim",
+      "GC": "CDK",
+      "sq/ft": 48910,
+      "Interior LF": 11389,
+      "Exterior LF": 1834,
+      "Designer": "Davey",
+      "geoLocation": {
+         "lat": 47.7592423,
+         "lng": -122.314919
+      }
+   },
+   {
+      "Job Code": "19-A bldg B",
+      "Job Name": "Capitol Hill TOD building B",
+      "Address": "123 10th Ave Seattle WA 98102",
+      "Framer": "JRT",
+      "GC": "lease crutcher lewis",
+      "sq/ft": 64090,
+      "Interior LF": 11812,
+      "Exterior LF": 0,
+      "Designer": "davey",
+      "geoLocation": {
+         "lat": 47.6025387,
+         "lng": -122.319426
+      }
+   },
+   {
+      "Job Code": "15-B",
+      "Job Name": "Columbia Heights",
+      "Address": "123 4th Ave W, Olympia, WA 98501",
+      "Framer": "Superior ",
+      "GC": "chinn",
+      "sq/ft": 99958,
+      "Designer": "Mike",
+      "geoLocation": {
+         "lat": 47.0441499,
+         "lng": -122.9023241
+      }
+   },
+   {
+      "Job Code": "23-A",
+      "Job Name": "Derby",
+      "Address": "123-127 Belleveu Avenue East Seattle, WA 98102",
+      "Framer": "Superior",
+      "GC": "Kirtley Cole",
+      "sq/ft": 51934,
+      "Designer": "MIke",
+      "geoLocation": {
+         "lat": 47.6193026,
+         "lng": -122.326896
+      }
+   },
+   {
+      "Job Code": "21-C",
+      "Job Name": "Villa Element",
+      "Address": "12625 NE Woodinville Dr  Woodinville WA 98072",
+      "GC": "sys",
+      "sq/ft": 17819,
+      "Interior LF": 2355,
+      "Exterior LF": 1206,
+      "Designer": "mike",
+      "geoLocation": {
+         "lat": 47.75328589999999,
+         "lng": -122.1709755
+      }
+   },
+   {
+      "Job Code": "18-K ",
+      "Job Name": "Totem Lake",
+      "Address": "12655 120th Avenue NE Kirkland WA 98034",
+      "Framer": "Superior",
+      "GC": "venture",
+      "sq/ft": 162089,
+      "Interior LF": 31983,
+      "Exterior LF": 4011,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.7132719,
+         "lng": -122.1807031
+      }
+   },
+   {
+      "Job Code": "24-F",
+      "Job Name": "Ardea @ Totem lake",
+      "Address": "12700 116th ave ne, Kirkland WA 98034",
+      "Framer": "superior",
+      "GC": "Deacon Construction",
+      "sq/ft": 85852,
+      "Interior LF": 14054,
+      "Exterior LF": 3760,
+      "Designer": "Stevie",
+      "geoLocation": {
+         "lat": 47.713576,
+         "lng": -122.185934
+      }
+   },
+   {
+      "Job Code": "16-A ",
+      "Job Name": "Westlake Lot 4",
+      "Address": "1287 Westlake Ave N, Seattle, WA 98109",
+      "Framer": "Pac-Rim",
+      "GC": "Holland",
+      "sq/ft": 126673,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.63215599999999,
+         "lng": -122.3411851
+      }
+   },
+   {
+      "Job Code": "22-B ",
+      "Job Name": "Eliseo Tacoma IL",
+      "Address": "1301 N Highlands Parkway Tacoma WA 98406",
+      "Framer": "southsound",
+      "GC": "Walsh",
+      "sq/ft": 51199,
+      "Interior LF": 11439,
+      "Exterior LF": 2505,
+      "Designer": "josh",
+      "geoLocation": {
+         "lat": 47.2641146,
+         "lng": -122.5206427
+      }
+   },
+   {
+      "Job Code": "22-B",
+      "Job Name": "Eliseo Tacoma HH",
+      "Address": "1301 N Highlands Parkway Tacoma WA 98406",
+      "Framer": "superior",
+      "GC": "walsh",
+      "sq/ft": 45376,
+      "Interior LF": 8539,
+      "Exterior LF": 2281,
+      "Designer": "josh",
+      "geoLocation": {
+         "lat": 47.2641146,
+         "lng": -122.5206427
+      }
+   },
+   {
+      "Job Code": "18-L ",
+      "Job Name": "14th and Madision",
+      "Address": "1401 East Madison Street, Seattle Wa 98122",
+      "Framer": "Premier",
+      "GC": "CHINN",
+      "sq/ft": 89404,
+      "Interior LF": 20416,
+      "Exterior LF": 4046,
+      "Designer": "Davey",
+      "geoLocation": {
+         "lat": 47.6138188,
+         "lng": -122.3138803
+      }
+   },
+   {
+      "Job Code": "22-R",
+      "Job Name": "Moraine",
+      "Address": "1402 Tacoma Avenue S Tacoma WA 98402",
+      "Framer": "Overland",
+      "GC": "Walsh ",
+      "sq/ft": 95093,
+      "Designer": "james",
+      "geoLocation": {
+         "lat": 47.2494093,
+         "lng": -122.444024
+      }
+   },
+   {
+      "Job Code": "22-G",
+      "Job Name": "1405 Dexter",
+      "Address": "1405 Dexter Ave North Seattle WA 98109",
+      "Framer": "Premier",
+      "GC": "chinn ",
+      "sq/ft": 87266,
+      "Interior LF": 17780,
+      "Exterior LF": 3060,
+      "Designer": "joe",
+      "geoLocation": {
+         "lat": 47.6317051,
+         "lng": -122.342545
+      }
+   },
+   {
+      "Job Code": "24-D",
+      "Job Name": "SRM Altaire",
+      "Address": "14343 15th AVE NE Seattle WA 98125",
+      "Framer": "superior",
+      "GC": "SRM",
+      "sq/ft": 129869,
+      "Interior LF": 25531,
+      "Exterior LF": 5150,
+      "Designer": "Davey",
+      "geoLocation": {
+         "lat": 47.73329820000001,
+         "lng": -122.3131102
+      }
+   },
+   {
+      "Job Name": "Fiora",
+      "Address": "1510 NW 52nd St, Seattle, WA 98107",
+      "Framer": "LaFond Framing",
+      "GC": "Calhoun",
+      "sq/ft": 14500,
+      "Designer": "Erik",
+      "geoLocation": {
+         "lat": 47.6666673,
+         "lng": -122.3768599
+      }
+   },
+   {
+      "Job Code": "22-H",
+      "Job Name": "Eldridge ",
+      "Address": "1513, Broadway Seattle WA 98122",
+      "Framer": "Overland",
+      "GC": "Walsh",
+      "sq/ft": 55084,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.6145364,
+         "lng": -122.3211797
+      }
+   },
+   {
+      "Job Code": "18-F",
+      "Job Name": "Giardino ",
+      "Address": "1514 NW 52nd St, Seattle, WA 98107",
+      "Framer": "Lafond Framing",
+      "GC": "Calhoun",
+      "Designer": "MIke",
+      "geoLocation": {
+         "lat": 47.666672,
+         "lng": -122.3770458
+      }
+   },
+   {
+      "Job Code": "15-I ",
+      "Job Name": "Ballard 91 (Vive)",
+      "Address": "1516 NW 51st St, Seattle, WA 98107",
+      "Framer": "Pac-Rim",
+      "GC": "Venture",
+      "sq/ft": 50030,
+      "Designer": "Erik",
+      "geoLocation": {
+         "lat": 47.6659365,
+         "lng": -122.3772549
+      }
+   },
+   {
+      "Job Code": "16-E ",
+      "Job Name": "Hotel Esterra",
+      "Address": "15220 NE Shen St, Redmond, WA 98052",
+      "Framer": "Superior",
+      "GC": "Absher",
+      "sq/ft": 151595,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.6358301,
+         "lng": -122.1369488
+      }
+   },
+   {
+      "Job Code": "18-A Bldg C",
+      "Job Name": "Esterra Park Building C",
+      "Address": "15401 Ne Turing, Redmond Wa 98052",
+      "Framer": "Pac-Rim",
+      "GC": "Venture",
+      "sq/ft": 117490,
+      "Interior LF": 25433,
+      "Exterior LF": 4659,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.634138,
+         "lng": -122.134532
+      }
+   },
+   {
+      "Job Code": "18-A Bldg B S",
+      "Job Name": "Esterra Park Building B South",
+      "Address": "15401 Ne Turing, Redmond Wa 98052",
+      "Framer": "Pac-Rim",
+      "GC": "Venture",
+      "sq/ft": 116450,
+      "Interior LF": 24453,
+      "Exterior LF": 4499,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.634138,
+         "lng": -122.134532
+      }
+   },
+   {
+      "Job Code": "18-A Bldg B N",
+      "Job Name": "Esterra Park Building B North",
+      "Address": "15401 Ne Turing, Redmond Wa 98052",
+      "Framer": "Pac-Rim",
+      "GC": "Venture",
+      "sq/ft": 50320,
+      "Interior LF": 10180,
+      "Exterior LF": 2188,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.634138,
+         "lng": -122.134532
+      }
+   },
+   {
+      "Job Code": "18-A",
+      "Job Name": "Esterra Park building 6A",
+      "Address": "15551 Turing st. Redmond Wa 98052",
+      "Framer": "Pac-Rim",
+      "GC": "Venture",
+      "sq/ft": 176680,
+      "Interior LF": 36090,
+      "Exterior LF": 6897,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.6348147,
+         "lng": -122.1331082
+      }
+   },
+   {
+      "Job Code": "14-J",
+      "Job Name": "BEL RED 2",
+      "Address": "15588 NE 22nd Place, Bellevue 98077",
+      "Framer": "PACRIM",
+      "GC": "VENTURE",
+      "sq/ft": 67421,
+      "Designer": "JAMES",
+      "geoLocation": {
+         "lat": 47.6301626,
+         "lng": -122.1329086
+      }
+   },
+   {
+      "Job Code": "13-B",
+      "Job Name": "Ashway Tavalli",
+      "Address": "15631 Ash way, Lynnwood WA 98087",
+      "Framer": "Pac-Rim",
+      "GC": "Venture",
+      "sq/ft": 329000,
+      "Designer": "James / Mike",
+      "geoLocation": {
+         "lat": 47.8567195,
+         "lng": -122.2553358
+      }
+   },
+   {
+      "Job Code": "19-L",
+      "Job Name": "Greater Residence",
+      "Address": "16300 Meadow RD. Lynnwood Wa 98087",
+      "Framer": "Pac-Rim",
+      "GC": "Kirtley Cole",
+      "sq/ft": 65427,
+      "Interior LF": 14391,
+      "Exterior LF": 3595,
+      "Designer": "Mike",
+      "geoLocation": {
+         "lat": 47.8506071,
+         "lng": -122.2520122
+      }
+   },
+   {
+      "Job Code": "23-B",
+      "Job Name": "1700 Braseth",
+      "Address": "1700 & 1716 21st ave south seattle",
+      "Framer": "premier",
+      "GC": "Braseth",
+      "sq/ft": 87149,
+      "Interior LF": 20100,
+      "Exterior LF": 4140,
+      "Designer": "Josh",
+      "geoLocation": {
+         "lat": 47.5882622,
+         "lng": -122.3048489
+      }
+   },
+   {
+      "Job Code": "17-B",
+      "Job Name": "Valdok",
+      "Address": "1701 NW 56TH STREET, Seattle Wa 98107",
+      "Framer": "Superior",
+      "GC": "Compass",
+      "sq/ft": 119821,
+      "Interior LF": 30307,
+      "Exterior LF": 3797,
+      "Designer": "Mike",
+      "geoLocation": {
+         "lat": 47.6692615,
+         "lng": -122.3793323
+      }
+   },
+   {
+      "Job Code": "17-K",
+      "Job Name": "1706 Valdok II",
+      "Address": "1706 NW 56TH ST, Seattle Wa 98107",
+      "Framer": "Superior",
+      "GC": "lennar",
+      "sq/ft": 116925,
+      "Interior LF": 27336,
+      "Exterior LF": 4485,
+      "Designer": "Mike",
+      "geoLocation": {
+         "lat": 47.6695579,
+         "lng": -122.3794107
+      }
+   },
+   {
+      "Job Code": "15-C",
+      "Job Name": "Tacoma Senior Housing Ph2",
+      "Address": "1709 S G St, Tacoma, WA 98405",
+      "Framer": "Superior ",
+      "GC": "walsh",
+      "sq/ft": 28067,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.2459941,
+         "lng": -122.4439696
+      }
+   },
+   {
+      "Job Code": "19-O bldg C",
+      "Job Name": "Woodinville campus bldg C",
+      "Address": "17101 133rd AVE Ne Woodinville Wa 98072",
+      "Framer": "Premier",
+      "GC": "gen-cap",
+      "sq/ft": 101008,
+      "Interior LF": 16500,
+      "Exterior LF": 3096,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.7511304,
+         "lng": -122.1614554
+      }
+   },
+   {
+      "Job Code": "19-O bldg B",
+      "Job Name": "Woodinville campus bldg B",
+      "Address": "17101 133rd AVE Ne Woodinville Wa 98072",
+      "Framer": "Premier",
+      "GC": "gen-cap",
+      "sq/ft": 69702,
+      "Interior LF": 15510,
+      "Exterior LF": 3102,
+      "Designer": "davey",
+      "geoLocation": {
+         "lat": 47.7511304,
+         "lng": -122.1614554
+      }
+   },
+   {
+      "Job Code": "19-O bldg A",
+      "Job Name": "Woodinville campus bldg A",
+      "Address": "17101 133rd AVE Ne Woodinville Wa 98072",
+      "Framer": "Premier",
+      "GC": "gen-cap",
+      "sq/ft": 58904,
+      "Interior LF": 12945,
+      "Exterior LF": 2268,
+      "Designer": "davey",
+      "geoLocation": {
+         "lat": 47.7511304,
+         "lng": -122.1614554
+      }
+   },
+   {
+      "Job Code": "20-A",
+      "Job Name": "Pioneer Belmont",
+      "Address": "1717-1723 belmont AVE",
+      "Framer": "Superior",
+      "GC": "walsh",
+      "sq/ft": 30635,
+      "Interior LF": 6814,
+      "Exterior LF": 1905,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 41.1221172,
+         "lng": -80.6610196
+      }
+   },
+   {
+      "Job Code": "17-L ",
+      "Job Name": "Brava",
+      "Address": "1728 Summit AVE, Seattle, WA 98122",
+      "Framer": "Lafond Framing",
+      "GC": "Calhoun",
+      "geoLocation": {
+         "lat": 47.61731839999999,
+         "lng": -122.3252642
+      }
+   },
+   {
+      "Job Code": "17-M Bldg 2A",
+      "Job Name": "Woodin Creek II",
+      "Address": "17300 135th Ave NE, Woodinville Wa 98072",
+      "Framer": "Premier",
+      "GC": "W.G. Clark",
+      "sq/ft": 68563,
+      "Interior LF": 12842,
+      "Exterior LF": 3266,
+      "Designer": "James/Davey",
+      "geoLocation": {
+         "lat": 47.7515236,
+         "lng": -122.1581799
+      }
+   },
+   {
+      "Job Code": "17-M Bldg 2B",
+      "Job Name": "Woodin Creek II",
+      "Address": "17300 135th Ave NE, Woodinville Wa 98072",
+      "Framer": "Premier",
+      "GC": "W.G. Clark",
+      "sq/ft": 83987,
+      "Interior LF": 13726,
+      "Exterior LF": 6360,
+      "Designer": "Davey",
+      "geoLocation": {
+         "lat": 47.7515236,
+         "lng": -122.1581799
+      }
+   },
+   {
+      "Job Code": "17-M Bldg 2D",
+      "Job Name": "Woodin Creek II",
+      "Address": "17300 135th Ave NE, Woodinville Wa 98072",
+      "Framer": "Premier",
+      "GC": "W.G. Clark",
+      "sq/ft": 89139,
+      "Interior LF": 14784,
+      "Exterior LF": 6095,
+      "Designer": "Davey",
+      "geoLocation": {
+         "lat": 47.7515236,
+         "lng": -122.1581799
+      }
+   },
+   {
+      "Job Code": "18-N",
+      "Job Name": "Woodin Creek bldg 2C",
+      "Address": "17300 135th Ave NE, Woodinville Wa 98072",
+      "Framer": "Premier",
+      "GC": "W.G. Clark",
+      "sq/ft": 56680,
+      "Interior LF": 11253,
+      "Exterior LF": 2870,
+      "Designer": "Davey",
+      "geoLocation": {
+         "lat": 47.7515236,
+         "lng": -122.1581799
+      }
+   },
+   {
+      "Job Code": "22-N",
+      "Job Name": "Grand Street South",
+      "Address": "1750 22nd AVE S Seattle WA 98144",
+      "Framer": "Premier",
+      "GC": "W.G. Clark.",
+      "sq/ft": 188754,
+      "Interior LF": 41579,
+      "Exterior LF": 6845,
+      "Designer": "davey",
+      "geoLocation": {
+         "lat": 47.587373,
+         "lng": -122.3035559
+      }
+   },
+   {
+      "Job Code": "22-N",
+      "Job Name": "Grand Street East",
+      "Address": "1750 22nd AVE S Seattle WA 98144",
+      "Framer": "Premier",
+      "GC": "W.G. Clark.",
+      "sq/ft": 188754,
+      "Interior LF": 41579,
+      "Exterior LF": 6845,
+      "Designer": "davey",
+      "geoLocation": {
+         "lat": 47.587373,
+         "lng": -122.3035559
+      }
+   },
+   {
+      "Job Code": "18-H",
+      "Job Name": "La Quinta Hotel",
+      "Address": "1750 S. Burlington Blvd. Burlington Wa 98233",
+      "Framer": "?",
+      "GC": "Faber",
+      "sq/ft": 56604,
+      "Interior LF": 7416,
+      "Exterior LF": 2139,
+      "Designer": "Mike",
+      "geoLocation": {
+         "lat": 48.453007,
+         "lng": -122.3351374
+      }
+   },
+   {
+      "Job Code": "22-N",
+      "Job Name": "Grand Street West",
+      "Address": "1765 22nd Ave S Seattle Wa 98144",
+      "Framer": "Premier",
+      "GC": "W.G. Clark.",
+      "sq/ft": 179000,
+      "Interior LF": 39815,
+      "Exterior LF": 6080,
+      "Designer": "davey",
+      "geoLocation": {
+         "lat": 47.5871509,
+         "lng": -122.3041318
+      }
+   },
+   {
+      "Job Code": "23-F",
+      "Job Name": "Samma Apartments ",
+      "Address": "17816 Bothell Way NE Bothell WA 98011",
+      "Framer": "Superior",
+      "GC": "synergy",
+      "sq/ft": 39792,
+      "Interior LF": 5640,
+      "Exterior LF": 1488,
+      "Designer": "Stevie",
+      "geoLocation": {
+         "lat": 47.757877,
+         "lng": -122.210727
+      }
+   },
+   {
+      "Job Code": "14-L",
+      "Job Name": "VANTAGE POINT",
+      "Address": "17901 105th Pl SE, Renton, WA 98055",
+      "Framer": "SUPERIOR",
+      "GC": "WALSH",
+      "sq/ft": 73883,
+      "Designer": "MIKE / JAMES START 1/2 OF 1ST FLOOR",
+      "geoLocation": {
+         "lat": 47.4412634,
+         "lng": -122.2003764
+      }
+   },
+   {
+      "Job Code": "19-A bldg C",
+      "Job Name": "Capitol Hill TOD building C",
+      "Address": "1830 Broadway Seattle WA 98102",
+      "Framer": "JRT",
+      "GC": "lease crutcher lewis",
+      "sq/ft": 70617,
+      "Interior LF": 12577,
+      "Exterior LF": 2241,
+      "Designer": "davey",
+      "geoLocation": {
+         "lat": 47.6184379,
+         "lng": -122.3206413
+      }
+   },
+   {
+      "Job Code": "23-K ",
+      "Job Name": "UW Bothell Building C",
+      "Address": "18612 Beardslee Blvd Bothell WA",
+      "Framer": "Superior",
+      "GC": "Anderson",
+      "sq/ft": 80045,
+      "Interior LF": 14130,
+      "Exterior LF": 3965,
+      "Designer": "James / Stevie /Colton /Steve /Mike",
+      "geoLocation": {
+         "lat": 47.76251750000001,
+         "lng": -122.1940934
+      }
+   },
+   {
+      "Job Code": "23-K ",
+      "Job Name": "UW Bothell Building B",
+      "Address": "18612 Beardslee Blvd Bothell WA",
+      "Framer": "Superior",
+      "GC": "Anderson",
+      "sq/ft": 75565,
+      "Interior LF": 14270,
+      "Exterior LF": 3815,
+      "Designer": "James / Stevie /Colton /Steve /Mike",
+      "geoLocation": {
+         "lat": 47.76251750000001,
+         "lng": -122.1940934
+      }
+   },
+   {
+      "Job Code": "13-A ",
+      "Job Name": "Queen Anne Apartments",
+      "Address": "1900 Queen Anne Ave N, Seattle, WA 98109",
+      "Framer": "Pac-Rim",
+      "GC": "Charter Construction",
+      "sq/ft": 110000,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.6361024,
+         "lng": -122.3567225
+      }
+   },
+   {
+      "Job Code": "21-D",
+      "Job Name": "DESC 22nd Ave South Bldg",
+      "Address": "1911-1923 22nd Ave S. Seattle WA 98144",
+      "Framer": "Superior",
+      "GC": "Walsh",
+      "sq/ft": 41880,
+      "Interior LF": 8624,
+      "Exterior LF": 2552,
+      "Designer": "davey",
+      "geoLocation": {
+         "lat": 47.58593399999999,
+         "lng": -122.3044233
+      }
+   },
+   {
+      "Job Code": "19-N",
+      "Job Name": "DESC 22nd Ave North Bldg",
+      "Address": "1911-1923 22nd Ave S. Seattle WA 98144",
+      "Framer": "Superior",
+      "GC": "Walsh",
+      "sq/ft": 43420,
+      "Interior LF": 9258,
+      "Exterior LF": 2598,
+      "Designer": "davey",
+      "geoLocation": {
+         "lat": 47.58593399999999,
+         "lng": -122.3044233
+      }
+   },
+   {
+      "Job Code": "22-D",
+      "Job Name": "Skagit Valley Supportive Housing",
+      "Address": "1925 East college way Mt. Vernon Wa",
+      "Framer": "Superior",
+      "GC": "Walsh",
+      "sq/ft": 39692,
+      "Interior LF": 5452,
+      "Exterior LF": 2076,
+      "Designer": "mike",
+      "geoLocation": {
+         "lat": 48.4361068,
+         "lng": -122.3165823
+      }
+   },
+   {
+      "Job Code": "21-X",
+      "Job Name": "1942 Fawcett",
+      "Address": "1942 Fawcett Tacoma WA",
+      "Framer": "overland",
+      "GC": "Deacon Construction",
+      "sq/ft": 59097,
+      "Designer": "davey",
+      "geoLocation": {
+         "lat": 47.2428634,
+         "lng": -122.4410845
+      }
+   },
+   {
+      "Job Code": "20-M",
+      "Job Name": "Yesler terrace",
+      "Address": "209 12th avenue south Seattle wa 98104",
+      "Framer": "Overland",
+      "GC": "compass",
+      "sq/ft": 131749,
+      "Interior LF": 35096,
+      "Exterior LF": 5232,
+      "Designer": "davey",
+      "geoLocation": {
+         "lat": 47.600611,
+         "lng": -122.3175206
+      }
+   },
+   {
+      "Job Code": "15-L bldg 2",
+      "Job Name": "Cascade 2",
+      "Address": "210 Fairview Ave N, Seattle, WA 98109",
+      "Framer": "Premier",
+      "GC": "Chinn",
+      "sq/ft": 143630,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.62002349999999,
+         "lng": -122.3340583
+      }
+   },
+   {
+      "Job Code": "14-A",
+      "Job Name": "BEL RED 1",
+      "Address": "2170 Bel-Red Rd, Bellevue WA 98007",
+      "Framer": "PACRIM",
+      "GC": "VENTURE",
+      "sq/ft": 242621,
+      "Designer": "JAMES",
+      "geoLocation": {
+         "lat": 47.6297806,
+         "lng": -122.1337663
+      }
+   },
+   {
+      "Job Code": "15-L bldg 1",
+      "Job Name": "Cascade 1",
+      "Address": "221 Minor Ave N, Seattle WA 98109",
+      "Framer": "Premier",
+      "GC": "Chinn",
+      "sq/ft": 151938,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.6201719,
+         "lng": -122.3333099
+      }
+   },
+   {
+      "Job Code": "18-R",
+      "Job Name": "23rd & Jackson",
+      "Address": "2212 & 2214 S Jackson Street, Seattle Wa, 98144",
+      "Framer": "Superior",
+      "GC": "Marpac ",
+      "sq/ft": 75459,
+      "Interior LF": 13168,
+      "Exterior LF": 3669,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.5994785,
+         "lng": -122.3028712
+      }
+   },
+   {
+      "Job Code": "17-F",
+      "Job Name": "Sedona",
+      "Address": "2220 E Union Street, Seattle Wa",
+      "Framer": "Pac-Rim",
+      "GC": "CDK",
+      "sq/ft": 56601,
+      "Interior LF": 9138,
+      "Designer": "Davey/Mike",
+      "geoLocation": {
+         "lat": 47.6131229,
+         "lng": -122.3032275
+      }
+   },
+   {
+      "Job Code": "22-F",
+      "Job Name": "Siteline",
+      "Address": "223 Taylor Ave North Seatlle WA 98109",
+      "Framer": "Superior",
+      "GC": "gen-cap",
+      "sq/ft": 118133,
+      "Interior LF": 30103,
+      "Exterior LF": 4576,
+      "Designer": "mike",
+      "geoLocation": {
+         "lat": 47.6206138,
+         "lng": -122.3465653
+      }
+   },
+   {
+      "Job Code": "20-E",
+      "Job Name": "Mid town Building B",
+      "Address": "2301 E Union St Seattle Wa",
+      "Framer": "Premier",
+      "GC": "W.G. Clark",
+      "sq/ft": 141700,
+      "Interior LF": 25580,
+      "Exterior LF": 4754,
+      "Designer": "mike",
+      "geoLocation": {
+         "lat": 47.612794,
+         "lng": -122.3018948
+      }
+   },
+   {
+      "Job Code": "20-E",
+      "Job Name": "Mid town Building A",
+      "Address": "2301 E Union St Seattle Wa",
+      "Framer": "Premier",
+      "GC": "W.G. Clark",
+      "sq/ft": 129060,
+      "Interior LF": 26015,
+      "Exterior LF": 4769,
+      "Designer": "Davey",
+      "geoLocation": {
+         "lat": 47.612794,
+         "lng": -122.3018948
+      }
+   },
+   {
+      "Job Code": "15-O ",
+      "Job Name": "Lake City Place",
+      "Address": "2311 32nd Ave NE, Seattle, WA 98125",
+      "Framer": "G-builders",
+      "GC": "Rush",
+      "sq/ft": 108487,
+      "Designer": "James/Davey",
+      "geoLocation": {
+         "lat": 47.7173685,
+         "lng": -122.2939471
+      }
+   },
+   {
+      "Job Code": "23-E ",
+      "Job Name": "24th and Market",
+      "Address": "2318 NW Market Street Seattle Wa",
+      "Framer": "Overland",
+      "GC": "Holland",
+      "sq/ft": 161185,
+      "Interior LF": 36251,
+      "Exterior LF": 5787,
+      "Designer": "Davey",
+      "geoLocation": {
+         "lat": 47.6689678,
+         "lng": -122.3870644
+      }
+   },
+   {
+      "Job Code": "22-M",
+      "Job Name": "Liza",
+      "Address": "2517 EastLake AVE E. Seattle Wa 98102",
+      "Framer": "Superior",
+      "GC": "Compass",
+      "sq/ft": 120999,
+      "Interior LF": 27922,
+      "Exterior LF": 6105,
+      "Designer": "Josh",
+      "geoLocation": {
+         "lat": 47.6425813,
+         "lng": -122.3262254
+      }
+   },
+   {
+      "Job Code": "19-K ",
+      "Job Name": "2524 Jackson",
+      "Address": "2524 S Jackson St Seattle Wa 98144",
+      "Framer": "JRT ",
+      "GC": "W.G. clark ",
+      "sq/ft": 38970,
+      "Interior LF": 9759,
+      "Designer": "davey",
+      "geoLocation": {
+         "lat": 47.5996378,
+         "lng": -122.2989023
+      }
+   },
+   {
+      "Job Code": "19-M",
+      "Job Name": "Hub City",
+      "Address": "260 E George Hopper Rd, Burlington, WA 98233",
+      "Framer": "byk",
+      "GC": "byk",
+      "sq/ft": 47337,
+      "Interior LF": 8394,
+      "Exterior LF": 2385,
+      "Designer": "davey",
+      "geoLocation": {
+         "lat": 48.4515429,
+         "lng": -122.3330811
+      }
+   },
+   {
+      "Job Code": "15-K ",
+      "Job Name": "Legacy Hadley Mercer Island",
+      "Address": "2601 76th Ave SE, Mercer Island, WA 98040",
+      "Framer": "Superior ",
+      "GC": "Chinn",
+      "sq/ft": 168710,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.5870849,
+         "lng": -122.2379556
+      }
+   },
+   {
+      "Job Code": "24-E",
+      "Job Name": "DESC 15th AVE",
+      "Address": "2626 15th AVE W  Seattle WA 98119",
+      "Framer": "superior",
+      "GC": "Absher",
+      "sq/ft": 56293,
+      "Interior LF": 10677,
+      "Exterior LF": 2640,
+      "Designer": "Stevie",
+      "geoLocation": {
+         "lat": 47.6437513,
+         "lng": -122.3758795
+      }
+   },
+   {
+      "Job Code": "19-H",
+      "Job Name": "Esterra Block 10",
+      "Address": "2651 156th AVE NE",
+      "Framer": "Premier",
+      "GC": "Venture",
+      "sq/ft": 141428,
+      "Interior LF": 32008,
+      "Exterior LF": 4732,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.63386029999999,
+         "lng": -122.1329186
+      }
+   },
+   {
+      "Job Code": "20-C",
+      "Job Name": "Colina East",
+      "Address": "2709 17th ave south seattle WA 98144",
+      "Framer": "Superior",
+      "GC": "walsh",
+      "sq/ft": 60680,
+      "Interior LF": 13014,
+      "Exterior LF": 3000,
+      "Designer": "MIke",
+      "geoLocation": {
+         "lat": 47.5790859,
+         "lng": -122.311095
+      }
+   },
+   {
+      "Job Code": "20-C",
+      "Job Name": "Colina West",
+      "Address": "2710 Beacon Ave S seattle Wa 98144",
+      "Framer": "Superior",
+      "GC": "walsh ",
+      "sq/ft": 29601,
+      "Interior LF": 6170,
+      "Exterior LF": 2040,
+      "Designer": "MIke",
+      "geoLocation": {
+         "lat": 47.5790588,
+         "lng": -122.3116664
+      }
+   },
+   {
+      "Job Code": "21-G",
+      "Job Name": "Admiral Station",
+      "Address": "2715 & 2719 California Ave, Seattle WA 98116",
+      "Framer": "Overland",
+      "GC": "West Seattle Construction",
+      "sq/ft": 31547,
+      "Interior LF": 5531,
+      "Exterior LF": 1952,
+      "Designer": "davey",
+      "geoLocation": {
+         "lat": 47.5787394,
+         "lng": -122.3869412
+      }
+   },
+   {
+      "Job Code": "19-Z",
+      "Job Name": "Marina Square residential",
+      "Address": "280 Washington Ave Bremerton, WA 98377",
+      "Framer": "Superior",
+      "GC": "compass",
+      "sq/ft": 70904,
+      "Interior LF": 15736,
+      "Exterior LF": 3232,
+      "Designer": "james",
+      "geoLocation": {
+         "lat": 47.5644979,
+         "lng": -122.6241197
+      }
+   },
+   {
+      "Job Code": "19-Z",
+      "Job Name": "Marina Square hotel",
+      "Address": "280 Washington Ave Bremerton, WA 98377",
+      "Framer": "Superior",
+      "GC": "Compass ",
+      "sq/ft": 67786,
+      "Interior LF": 14260,
+      "Exterior LF": 3215,
+      "Designer": "josh",
+      "geoLocation": {
+         "lat": 47.5644979,
+         "lng": -122.6241197
+      }
+   },
+   {
+      "Job Code": "21-H",
+      "Job Name": "Maddux South",
+      "Address": "2800 MLK jr way S, Seattle Wa",
+      "Framer": "Premier ",
+      "GC": "W.G. Clark ",
+      "sq/ft": 44115,
+      "Interior LF": 8388,
+      "Exterior LF": 2400,
+      "Designer": "Josh",
+      "geoLocation": {
+         "lat": 47.62333779999999,
+         "lng": -122.2961515
+      }
+   },
+   {
+      "Job Code": "21-H",
+      "Job Name": "Maddux North ",
+      "Address": "2802 S Mcclellan St Seattle WA 98144",
+      "Framer": "Premier",
+      "GC": "W.G. Clark",
+      "sq/ft": 66523,
+      "Interior LF": 13901,
+      "Exterior LF": 3724,
+      "Designer": "james",
+      "geoLocation": {
+         "lat": 47.5786005,
+         "lng": -122.295943
+      }
+   },
+   {
+      "Job Code": "23-C",
+      "Job Name": "Amelia",
+      "Address": "2920 S 200th st, SeaTac Wa 98198",
+      "Framer": "Premier",
+      "GC": "Braseth",
+      "sq/ft": 68635,
+      "Interior LF": 15282,
+      "Exterior LF": 2875,
+      "Designer": "Mike",
+      "geoLocation": {
+         "lat": 47.4229255,
+         "lng": -122.2951085
+      }
+   },
+   {
+      "Job Code": "17-J ",
+      "Job Name": "Sonata",
+      "Address": "3004 S. Alaska Street, Seattle Wa 98108",
+      "Framer": "Superior",
+      "GC": "Venture",
+      "sq/ft": 50283,
+      "Interior LF": 12453,
+      "Exterior LF": 2088,
+      "Designer": "James/Davey",
+      "geoLocation": {
+         "lat": 47.5609264,
+         "lng": -122.2928645
+      }
+   },
+   {
+      "Job Code": "16-F ",
+      "Job Name": "Leavenworth Hotel",
+      "Address": "301 Ward Strasse, Leavenworth, WA 98826",
+      "Framer": "Superior",
+      "GC": "Hotel concepts",
+      "sq/ft": 40252,
+      "Designer": "Mike",
+      "geoLocation": {
+         "lat": 47.59665709999999,
+         "lng": -120.6441705
+      }
+   },
+   {
+      "Job Code": "18-D",
+      "Job Name": "3040 Bellevue",
+      "Address": "3040 Belleveu Way NE",
+      "Framer": "Superior",
+      "GC": "walsh",
+      "sq/ft": 52543,
+      "Interior LF": 9180,
+      "Exterior LF": 2402,
+      "Designer": "Davey",
+      "geoLocation": {
+         "lat": 47.6380844,
+         "lng": -122.2003537
+      }
+   },
+   {
+      "Job Code": "17-I ",
+      "Job Name": "Redmond 148",
+      "Address": "3040 NE 148th Ave, Redmond Wa",
+      "Framer": "Premier",
+      "GC": "Halverson",
+      "sq/ft": 174679,
+      "Interior LF": 26619,
+      "Exterior LF": 6630,
+      "Designer": "Davey",
+      "geoLocation": {
+         "lat": 47.6373492,
+         "lng": -122.1424938
+      }
+   },
+   {
+      "Job Code": "18-G",
+      "Job Name": "Werner",
+      "Address": "3046 17th Avenue West Seattle 98106",
+      "Framer": "Superior ",
+      "GC": "Kamin",
+      "sq/ft": 25370,
+      "Interior LF": 4862,
+      "Exterior LF": 1818,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.6479867,
+         "lng": -122.3784243
+      }
+   },
+   {
+      "Job Name": "Ilara",
+      "Address": "305 E Mercer St, Seattle, WA 98102",
+      "Framer": "LaFond Framing",
+      "GC": "Calhoun",
+      "sq/ft": 12000,
+      "Designer": "Erik",
+      "geoLocation": {
+         "lat": 47.6242816,
+         "lng": -122.3279008
+      }
+   },
+   {
+      "Job Code": "19-F",
+      "Job Name": "Country Inn & Suites",
+      "Address": "3100 S 192nd Street, Seatac Wa 98188",
+      "Framer": "Premier",
+      "GC": "Braseth Construction",
+      "sq/ft": 46142,
+      "Interior LF": 7366,
+      "Exterior LF": 2009,
+      "Designer": "davey",
+      "geoLocation": {
+         "lat": 47.4315124,
+         "lng": -122.2942531
+      }
+   },
+   {
+      "Job Code": "20-D",
+      "Job Name": "312 Central ",
+      "Address": "312 Central Way Kirkland WA 98303",
+      "Framer": "Superior",
+      "GC": "w.g. clark",
+      "sq/ft": 59615,
+      "Interior LF": 10439,
+      "Exterior LF": 2645,
+      "Designer": "Davey",
+      "geoLocation": {
+         "lat": 47.67787879999999,
+         "lng": -122.2025646
+      }
+   },
+   {
+      "Job Code": "24-C",
+      "Job Name": "Warrior Ridge ",
+      "Address": "32014 Little Boston RD NE  Kingston, WA 98346",
+      "Framer": "superior",
+      "GC": "Clark",
+      "sq/ft": 32932,
+      "Interior LF": 4438,
+      "Exterior LF": 3854,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.8534306,
+         "lng": -122.5700026
+      }
+   },
+   {
+      "Job Code": "14-D",
+      "Job Name": "GARFIELD STATION",
+      "Address": "323 Garfield St S, Parkland, WA 98444",
+      "Framer": "SUPERIOR",
+      "GC": "KORSMO",
+      "sq/ft": 30000,
+      "Designer": "JAMES",
+      "geoLocation": {
+         "lat": 47.1462859,
+         "lng": -122.4368216
+      }
+   },
+   {
+      "Job Code": "17-C",
+      "Job Name": "Interbay",
+      "Address": "3230 16th Ave, Seattle Wa, 98104",
+      "Framer": "Overland",
+      "GC": "Venture",
+      "sq/ft": 136814,
+      "Interior LF": 31625,
+      "Exterior LF": 4300,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.61522919999999,
+         "lng": -122.3114685
+      }
+   },
+   {
+      "Job Code": "18-O",
+      "Job Name": "Rainier Court",
+      "Address": "3616 34th Ave S Seattle WA 98144",
+      "Framer": "Superior",
+      "GC": "venture",
+      "sq/ft": 49590,
+      "Interior LF": 10068,
+      "Exterior LF": 2481,
+      "Designer": "Mike",
+      "geoLocation": {
+         "lat": 47.5710243,
+         "lng": -122.2896958
+      }
+   },
+   {
+      "Job Name": "Positano",
+      "Address": "3642 Woodland Park Ave N, Seattle Wa 98103",
+      "Framer": "LaFond Framing",
+      "GC": "Calhoun",
+      "sq/ft": 14500,
+      "Designer": "Erik",
+      "geoLocation": {
+         "lat": 47.6517882,
+         "lng": -122.3437583
+      }
+   },
+   {
+      "Job Code": "20-I",
+      "Job Name": "Orenda At Othello Square",
+      "Address": "3939 S. Othello St, Seattle WA ",
+      "Framer": "Superior",
+      "GC": "Absher",
+      "sq/ft": 131149,
+      "Interior LF": 33058,
+      "Exterior LF": 5103,
+      "Designer": "james",
+      "geoLocation": {
+         "lat": 47.5368974,
+         "lng": -122.2821931
+      }
+   },
+   {
+      "Job Code": "18-E",
+      "Job Name": "403 Dexter",
+      "Address": "403 Dexter Ave N  Seattle WA 98109",
+      "Framer": "Superior",
+      "GC": "synergy",
+      "sq/ft": 47735,
+      "Interior LF": 10574,
+      "Exterior LF": 2465,
+      "Designer": "MIke",
+      "geoLocation": {
+         "lat": 47.6224486,
+         "lng": -122.3428079
+      }
+   },
+   {
+      "Job Code": "14-G",
+      "Job Name": "Portage Bay",
+      "Address": "4036 8th Ave NE, Seattle, WA 98105",
+      "Framer": "Lafond Framing",
+      "GC": "Calhoun",
+      "Designer": "ERIK",
+      "geoLocation": {
+         "lat": 47.6566215,
+         "lng": -122.3195997
+      }
+   },
+   {
+      "Job Code": "16-H ",
+      "Job Name": "Homes 2 suites",
+      "Address": "40xx 116th st N.E., Marysville Wa 98270",
+      "Framer": "Superior",
+      "GC": "Vandervert",
+      "sq/ft": 42084,
+      "Interior LF": 6476,
+      "Exterior LF": 2100,
+      "Designer": "MIke",
+      "geoLocation": {
+         "lat": 48.1000677,
+         "lng": -122.1787219
+      }
+   },
+   {
+      "Job Code": "14-C",
+      "Job Name": "41ST  Nora",
+      "Address": "4106 12th Ave Ne, Seattle, WA 98105",
+      "Framer": "SUPERIOR",
+      "GC": "PAVALION ",
+      "sq/ft": 22184,
+      "Designer": "JAMES / MIKE 50%",
+      "geoLocation": {
+         "lat": 47.6570437,
+         "lng": -122.3152615
+      }
+   },
+   {
+      "Job Code": "14-B",
+      "Job Name": "12 AVE",
+      "Address": "4119 12th Ave NE, Seattle, WA 98105",
+      "Framer": "SUPERIOR",
+      "GC": "PAVALION ",
+      "sq/ft": 21008,
+      "Designer": "JAMES / MIKE 50%",
+      "geoLocation": {
+         "lat": 47.657457,
+         "lng": -122.3158493
+      }
+   },
+   {
+      "Job Code": "20-G",
+      "Job Name": "417 2nd Ave",
+      "Address": "417 2nd Ave W Seattle WA",
+      "Framer": "pac-rim",
+      "sq/ft": 59192,
+      "Interior LF": 12893,
+      "Exterior LF": 2704,
+      "Designer": "Joe",
+      "geoLocation": {
+         "lat": 47.622619,
+         "lng": -122.3596556
+      }
+   },
+   {
+      "Job Code": "15-M",
+      "Job Name": "Downtowner 2",
+      "Address": "418 S Jackson St, Seattle, WA 98104",
+      "Framer": "Pac-Rim",
+      "GC": "Venture",
+      "sq/ft": 67405,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.5994272,
+         "lng": -122.3279738
+      }
+   },
+   {
+      "Job Code": "16-C ",
+      "Job Name": "Othello station",
+      "Address": "4200 S Othello St, Seattle, WA 98118",
+      "Framer": "Pac-Rim",
+      "GC": "Venture",
+      "sq/ft": 259257,
+      "Designer": "Mike/Davey",
+      "geoLocation": {
+         "lat": 47.5374929,
+         "lng": -122.2803808
+      }
+   },
+   {
+      "Job Code": "15-H",
+      "Job Name": "Junction Flats",
+      "Address": "4433 42nd Ave SW, Seattle, WA 98116",
+      "Framer": "Overland",
+      "GC": "West Seattle Construction",
+      "sq/ft": 54359,
+      "Designer": "MIke",
+      "geoLocation": {
+         "lat": 47.5636442,
+         "lng": -122.3857077
+      }
+   },
+   {
+      "Job Code": "18-P South",
+      "Job Name": "Ceilo Apodment",
+      "Address": "4520 7th Ave Ne Seattle Wa 98107",
+      "Framer": "lafond",
+      "GC": "Calhoun",
+      "sq/ft": 11632,
+      "Interior LF": 2880,
+      "Exterior LF": 1437,
+      "Designer": "mike",
+      "geoLocation": {
+         "lat": 47.6619714,
+         "lng": -122.3204218
+      }
+   },
+   {
+      "Job Code": "18-P north",
+      "Job Name": "Ceilo Apodment",
+      "Address": "4524 7th Ave Ne Seattle Wa 98107",
+      "Framer": "lafond",
+      "GC": "Calhoun",
+      "sq/ft": 11632,
+      "Interior LF": 2880,
+      "Exterior LF": 1437,
+      "Designer": "Mike",
+      "geoLocation": {
+         "lat": 47.6620941,
+         "lng": -122.3204042
+      }
+   },
+   {
+      "Job Code": "22-I",
+      "Job Name": "Elizabeth Thomas Homes",
+      "Address": "4524 S. Henderson Street Seattle WA 98118",
+      "Framer": "Superior",
+      "GC": "Walsh",
+      "sq/ft": 85515,
+      "Interior LF": 14985,
+      "Exterior LF": 4250,
+      "Designer": "Josh",
+      "geoLocation": {
+         "lat": 47.5235964,
+         "lng": -122.2756484
+      }
+   },
+   {
+      "Job Code": "18-Q ",
+      "Job Name": "U-Place Apartments",
+      "Address": "4609 Union Place NE. Seattle WA 98105",
+      "Framer": "superior",
+      "GC": "venture",
+      "sq/ft": 125197,
+      "Interior LF": 31103,
+      "Exterior LF": 6558,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.6614244,
+         "lng": -122.2683743
+      }
+   },
+   {
+      "Job Code": "20-H",
+      "Job Name": "Sonata West",
+      "Address": "4689 Martin Luther King Jr. Way S, Seattle WA 98108",
+      "Framer": "Superior",
+      "GC": "synergy",
+      "sq/ft": 62274,
+      "Interior LF": 14808,
+      "Exterior LF": 2472,
+      "Designer": "james",
+      "geoLocation": {
+         "lat": 47.5610574,
+         "lng": -122.2938735
+      }
+   },
+   {
+      "Job Code": "20-B",
+      "Job Name": "Legacy West bldg B ",
+      "Address": "4721 38th Ave SW, west Seattle",
+      "Framer": "Superior",
+      "GC": "compass",
+      "sq/ft": 33814,
+      "Interior LF": 9073,
+      "Exterior LF": 1397,
+      "Designer": "MIke",
+      "geoLocation": {
+         "lat": 47.5604638,
+         "lng": -122.3804999
+      }
+   },
+   {
+      "Job Code": "20-B",
+      "Job Name": "Legacy West bldg A",
+      "Address": "4722 Fauntlerory west Seattle.",
+      "Framer": "Superior",
+      "GC": "Compass",
+      "sq/ft": 144722,
+      "Interior LF": 39174,
+      "Exterior LF": 5664,
+      "Designer": "Mike",
+      "geoLocation": {
+         "lat": 47.560285,
+         "lng": -122.3811549
+      }
+   },
+   {
+      "Job Code": "17-D",
+      "Job Name": "Arbora Court",
+      "Address": "4738 15th Avenue Ne, Seattle Wa 98105",
+      "Framer": "Superior",
+      "GC": "Walsh ",
+      "sq/ft": 94839,
+      "Interior LF": 19480,
+      "Exterior LF": 5825,
+      "Designer": "Davey",
+      "geoLocation": {
+         "lat": 47.664204,
+         "lng": -122.3116271
+      }
+   },
+   {
+      "Job Code": "15-N Phase 1",
+      "Job Name": "Whittaker South",
+      "Address": "4755 Fauntleroy Way SW, Seattle, WA 98116",
+      "Framer": "Superior ",
+      "GC": "Chinn",
+      "sq/ft": 97664,
+      "Designer": "Mike",
+      "geoLocation": {
+         "lat": 47.55948859999999,
+         "lng": -122.3818497
+      }
+   },
+   {
+      "Job Code": "15-N Phase 2",
+      "Job Name": "Whittaker North",
+      "Address": "4755 Fauntleroy Way SW, Seattle, WA 98116",
+      "Framer": "Superior",
+      "GC": "Chinn",
+      "sq/ft": 207716,
+      "Designer": "Mike",
+      "geoLocation": {
+         "lat": 47.55948859999999,
+         "lng": -122.3818497
+      }
+   },
+   {
+      "Job Code": "14-E ",
+      "Job Name": "ANGELINE",
+      "Address": "4801 Rainier Ave S, Seattle, WA 98118",
+      "Framer": "SUPERIOR",
+      "GC": "SD-DEACON",
+      "sq/ft": 134748,
+      "Designer": "JAMES / MIKE 50%",
+      "geoLocation": {
+         "lat": 47.5592336,
+         "lng": -122.2868604
+      }
+   },
+   {
+      "Job Code": "23-M",
+      "Job Name": "Trail Side II",
+      "Address": "4907 25th AVE NE Seattle wA",
+      "Framer": "Premier",
+      "GC": "Chinn",
+      "sq/ft": 193516,
+      "Interior LF": 40897,
+      "Exterior LF": 6757,
+      "Designer": "Davey",
+      "geoLocation": {
+         "lat": 47.6646151,
+         "lng": -122.3014303
+      }
+   },
+   {
+      "Job Code": "13-C",
+      "Job Name": "The Blake",
+      "Address": "5020 California Ave SW, Seattle, WA 98136",
+      "Framer": "Superior",
+      "GC": "Chinn",
+      "sq/ft": 73000,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.55652,
+         "lng": -122.386643
+      }
+   },
+   {
+      "Job Code": "15-J ",
+      "Job Name": "Merril Gardens",
+      "Address": "5601 24th Ave NW, Seattle, WA 98107",
+      "Framer": "Superior ",
+      "GC": "SRM",
+      "sq/ft": 74240,
+      "Designer": "Mike",
+      "geoLocation": {
+         "lat": 47.6696901,
+         "lng": -122.3880917
+      }
+   },
+   {
+      "Job Code": "22-E",
+      "Job Name": "622 Rainier S Building",
+      "Address": "622 Rainier Ave S, Seattle WA 98144",
+      "Framer": "Superior",
+      "GC": "W.G. Clark.",
+      "sq/ft": 57880,
+      "Interior LF": 13453,
+      "Exterior LF": 1792,
+      "Designer": "mike",
+      "geoLocation": {
+         "lat": 47.5968282,
+         "lng": -122.3120278
+      }
+   },
+   {
+      "Job Code": "22-E",
+      "Job Name": "622 Rainier NW Building",
+      "Address": "622 Rainier Ave S, Seattle WA 98144",
+      "Framer": "Superior",
+      "GC": "W.G. Clark.",
+      "sq/ft": 34819,
+      "Interior LF": 7706,
+      "Exterior LF": 1400,
+      "Designer": "mike",
+      "geoLocation": {
+         "lat": 47.5968282,
+         "lng": -122.3120278
+      }
+   },
+   {
+      "Job Code": "22-E",
+      "Job Name": "622 Rainier NE Building",
+      "Address": "622 Rainier Ave S, Seattle WA 98144",
+      "Framer": "Superior",
+      "GC": "W.G. Clark.",
+      "sq/ft": 29179,
+      "Interior LF": 6497,
+      "Exterior LF": 1597,
+      "Designer": "mike",
+      "geoLocation": {
+         "lat": 47.5968282,
+         "lng": -122.3120278
+      }
+   },
+   {
+      "Job Code": "22-C",
+      "Job Name": "Corner 63",
+      "Address": "6300 9th Ave NE Seattle, Wa 98115",
+      "Framer": "Premier",
+      "GC": "chinn",
+      "sq/ft": 68155,
+      "Interior LF": 17105,
+      "Exterior LF": 4022,
+      "Designer": "James /steve/stevie",
+      "geoLocation": {
+         "lat": 47.6744141,
+         "lng": -122.3182714
+      }
+   },
+   {
+      "Job Code": "17-G2",
+      "Job Name": "Marymoor Park Alexan C",
+      "Address": "6335 180th Place NE, Redmond Wa, 98502",
+      "Framer": "Pac-Rim",
+      "GC": "venture",
+      "sq/ft": 38792,
+      "Interior LF": 7712,
+      "Exterior LF": 1776,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.66221849999999,
+         "lng": -122.0991523
+      }
+   },
+   {
+      "Job Code": "17-G1",
+      "Job Name": "Marymoor Park Alexan A&B",
+      "Address": "6335 180th Place NE, Redmond Wa, 98502",
+      "Framer": "Pac-Rim",
+      "GC": "venture",
+      "sq/ft": 120619,
+      "Interior LF": 26855,
+      "Exterior LF": 6524,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.66221849999999,
+         "lng": -122.0991523
+      }
+   },
+   {
+      "Job Code": "14-F",
+      "Job Name": "BALLARD LOFT",
+      "Address": "6420 24th Ave NW, Seattle, WA 98107",
+      "Framer": "HALLMARK",
+      "GC": "BALLARD LOFTS",
+      "sq/ft": 77440,
+      "Designer": "JAMES",
+      "geoLocation": {
+         "lat": 47.6756016,
+         "lng": -122.3873598
+      }
+   },
+   {
+      "Job Code": "21-A",
+      "Job Name": "Cedar Crossing",
+      "Address": "6600 Roosevelt way ne seattle wa 98155",
+      "Framer": "Superior",
+      "GC": "Walsh",
+      "sq/ft": 197942,
+      "Interior LF": 41896,
+      "Exterior LF": 8186,
+      "Designer": "mike",
+      "geoLocation": {
+         "lat": 47.67706099999999,
+         "lng": -122.3167572
+      }
+   },
+   {
+      "Job Code": "21-L",
+      "Job Name": "LamBow Apartments",
+      "Address": "6935-6955 Delridge WA sw 98106",
+      "Framer": "superior",
+      "GC": "walsh",
+      "sq/ft": 88028,
+      "Interior LF": 16012,
+      "Exterior LF": 3431,
+      "Designer": "mike",
+      "geoLocation": {
+         "lat": 47.5405113,
+         "lng": -122.3616203
+      }
+   },
+   {
+      "Job Code": "16-D ",
+      "Job Name": "Mercy Othello",
+      "Address": "6940 Martin Luther King Jr Way S",
+      "Framer": "Superior",
+      "GC": "Walsh",
+      "sq/ft": 94484,
+      "Designer": "James/Joe",
+      "geoLocation": {
+         "lat": 47.5396672,
+         "lng": -122.2821187
+      }
+   },
+   {
+      "Job Code": "18-M",
+      "Job Name": "5th & Roy",
+      "Address": "701 5th Ave Seattle wa",
+      "Framer": "Superior",
+      "GC": "FMC",
+      "sq/ft": 74336,
+      "Interior LF": 18138,
+      "Exterior LF": 4101,
+      "Designer": "Davey",
+      "geoLocation": {
+         "lat": 47.650097,
+         "lng": -122.385427
+      }
+   },
+   {
+      "Job Code": "16-I",
+      "Job Name": "7th and Cherry",
+      "Address": "710 Cherry Street, Seattle Wa 98104",
+      "Framer": "Superior",
+      "GC": "walsh",
+      "sq/ft": 28515,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.60556039999999,
+         "lng": -122.3276735
+      }
+   },
+   {
+      "Job Code": "21-I",
+      "Job Name": "Uncle Bob's",
+      "Address": "714 S King Street Seattle Wa",
+      "Framer": "Superior",
+      "GC": "Marpac",
+      "sq/ft": 78974,
+      "Interior LF": 16560,
+      "Exterior LF": 3648,
+      "Designer": "mike",
+      "geoLocation": {
+         "lat": 47.5986604,
+         "lng": -122.3229528
+      }
+   },
+   {
+      "Job Code": "24-B",
+      "Job Name": "7324 OZN Othello",
+      "Address": "7324 M L King Jr Way st seattle wa 98118",
+      "Framer": "overland",
+      "GC": "STS",
+      "sq/ft": 83249,
+      "Interior LF": 15945,
+      "Exterior LF": 4022,
+      "Designer": "Davey",
+      "geoLocation": {
+         "lat": 47.6101643,
+         "lng": -122.2962515
+      }
+   },
+   {
+      "Job Code": "20-L",
+      "Job Name": "Lihi Othello",
+      "Address": "7357 43rd AVE S, Seattle Wa 98118",
+      "Framer": "Overland",
+      "GC": "walsh",
+      "sq/ft": 79101,
+      "Designer": "davey",
+      "geoLocation": {
+         "lat": 47.5353742,
+         "lng": -122.2796395
+      }
+   },
+   {
+      "Job Code": "14-H ",
+      "Job Name": "DISCOVERY BLDG F",
+      "Address": "736 8th Ave NE, Issaquah, WA 98029",
+      "Framer": "HALLMARK",
+      "sq/ft": 92532,
+      "Designer": "JAMES / MIKE 50%",
+      "geoLocation": {
+         "lat": 47.5383827,
+         "lng": -122.0205408
+      }
+   },
+   {
+      "Job Code": "14-H",
+      "Job Name": "DISCOVERY BLDG A",
+      "Address": "736 8th Ave NE, Issaquah, WA 98029",
+      "Framer": "HALLMARK",
+      "sq/ft": 137624,
+      "Designer": "MIKE 75%/JAMES 25% ",
+      "geoLocation": {
+         "lat": 47.5383827,
+         "lng": -122.0205408
+      }
+   },
+   {
+      "Job Code": "24-A",
+      "Job Name": "LIHI MLK ",
+      "Address": "7544 MLK JR way s & 7529 Renton Ave S, Seattle WA 98118",
+      "Framer": "overland",
+      "GC": "walsh",
+      "sq/ft": 121011,
+      "Interior LF": 19539,
+      "Exterior LF": 5537,
+      "Designer": "Stevie",
+      "geoLocation": {
+         "lat": 47.5345228,
+         "lng": -122.2811396
+      }
+   },
+   {
+      "Job Code": "16-K ",
+      "Job Name": "Heron",
+      "Address": "7662 159th Pl NE, Redmond, WA 98052",
+      "Framer": "Premier",
+      "GC": "W.G.Clark",
+      "sq/ft": 78230,
+      "Designer": "James/Davey",
+      "geoLocation": {
+         "lat": 47.67292519999999,
+         "lng": -122.1274707
+      }
+   },
+   {
+      "Job Code": "23-G ",
+      "Job Name": "DESC Burien",
+      "Address": "801 SW 150th St. Burien WA 98166",
+      "Framer": "Superior",
+      "GC": "Absher",
+      "sq/ft": 50000,
+      "Interior LF": 10325,
+      "Exterior LF": 2550,
+      "Designer": "Mike",
+      "geoLocation": {
+         "lat": 47.4682739,
+         "lng": -122.3449154
+      }
+   },
+   {
+      "Job Code": "15-A",
+      "Job Name": "810 Dexter",
+      "Address": "810 Dexter Ave N, Seattle, WA 98109",
+      "Framer": "Overland",
+      "GC": "Holland",
+      "sq/ft": 213000,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.6266902,
+         "lng": -122.341922
+      }
+   },
+   {
+      "Job Code": "22-O",
+      "Job Name": "Four Corners building D",
+      "Address": "8102 Evergreen Way, Everett WA 98203",
+      "Framer": "hallmark",
+      "GC": "heartland",
+      "sq/ft": 133795,
+      "Interior LF": 26110,
+      "Exterior LF": 5120,
+      "Designer": "steve",
+      "geoLocation": {
+         "lat": 47.92554750000001,
+         "lng": -122.2275295
+      }
+   },
+   {
+      "Job Code": "22-O",
+      "Job Name": "Four Corners building C",
+      "Address": "8102 Evergreen Way, Everett WA 98203",
+      "Framer": "hallmark",
+      "GC": "heartland",
+      "sq/ft": 134260,
+      "Designer": "steve",
+      "geoLocation": {
+         "lat": 47.92554750000001,
+         "lng": -122.2275295
+      }
+   },
+   {
+      "Job Code": "22-Q",
+      "Job Name": "Wesley Homes III",
+      "Address": "815 216th St Des Moines Wa 98189",
+      "Framer": "superior",
+      "GC": "walsh",
+      "sq/ft": 102297,
+      "Interior LF": 20634,
+      "Exterior LF": 3934,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.4079391,
+         "lng": -122.3220109
+      }
+   },
+   {
+      "Job Code": "19-C",
+      "Job Name": "Wesly homes Phase 2",
+      "Address": "815 S. 216th St Des Moines WA 98189",
+      "Framer": "Superior",
+      "GC": "Walsh",
+      "sq/ft": 245320,
+      "Interior LF": 40538,
+      "Exterior LF": 9872,
+      "Designer": "Mike",
+      "geoLocation": {
+         "lat": 47.4079391,
+         "lng": -122.3220109
+      }
+   },
+   {
+      "Job Code": "23-J ",
+      "Job Name": "Trail Road",
+      "Address": "820 Trail Road Sedro Woolley WA 98284",
+      "Framer": "BYK ",
+      "GC": "BYK",
+      "sq/ft": 55338,
+      "Interior LF": 8629,
+      "Exterior LF": 2253,
+      "Designer": "Steve",
+      "geoLocation": {
+         "lat": 48.5035794,
+         "lng": -122.2532067
+      }
+   },
+   {
+      "Job Code": "23-L ",
+      "Job Name": "Hope Housing BLDG B & D",
+      "Address": "8215 236th Street SW Edmonds WA 98026",
+      "Framer": "Superior",
+      "GC": "Kirtley Cole",
+      "sq/ft": 21938,
+      "Interior LF": 3404,
+      "Exterior LF": 1825,
+      "Designer": "Mike",
+      "geoLocation": {
+         "lat": 47.7850775,
+         "lng": -122.3441811
+      }
+   },
+   {
+      "Job Code": "23-L ",
+      "Job Name": "Hope Housing BLDG A & C",
+      "Address": "8215 236th Street SW Edmonds WA 98026",
+      "Framer": "Superior",
+      "GC": "Kirtley Cole",
+      "sq/ft": 21684,
+      "Designer": "Mike",
+      "geoLocation": {
+         "lat": 47.7850775,
+         "lng": -122.3441811
+      }
+   },
+   {
+      "Job Code": "21-E",
+      "Job Name": "Continental Divide",
+      "Address": "8505 132nd ave NE kirkland Wa 98033",
+      "Framer": "Superior",
+      "GC": "W.G. CLARK",
+      "sq/ft": 118533,
+      "Interior LF": 27488,
+      "Exterior LF": 3870,
+      "Designer": "josh",
+      "geoLocation": {
+         "lat": 47.6797733,
+         "lng": -122.1642236
+      }
+   },
+   {
+      "Job Code": "23-H ",
+      "Job Name": "900 Rainier",
+      "Address": "900 Rainier Ave S  Seattle WA 98114",
+      "Framer": "Overland",
+      "GC": "Venture",
+      "sq/ft": 153522,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.4813693,
+         "lng": -122.2172082
+      }
+   },
+   {
+      "Job Code": "22-J",
+      "Job Name": "Bellwether Linden",
+      "Address": "916 N 143rd ST Seattle WA 98133",
+      "Framer": "Superior",
+      "GC": "Walsh",
+      "sq/ft": 154398,
+      "Interior LF": 31291,
+      "Exterior LF": 7572,
+      "Designer": "James",
+      "geoLocation": {
+         "lat": 47.7326904,
+         "lng": -122.3467866
+      }
+   },
+   {
+      "Job Code": "19-E",
+      "Job Name": "Capital Hill bldg B North",
+      "Address": "923 E John St Seattle Wa 98102",
+      "Framer": "Superior",
+      "GC": "Walsh",
+      "sq/ft": 67716,
+      "Interior LF": 15510,
+      "Exterior LF": 2100,
+      "Designer": "james",
+      "geoLocation": {
+         "lat": 47.6197408,
+         "lng": -122.3198774
+      }
+   },
+   {
+      "Job Code": "21-F",
+      "Job Name": "Gateway village",
+      "Address": "953-Hodgin St. Sedro Woolley Wa 98284",
+      "GC": "janicki",
+      "sq/ft": 85518,
+      "Interior LF": 18260,
+      "Exterior LF": 4048,
+      "Designer": "mike",
+      "geoLocation": {
+         "lat": 48.5034909,
+         "lng": -122.2578056
+      }
+   },
+   {
+      "Job Code": "24-G",
+      "Job Name": "Pasco Clinic",
+      "Address": "Corner of road 68 & Three Rivers Drive, Pasco WA 99301",
+      "GC": "Aldrich-Associates ",
+      "Designer": "Steve ",
+      "geoLocation": {
+         "lat": 46.2812534,
+         "lng": -119.1877502
+      }
+   },
+   {
+      "Job Code": "19-I",
+      "Job Name": "Aprils Grove",
+      "Address": "Eastsound WA 98245",
+      "GC": "Dawson",
+      "sq/ft": 44112,
+      "Interior LF": 7777,
+      "Exterior LF": 4836,
+      "Designer": "MIke",
+      "geoLocation": {
+         "lat": 48.696654,
+         "lng": -122.9061069
+      }
+   },
+   {
+      "Job Code": "20-J",
+      "Job Name": "Tremezzo North",
+      "Address": "Kellogg Road Bellingham",
+      "GC": "Dan Parcher",
+      "sq/ft": 37220,
+      "Interior LF": 7156,
+      "Exterior LF": 2512,
+      "Designer": "josh",
+      "geoLocation": {
+         "lat": 48.795022,
+         "lng": -122.4748655
+      }
+   }
+]
