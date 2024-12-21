@@ -25,5 +25,6 @@ export type MapInfoCard = {
    sqFt?: string;
    contractorWebsite?: string;
    funFacts?: string;
+   geoLocation: google.maps.LatLngLiteral;
    onClose: () => void;
 };

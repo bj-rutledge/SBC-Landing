@@ -10,12 +10,12 @@
  **/
 
 const fs = require('fs');
-const data = require('..');
+const data = require('../sbc-website-jobs-list.json');
 
 const dataOut = [];
 const memo = {};
-data.Sheet1.forEach((job) => {
-   if (job.GC != '') {
+data.forEach((job) => {
+   if (job.GC && job.GC != '') {
       const gcLowerCase = job.GC.toLowerCase();
       if (!memo[gcLowerCase]) {
          dataOut.push(job.GC);
