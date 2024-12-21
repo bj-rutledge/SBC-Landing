@@ -10,17 +10,12 @@ import ClientImage from './ClientImage'; // Import the ClientImage component
 // import QATA_August_2013___1sm from '../images/QATA_August_2013___1sm.jpg';
 // import QATA_June_2013_Aerial_2sm from '../images/QATA_June_2013_Aerial_2sm.jpg';
 // import Queen_Anne_Towne_July_2013_1sm from '../images/Queen_Anne_Towne_July_2013_1sm.jpg';
-import bigCrane from  '../images/landing/craneBG.jpg';
+import bigCrane from '../images/landing/craneBG.jpg';
 import eveningSite from '../images/landing/eveningSite.jpg';
 import rollout from '../images/landing/rollout.jpg';
 import sunset from '../images/landing/sunset.jpg';
 
-const images = [
-bigCrane,
-eveningSite,
-rollout, 
-sunset
-];
+const images = [bigCrane, eveningSite, rollout, sunset];
 
 const transitionDuration = 1.5; // Duration of fade in/out
 const stayDuration = 2; // Duration the image stays fully visible

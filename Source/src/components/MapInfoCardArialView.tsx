@@ -4,7 +4,6 @@ import { keyframes } from '@emotion/react';
 import { MapInfoCard } from '../types';
 import axios from 'axios';
 
-
 const key = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
 
 const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
