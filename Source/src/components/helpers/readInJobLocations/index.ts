@@ -6,7 +6,7 @@
 import { useState, useEffect } from 'react';
 import { MapInfoCard } from '../../../types';
 const dataEndoint = process.env.GATSBY_COMPLETED_JOBS_ENDPOINT as string;
-console.log(dataEndoint);
+// console.log(dataEndoint);
 const useReadJsonFile = (): MapInfoCard[] => {
    const [mapInfoCards, setMapInfoCards] = useState<MapInfoCard[]>([]);
 
@@ -16,7 +16,7 @@ const useReadJsonFile = (): MapInfoCard[] => {
             const response = await fetch(dataEndoint);
             const jobs = await response.json();
             // Filter out jobs with empty addresses and Job Name
-            const validJobs = jobs.Sheet1.filter(
+            const validJobs = jobs.filter(
                (job: any) =>
                   job.Address &&
                   job.Address.trim() !== '' &&
@@ -29,6 +29,7 @@ const useReadJsonFile = (): MapInfoCard[] => {
                subtitle: `Contractor: ${job.GC}`,
                address: job.Address,
                contractor: job.GC,
+               geoLocation: job.geoLocation,
                funFacts:
                   job['sq/ft'] !== '' ? `Square Feet: ${job['sq/ft']}` : '',
             }));

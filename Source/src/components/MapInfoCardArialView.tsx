@@ -1,11 +1,9 @@
-/**
- * Created by BJ Rutledge
- * Date:2024-12-15
- **/
 import React, { useEffect, useState, useRef } from 'react';
 import { Box, Text, Heading, Link } from '@chakra-ui/react';
 import { keyframes } from '@emotion/react';
 import { MapInfoCard } from '../types';
+import axios from 'axios';
+
 
 const key = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
 
@@ -19,65 +17,63 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
    onClose,
 }) => {
    const [aerialViewUrl, setAerialViewUrl] = useState('');
-   const [streetViewUrl, setStreetViewUrl] = useState('');
+   const [streetViewUrl, setStreetViewUrl] = useState<string>('');
    const [error, setError] = useState('');
    const cardRef = useRef<HTMLDivElement>(null);
 
    useEffect(() => {
       const fetchAerialViewUrl = async () => {
          try {
-            const videoResponse = await fetch(
+            console.debug('Fetching Arial View');
+            const videoResponse = await axios.get(
                `https://aerialview.googleapis.com/v1/videos:lookupVideo?address=${encodeURIComponent(
                   address,
                )}&key=${key}`,
             );
 
-            if (!videoResponse.ok) {
-               if (videoResponse.status === 404) {
-                  setError('No Aerial Video Available');
-               } else if (videoResponse.status === 401) {
-                  setError('Unauthorized access. Please check your API key.');
-               } else {
-                  throw new Error(
-                     `HTTP error! status: ${videoResponse.status}`,
-                  );
-               }
+            const videoData = videoResponse.data;
+            if (
+               videoData.state === 'ACTIVE' &&
+               videoData.uris &&
+               videoData.uris.MP4_HIGH
+            ) {
+               setAerialViewUrl(videoData.uris.MP4_HIGH.landscapeUri);
+            } else if (videoData.state === 'PROCESSING') {
+               setError(
+                  'Aerial view video is still processing. Please check back later.',
+               );
             } else {
-               const videoData = await videoResponse.json();
-               if (
-                  videoData.state === 'ACTIVE' &&
-                  videoData.uris &&
-                  videoData.uris.MP4_HIGH
-               ) {
-                  setAerialViewUrl(videoData.uris.MP4_HIGH.landscapeUri);
-               } else if (videoData.state === 'PROCESSING') {
-                  setError(
-                     'Aerial view video is still processing. Please check back later.',
-                  );
-               } else {
-                  setError('No Aerial Video Available');
-               }
+               setError('No Aerial Video Available');
             }
          } catch (error) {
-            console.error('Error fetching aerial view:', error);
-            setError('Error fetching aerial view.');
+            if (axios.isAxiosError(error)) {
+               if (error.response?.status === 404) {
+                  setError('No Aerial Video Available');
+               } else if (error.response?.status === 401) {
+                  setError('Unauthorized access. Please check your API key.');
+               } else {
+                  setError('Error fetching aerial view.');
+               }
+            } else {
+               setError('An unknown error occurred.');
+            }
          }
       };
 
       const fetchStreetViewUrl = async () => {
+         console.debug('Fetching street view');
          try {
-            const response = await fetch(
+            const response = await axios.get(
                `https://maps.googleapis.com/maps/api/streetview?size=600x300&location=${encodeURIComponent(
                   address,
                )}&key=${key}`,
             );
-            if (response.ok) {
-               setStreetViewUrl(response.url);
+            if (response.status === 200) {
+               setStreetViewUrl(response.config.url || '');
             } else {
                setError('No Street View Available');
             }
          } catch (error) {
-            console.error('Error fetching street view:', error);
             setError('Error fetching street view.');
          }
       };
@@ -88,6 +84,7 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
          }
       });
 
+      //close the window when user clicks outside of it
       const handleClickOutside = (event: MouseEvent) => {
          if (
             cardRef.current &&
@@ -102,7 +99,7 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
       return () => {
          document.removeEventListener('mousedown', handleClickOutside);
       };
-   }, [address, aerialViewUrl, onClose]);
+   }, [address, onClose]);
 
    const fadeIn = keyframes`
     from {
