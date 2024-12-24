@@ -10,7 +10,6 @@ import {
    SimpleGrid,
    List,
    ListItem,
-   Stack,
 } from '@chakra-ui/react';
 import Layout from '../components/Layout';
 import CustomerQuotes from '../components/CustomerQuotes';
@@ -21,20 +20,22 @@ import eveningSite from '../images/landing/eveningSite.jpg';
 import sunset from '../images/landing/sunset.jpg';
 import quotes from '../components/data/quotes';
 import { motion } from 'framer-motion'; // Import Framer Motion
+import { useOnScreen } from '../hooks/useOnScreen'; // Import the custom hook
 import '../styles.css'; // Import the custom CSS file
 
 const IndexPage = () => {
+   const [ref, isVisible] = useOnScreen({ threshold: 0.05 });
+
    return (
       <Layout>
          <Box position="relative" width="100%" height="auto">
-            <ClientImage src={sunset} alt="Sunset" width="100%" />
+            <ClientImage src={sunset} alt="Sunset" width="100%" maxHeight={'100%'}/>
             <MotionBox
                as={Heading}
                className="heading-overlay"
-               initial={{ opacity: 0, y: -50 }}
+               initial={{ opacity: 1, y: 0 }}
                animate={{ opacity: 1, y: 0 }}
                transition={{ duration: 1 }}
-               //  textAlign="center"
             >
                SOUND BUILDING COMPONENTS INC.
             </MotionBox>
@@ -44,28 +45,31 @@ const IndexPage = () => {
             bg="gray.100"
             p={5}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            // Trigger animation to fully visible if the element is in view
+            animate={{ opacity: isVisible ? 1 : 0 }}
+            // Define the duration and delay for the animation
             transition={{ duration: 1, delay: 0.5 }}
+            ref={ref}
          >
             <Box textAlign="center" mb={10}>
                <Heading as="h2" size={{ base: 'md', md: 'lg' }} mb={4}>
                   <motion.span
                      initial={{ opacity: 0 }}
-                     animate={{ opacity: 1 }}
+                     animate={{ opacity: isVisible ? 1 : 0 }}
                      transition={{ duration: 1, delay: 0.5 }}
                   >
                      IDEA.
                   </motion.span>{' '}
                   <motion.span
                      initial={{ opacity: 0 }}
-                     animate={{ opacity: 1 }}
+                     animate={{ opacity: isVisible ? 1 : 0 }}
                      transition={{ duration: 1, delay: 1.5 }}
                   >
                      DESIGN.
                   </motion.span>{' '}
                   <motion.span
                      initial={{ opacity: 0 }}
-                     animate={{ opacity: 1 }}
+                     animate={{ opacity: isVisible ? 1 : 0 }}
                      transition={{ duration: 1, delay: 2.5 }}
                   >
                      BUILD.

@@ -14,7 +14,7 @@ import useIsMounted from '../hooks/useIsMounted';
 
 const ClientImage: React.FC<ImageProps> = (props) => {
    const isMounted = useIsMounted();
-   console.log('isMounted', isMounted);
+   // console.debug('isMounted', isMounted);
    return isMounted ? <Image {...props} /> : null;
 };
 
