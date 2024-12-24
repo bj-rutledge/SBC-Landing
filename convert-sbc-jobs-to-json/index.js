@@ -4,7 +4,7 @@ const readInExcelSheet = require('./readInExcelSheet');
 const addGeolocations = require('./addGeolocationProperty');
 require('dotenv').config();
 
-const apiKey = process.env.MAPS_API_KEY;
+// const apiKey = process.env.MAPS_API_KEY;
 
 // Read Excel file and add geo location property to objects
 const filePath = './spreadsheets/sbc-website-jobs-list.xlsm';
