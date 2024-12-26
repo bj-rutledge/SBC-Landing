@@ -15,16 +15,12 @@ export type Location = {
    content?: string;
 };
 
-// export type Region = "washington" | "hawaii";
-
-export type MapInfoCard = {
-   title: string;
-   subtitle?: string;
-   address: string;
-   contractor?: string;
-   sqFt?: string;
-   contractorWebsite?: string;
-   funFacts?: string;
-   geoLocation: google.maps.LatLngLiteral;
-   onClose: () => void;
-};
+export interface MapInfoCardProps {
+  title: string;
+  address: string;
+  contractorWebsite?: string;
+  funFacts?: string;
+  contractor?: string;
+  sqFt?: string;
+  onClose: () => void;
+}
