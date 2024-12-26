@@ -10,5 +10,5 @@ const sheetDataToJson = (filePath, sheetName) => {
 };
 
 const filePath = '../spreadsheets/sbc-website-jobs-list.xlsm';
-sheetDataToJson(filePath, 'Total Linear Feet');
-sheetDataToJson(filePath, 'Total Square Footage');
+sheetDataToJson(filePath, 'Total Output Data');
+// sheetDataToJson(filePath, 'Total Square Footage');

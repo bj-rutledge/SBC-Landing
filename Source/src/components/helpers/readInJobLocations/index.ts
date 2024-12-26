@@ -4,46 +4,37 @@
  **/
 
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import { MapInfoCard } from '../../../types';
-const dataEndoint = process.env.GATSBY_COMPLETED_JOBS_ENDPOINT as string;
-// console.log(dataEndoint);
+
+const dataEndpoint = process.env.GATSBY_COMPLETED_JOBS_ENDPOINT as string;
+
 const useReadJsonFile = (): MapInfoCard[] => {
-   const [mapInfoCards, setMapInfoCards] = useState<MapInfoCard[]>([]);
+  const [mapInfoCards, setMapInfoCards] = useState<MapInfoCard[]>([]);
 
-   useEffect(() => {
-      const fetchData = async () => {
-         try {
-            const response = await fetch(dataEndoint);
-            const jobs = await response.json();
-            // Filter out jobs with empty addresses and Job Name
-            const validJobs = jobs.filter(
-               (job: any) =>
-                  job.Address &&
-                  job.Address.trim() !== '' &&
-                  job['Job Name'] &&
-                  job['Job Name'].trim() !== '',
-            );
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(dataEndpoint);
+        const jobs = response.data;
+        // Filter out jobs with empty addresses and Job Name
+        const validJobs = jobs.filter(
+          (job: any) =>
+            job.Address &&
+            job.Address.trim() !== '' &&
+            job['Job Name'] &&
+            job['Job Name'].trim() !== ''
+        );
+        setMapInfoCards(validJobs);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
 
-            const mapInfoCards: MapInfoCard[] = validJobs.map((job: any) => ({
-               title: job['Job Name'],
-               subtitle: `Contractor: ${job.GC}`,
-               address: job.Address,
-               contractor: job.GC,
-               geoLocation: job.geoLocation,
-               funFacts:
-                  job['sq/ft'] !== '' ? `Square Feet: ${job['sq/ft']}` : '',
-            }));
+    fetchData();
+  }, []);
 
-            setMapInfoCards(mapInfoCards);
-         } catch (error) {
-            console.error('Error reading JSON file:', error);
-         }
-      };
-
-      fetchData();
-   }, []);
-
-   return mapInfoCards;
+  return mapInfoCards;
 };
 
 export default useReadJsonFile;
