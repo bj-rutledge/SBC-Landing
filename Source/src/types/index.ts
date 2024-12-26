@@ -15,12 +15,16 @@ export type Location = {
    content?: string;
 };
 
-export interface MapInfoCardProps {
+export interface MapInfoCard {
   title: string;
   address: string;
   contractorWebsite?: string;
   funFacts?: string;
   contractor?: string;
   sqFt?: string;
+   geoLocation: {
+      lat: number;
+      lng: number;
+   };
   onClose: () => void;
 }
