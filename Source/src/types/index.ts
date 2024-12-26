@@ -28,3 +28,11 @@ export interface MapInfoCard {
    };
   onClose: () => void;
 }
+
+export interface SbcOutputData {
+  "Total Exterior Linear Feet": number;
+  "Total Interial Linear Feet": number;
+  "Total Miles Built": number;
+  "Total Square Footage": number;
+}
+

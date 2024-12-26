@@ -10,6 +10,7 @@ import {
    SimpleGrid,
    List,
    ListItem,
+   Image
 } from '@chakra-ui/react';
 import Layout from '../components/Layout';
 import CustomerQuotes from '../components/CustomerQuotes';
@@ -20,11 +21,17 @@ import eveningSite from '../images/landing/eveningSite.jpg';
 import sunset from '../images/landing/sunset.jpg';
 import quotes from '../components/data/quotes';
 import { motion } from 'framer-motion'; // Import Framer Motion
-import { useOnScreen } from '../hooks/useOnScreen'; // Import the custom hook
+import { useInView } from 'react-intersection-observer'; // Import the custom hook
+import { useSbcOutputData } from '../contexts/SbcOutputDataContext';
+import addCommasToNumber from '../components/helpers/addCommasToNumber';
 import '../styles.css'; // Import the custom CSS file
 
-const IndexPage = () => {
-   const [ref, isVisible] = useOnScreen({ threshold: 0.05 });
+const IndexPage: React.FC = () => {
+   const { ref, inView } = useInView({
+      triggerOnce: true, // Trigger animation only once
+      threshold: 0.1, // Trigger when 10% of the element is in view
+   });
+   const { data, loading, error } = useSbcOutputData();
 
    return (
       <Layout>
@@ -46,31 +53,31 @@ const IndexPage = () => {
             p={5}
             initial={{ opacity: 0 }}
             // Trigger animation to fully visible if the element is in view
-            animate={{ opacity: isVisible ? 1 : 0 }}
+            animate={{ opacity: inView ? 1 : 0 }}
             // Define the duration and delay for the animation
-            transition={{ duration: 1, delay: 0.5 }}
+            transition={{ duration: 2, delay: 0.5 }} // Increase duration and add delay
             ref={ref}
          >
             <Box textAlign="center" mb={10}>
                <Heading as="h2" size={{ base: 'md', md: 'lg' }} mb={4}>
                   <motion.span
                      initial={{ opacity: 0 }}
-                     animate={{ opacity: isVisible ? 1 : 0 }}
-                     transition={{ duration: 1, delay: 0.5 }}
+                     animate={{ opacity: inView ? 1 : 0 }}
+                     transition={{ duration: 2, delay: 1 }} // Increase duration and add delay
                   >
                      IDEA.
                   </motion.span>{' '}
                   <motion.span
                      initial={{ opacity: 0 }}
-                     animate={{ opacity: isVisible ? 1 : 0 }}
-                     transition={{ duration: 1, delay: 1.5 }}
+                     animate={{ opacity: inView ? 1 : 0 }}
+                     transition={{ duration: 2, delay: 2 }} // Increase duration and add delay
                   >
                      DESIGN.
                   </motion.span>{' '}
                   <motion.span
                      initial={{ opacity: 0 }}
-                     animate={{ opacity: isVisible ? 1 : 0 }}
-                     transition={{ duration: 1, delay: 2.5 }}
+                     animate={{ opacity: inView ? 1 : 0 }}
+                     transition={{ duration: 2, delay: 3 }} // Increase duration and add delay
                   >
                      BUILD.
                   </motion.span>
@@ -162,7 +169,9 @@ const IndexPage = () => {
                      display={{ base: 'none', md: 'block' }}
                   />
                </SimpleGrid>
-
+                  <Heading as="h2" size={{ base: 'md', md: 'lg' }} mb={4} textAlign={'center'}>
+                     {`${addCommasToNumber(data?.['Total Square Footage'])} Square Feet Built and Counting`}
+                  </Heading>
                <CustomerQuotes quotes={quotes} />
             </MotionBox>
          </MotionBox>
