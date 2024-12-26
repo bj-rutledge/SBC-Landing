@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
 import { Box, Text, Heading, Link} from '@chakra-ui/react';
 import { keyframes } from '@emotion/react';
-import { MapInfoCardProps } from '../types';
+import { MapInfoCard } from '../types';
 const key = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
 
 
-const MapInfoCardAerialView: React.FC<MapInfoCardProps> = ({
+const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
   title,
   address,
   contractorWebsite,
