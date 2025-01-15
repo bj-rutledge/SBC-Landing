@@ -27,9 +27,9 @@ const CustomerQuotesCard: React.FC<CustomerQuotesCardProps> = ({
          justifyContent="start"
       >
          <VStack spacing={4} mt={4}>
-            <Text fontWeight="bold" fontSize="xl">
+            <Text color='green.600' fontWeight="bold" fontSize="xl">
                {author}
-            </Text>
+            </Text >
             <Text>{quote}</Text>
             {link && (
                <Text fontSize="sm" color="blue.500">

@@ -188,7 +188,7 @@ const Map: React.FC = () => {
          p={4}
          alignItems="center"
       >
-         <Heading as="h1" mb={5} textAlign="center">
+         <Heading as="h1" mb={5} textAlign="center" color="green.600">
             Our Job Locations
          </Heading>
          <Box

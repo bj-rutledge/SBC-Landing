@@ -16,7 +16,7 @@ interface CustomerQuotesProps {
 const CustomerQuotes: React.FC<CustomerQuotesProps> = ({ quotes }) => {
    return (
       <Stack spacing={8} mt={10} align="center">
-         <Heading as="h2" size="lg">
+         <Heading as="h2" size="lg" color='green.600'>
             Customer Quotes
          </Heading>
          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>

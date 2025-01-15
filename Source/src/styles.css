@@ -23,6 +23,22 @@
    }
 }
 
+/* Keyframes for pop-in effect */
+@keyframes popIn {
+   0% {
+      transform: scale(0.5);
+      opacity: 0;
+   }
+   50% {
+      transform: scale(1.2);
+      opacity: 1;
+   }
+   100% {
+      transform: scale(1);
+      opacity: 1;
+   }
+}
+
 /* Classes for slide-in animations */
 .slide-in-left {
    opacity: 0;
@@ -32,6 +48,15 @@
 .slide-in-right {
    opacity: 0;
    animation: slideInRight 1s forwards;
+}
+
+/* Styles for the pop-in effect */
+.pop-in {
+   /* display: inline-block; */
+   animation: popIn 1s ease-in-out forwards;
+   font-weight: bold;
+   color: #319e74; /* Use a color that matches theme */
+   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for pop effect */
 }
 
 .heading-overlay {
