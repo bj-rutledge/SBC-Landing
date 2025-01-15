@@ -11,102 +11,110 @@ import gregImg from '../images/greg.jpg';
 import julia from '../images/julia.jpg';
 import james from '../images/james.jpg';
 import ClientImage from '../components/ClientImage'; // Import the ClientImage component
-import daveyJones from '../images/DaveyJones.jpeg';
+import daveyJones from '../images/davey-bg.jpg';
 import steve from '../images/steve.jpg';
 
-const OurTeamPage = () => (
-   <Layout>
-      <Box p={5}>
-         <Heading as="h1" textAlign="center">
-            Our Team
-         </Heading>
-         <Text mt={4} color={'primary'}>
-            Meet the dedicated team members behind Sound Building Components
-            Inc. Our experts are here to ensure the highest quality in building
-            wall panels for large construction projects such as apartment
-            buildings, condos, and more.
-         </Text>
-         <Text mt={4} color={'primary'}>
-            At SBC, we are deeply committed to supporting our employees,
-            fostering a positive and empowering workplace. Our mission is to
-            uplift and provide growth opportunities for every team member,
-            ensuring their well-being and professional development. We pride
-            ourselves on our dedication to excellence and our focus on creating
-            a collaborative environment where our employees can thrive.
-         </Text>
-         <Text mt={4} color={'primary'}>
-            We take immense pride in our strong community of professionals who
-            are at the heart of everything we do. Located in Sedro Woolley, WA,
-            SBC continues to innovate and lead in the construction industry,
-            always putting our people first.
-         </Text>
-
-         <Box mt={8}>
-            <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={4}>
-               <MotionBox
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 1 }}
-               >
-                  <Card
-                     imageSrc={james}
-                     name="James Pfaff"
-                     description="With a diverse 25-year plus career in construction and wall panel design, James has designed over 23 million square feet of residential space, leveraging his hands-on experience in framing, siding, roofing, and finish work, and his expertise in using AutoCAD for wall panel design."
-                     ImageComponent={ClientImage} // Use ClientImage for loading the image
-                  />
-               </MotionBox>
-               <MotionBox
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 1, delay: 0.5 }}
-               >
-                  <Card
-                     imageSrc={julia}
-                     name="Julia Phay Pfaff"
-                     description="Julia is our office Manager, and is dedicated to making Sound Building Components a safe and welcoming environment where employees are proud of the work they accomplish."
-                     ImageComponent={ClientImage} // Use ClientImage for loading the image
-                  />
-               </MotionBox>
-               <MotionBox
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 1, delay: 1 }}
-               >
-                  <Card
-                     imageSrc={gregImg}
-                     name="Greg Norvell"
-                     description="Greg, starting in the Wall Panel Industry in 1992, has spent 28 years building and shipping panelized homes and apartments to Alaska, Japan, and Greater Seattle, proving his dedication to quality, excellent managerial skills, and timely project completion."
-                     ImageComponent={ClientImage} // Use ClientImage for loading the image
-                  />
-               </MotionBox>
-               <MotionBox
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 1, delay: 1.5 }}
-               >
-                  <Card
-                     imageSrc={daveyJones}
-                     name="Davey Jones"
-                     description="With a diverse 25-year career in construction and wall panel design, James has designed over 23 million square feet of residential space. He leverages hands-on experience in framing, siding, roofing, and finish work, along with expertise in AutoCAD for wall panel design."
-                     ImageComponent={ClientImage}
-                  />
-               </MotionBox>
-               <MotionBox
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 1, delay: 2 }}
-               >
-                  <Card
-                     imageSrc={steve}
-                     name="Steve Dausey"
-                     description="Steve is a super cool dude who knows karate!"
-                     ImageComponent={ClientImage}
-                  />
-               </MotionBox>
-            </SimpleGrid>
+const OurTeamPage: React.FC = () =>{
+   return (
+   
+      <Layout>
+         <Box p={5}>
+            <Heading 
+               as="h1" 
+               textAlign="center" 
+               className='pop-in' 
+               fontSize={{ base: '3xl', md: '4xl', lg: '5xl'}}
+            >
+               Our Team
+            </Heading>
+            <Text mt={4} color='primary' textAlign='center'>
+               Meet the dedicated team members behind Sound Building Components
+               Inc. Our experts are here to ensure the highest quality in building
+               wall panels for large construction projects such as apartment
+               buildings, condos, and more.
+            </Text>
+            <Text mt={4} color='primary'textAlign='center'>
+               At SBC, we are deeply committed to supporting our employees,
+               fostering a positive and empowering workplace. Our mission is to
+               uplift and provide growth opportunities for every team member,
+               ensuring their well-being and professional development. We pride
+               ourselves on our dedication to excellence and our focus on creating
+               a collaborative environment where our employees can thrive.
+            </Text>
+            <Text mt={4} color='primary' textAlign='center'>
+               We take immense pride in our strong community of professionals who
+               are at the heart of everything we do. Located in Sedro Woolley, WA,
+               SBC continues to innovate and lead in the construction industry,
+               always putting our people first.
+            </Text>
+   
+            <Box mt={8}>
+               <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={4}>
+                  <MotionBox
+                     initial={{ opacity: 0 }}
+                     animate={{ opacity: 1 }}
+                     transition={{ duration: 1 }}
+                  >
+                     <Card
+                        imageSrc={james}
+                        name="James Pfaff"
+                        description="With a diverse 25-year plus career in construction and wall panel design, James has designed over 23 million square feet of residential space, leveraging his hands-on experience in framing, siding, roofing, and finish work, and his expertise in using AutoCAD for wall panel design."
+                        ImageComponent={ClientImage} // Use ClientImage for loading the image
+                     />
+                  </MotionBox>
+                  <MotionBox
+                     initial={{ opacity: 0 }}
+                     animate={{ opacity: 1 }}
+                     transition={{ duration: 1, delay: 0.5 }}
+                  >
+                     <Card
+                        imageSrc={julia}
+                        name="Julia Phay Pfaff"
+                        description="Julia is our office Manager, and is dedicated to making Sound Building Components a safe and welcoming environment where employees are proud of the work they accomplish."
+                        ImageComponent={ClientImage} // Use ClientImage for loading the image
+                     />
+                  </MotionBox>
+                  <MotionBox
+                     initial={{ opacity: 0 }}
+                     animate={{ opacity: 1 }}
+                     transition={{ duration: 1, delay: 1 }}
+                  >
+                     <Card
+                        imageSrc={gregImg}
+                        name="Greg Norvell"
+                        description="Greg, starting in the Wall Panel Industry in 1992, has spent 28 years building and shipping panelized homes and apartments to Alaska, Japan, and Greater Seattle, proving his dedication to quality, excellent managerial skills, and timely project completion."
+                        ImageComponent={ClientImage} // Use ClientImage for loading the image
+                     />
+                  </MotionBox>
+                  <MotionBox
+                     initial={{ opacity: 0 }}
+                     animate={{ opacity: 1 }}
+                     transition={{ duration: 1, delay: 1.5 }}
+                  >
+                     <Card
+                        imageSrc={daveyJones}
+                        name="Davey Jones"
+                        description="With a diverse 25-year career in construction and wall panel design, James has designed over 23 million square feet of residential space. He leverages hands-on experience in framing, siding, roofing, and finish work, along with expertise in AutoCAD for wall panel design."
+                        ImageComponent={ClientImage}
+                     />
+                  </MotionBox>
+                  <MotionBox
+                     initial={{ opacity: 0 }}
+                     animate={{ opacity: 1 }}
+                     transition={{ duration: 1, delay: 2 }}
+                  >
+                     <Card
+                        imageSrc={steve}
+                        name="Steve Dausey"
+                        description="Steve is a super cool dude who knows karate!"
+                        ImageComponent={ClientImage}
+                     />
+                  </MotionBox>
+               </SimpleGrid>
+            </Box>
          </Box>
-      </Box>
-   </Layout>
-);
+      </Layout>
+   );
+} 
 
 export default OurTeamPage;

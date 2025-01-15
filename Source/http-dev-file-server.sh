@@ -3,7 +3,6 @@
 
 # Start a simple http server so we can 
 # mimic api calls in dev. 
-#!/bin/bash
 
 # Default values
 directory=$(pwd)

@@ -12,10 +12,10 @@ import React from 'react';
 import { Image, ImageProps } from '@chakra-ui/react';
 import useIsMounted from '../hooks/useIsMounted';
 
-const ClientImage: React.FC<ImageProps> = (props) => {
-   const isMounted = useIsMounted();
-   // console.debug('isMounted', isMounted);
-   return isMounted ? <Image {...props} /> : null;
-};
+const ClientImage = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
+  const isMounted = useIsMounted();
+  // console.debug('isMounted', isMounted);
+  return isMounted ? <Image ref={ref} {...props} /> : null;
+});
 
 export default ClientImage;

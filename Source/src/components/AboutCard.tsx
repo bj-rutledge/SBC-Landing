@@ -51,10 +51,10 @@ const Card: React.FC<CardProps> = ({
             height="100%"
          >
             <VStack spacing={4} mt={4}>
-               <Text fontWeight="bold" fontSize="xl">
+               <Text fontWeight="bold" fontSize="2xl" color='green.600' >
                   {name}
                </Text>
-               <Text>{description}</Text>
+               <Text color='primary'> {description}</Text>
             </VStack>
          </Flex>
       </Box>
