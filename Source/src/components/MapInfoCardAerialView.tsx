@@ -4,7 +4,8 @@ import { Box, Text, Heading, Link} from '@chakra-ui/react';
 import { keyframes } from '@emotion/react';
 import { MapInfoCard } from '../types';
 const key = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
-
+let debugAerialCount = 0;
+let debugStreetCount = 0;
 
 const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
   title,
@@ -20,11 +21,15 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
     streetViewUrl: '',
     error: '',
   });
+  const [isAerialViewLoaded, setAerialViewLoaded] = useState(false);
+  const [isStreetViewLoaded, setStreetViewLoaded] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const fetchAerialViewUrl = useCallback(async () => {
+    if(isAerialViewLoaded) return;
     try {
-      console.debug('Fetching Arial View');
+      
+      console.debug('Fetching Arial View', ++debugAerialCount);
       const videoResponse = await axios.get(
         `https://aerialview.googleapis.com/v1/videos:lookupVideo?address=${encodeURIComponent(
           address,
@@ -77,12 +82,13 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
         }));
       }
     }
+    setAerialViewLoaded(true);
   }, [address]);
 
   const fetchStreetViewUrl = useCallback(async () => {
-    console.debug('Fetching street view');
+    if(isStreetViewLoaded) return;
+    console.debug('Fetching street view', ++debugStreetCount);
     try {
-      // Make a request to the Google Street View API with the provided address
       const response = await axios.get(
         `https://maps.googleapis.com/maps/api/streetview?size=600x300&location=${encodeURIComponent(
           address,
@@ -107,14 +113,15 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
         error: 'Error fetching street view.',
       }));
     }
+    setStreetViewLoaded(true);
   }, [address]);
 
   useEffect(() => {
-    fetchAerialViewUrl().then(() => {
-      if (!state.aerialViewUrl) {
-        fetchStreetViewUrl();
-      }
-    });
+        fetchAerialViewUrl().then(() => {
+          if (!state.aerialViewUrl) {
+            fetchStreetViewUrl();
+          }
+    }, );
 
     const handleClickOutside = (event: MouseEvent) => {
       if (cardRef.current && !cardRef.current.contains(event.target as Node)) {
@@ -127,7 +134,8 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [address, onClose, fetchAerialViewUrl, fetchStreetViewUrl, state.aerialViewUrl]);
+  // }, [address, onClose, fetchAerialViewUrl, fetchStreetViewUrl, state.aerialViewUrl, isAerialViewLoaded, isStreetViewLoaded]);
+  }, []);
 
   const fadeIn = keyframes`
     from {
