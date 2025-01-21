@@ -1,232 +1,192 @@
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Box, Select, Heading, Flex } from '@chakra-ui/react';
-import MapInfoCardAerialView from './MapInfoCardArialView';
+import MapInfoCardAerialView from './MapInfoCardAerialView';
 import { MapInfoCard } from '../types';
 import useWindowSize from '../hooks/useWindowSize';
-import { contractors } from './data/contractors'; // Import contractors array
-import useReadJsonFile from './helpers/readInJobLocations'; // Import custom hook
+import { contractors } from './data/contractors'; 
+import useReadJsonFile from '../hooks/useReadJsonFile';
 
 const key = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
 
 declare global {
-   interface Window {
-      initMap: () => void;
-   }
+  interface Window {
+    initMap: () => void;
+  }
 }
 
 const Map: React.FC = () => {
-   const [map, setMap] = useState<google.maps.Map | null>(null);
-   const [selectedContractor, setSelectedContractor] = useState<string>('');
-   const [markers, setMarkers] = useState<google.maps.Marker[]>([]);
-   const [activeInfoWindow, setActiveInfoWindow] =
-      useState<google.maps.InfoWindow | null>(null);
+  const [map, setMap] = useState<google.maps.Map | null>(null);
+  const [selectedContractor, setSelectedContractor] = useState<string>('');
+  const [markers, setMarkers] = useState<google.maps.Marker[]>([]);
+  const [allMarkers, setAllMarkers] = useState<google.maps.Marker[]>([]);
+  const [activeInfoWindow, setActiveInfoWindow] = useState<google.maps.InfoWindow | null>(null);
+  const [locations, setLocations] = useState<any>([]);
 
-   // Use the custom hook to read job locations
-   const locations = useReadJsonFile();
+  const jobLocations = useReadJsonFile();
 
-   useEffect(() => {
-      const initMap = () => {
-         const mapElement = document.getElementById('map');
-         if (mapElement) {
-            const mapInstance = new window.google.maps.Map(mapElement, {
-               center: { lat: 47.6062, lng: -122.3321 },
-               zoom: 10,
-               mapTypeId: google.maps.MapTypeId.SATELLITE,
-            });
-            setMap(mapInstance);
-         } else {
-            console.error('Map container element not found');
-         }
-      };
+  useEffect(() => {
+    setLocations(jobLocations);
+  }, [jobLocations]); 
 
+  useEffect(() => {
+    const initMap = () => {
+      const mapElement = document.getElementById('map');
+      if (mapElement) {
+        const mapInstance = new window.google.maps.Map(mapElement, {
+          center: { lat: 47.6062, lng: -122.3321 },
+          zoom: 10,
+          mapTypeId: google.maps.MapTypeId.SATELLITE,
+        });
+        setMap(mapInstance);
+      } else {
+        console.error('Map container element not found');
+      }
+    };
+
+    if (!map) {
       window.initMap = initMap;
-      const loadScript = () => {
-         if (!document.getElementById('google-maps-script')) {
-            const script = document.createElement('script');
-            script.id = 'google-maps-script';
-            script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap&loading=async`;
-            script.async = true;
-            script.defer = true;
+      const script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap`;
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+  }, [map]);
 
-            document.head.appendChild(script);
-         } else {
-            if (window.google) {
-               initMap();
-            }
-         }
-      };
+  useEffect(() => {
+    if (map && locations.length > 0) {
+      addMarkers();
+    }
+  }, [map, locations]);
 
-      loadScript();
-   }, []);
+  useEffect(() => {
+    if (map) {
+      filterMarkers(selectedContractor);
+    }
+  }, [selectedContractor]);
 
-   useEffect(() => {
-      if (map) {
-         loadAllLocations();
-      }
-   }, [map, locations]);
+  const addMarkers = () => {
+    if (map) {
+      const newMarkers = locations.map((location: any) => {
+        const marker = new google.maps.Marker({
+          position: location.geoLocation,
+          title: location['Job Name'],
+          map: map,
+        });
 
-   useEffect(() => {
-      if (map) {
-         filterMarkers(selectedContractor);
-      }
-   }, [selectedContractor, map]);
+        const infoWindow = new google.maps.InfoWindow();
 
-   const loadAllLocations = () => {
-      if (map) {
-         const allMarkers: google.maps.Marker[] = [];
-         const bounds = new window.google.maps.LatLngBounds();
+        marker.addListener('click', () => {
+          if (activeInfoWindow) {
+            activeInfoWindow.close();
+          }
 
-         locations.forEach((location) => {
-            addMarker(location, allMarkers, bounds);
-         });
+          const content = document.createElement('div');
+          const root = createRoot(content);
+          root.render(
+            <MapInfoCardAerialView
+              title={location['Job Name']}
+              address={location.Address}
+              contractor={location.GC}
+              sqFt={location['sq/ft']}
+              contractorWebsite={location['Contractor Website']}
+              funFacts= { `\nTotal Exterior Linear Feet Built:${location['Exterior LF']}\nTotal Interior Linear Feet Built: ${location['Interior LF']}`}
+              onClose={() => infoWindow.close()}
+              geoLocation={location.geoLocation}
+            />
+          );
 
-         setMarkers(allMarkers);
-         if (!bounds.isEmpty()) {
-            map.fitBounds(bounds);
-         }
-      }
-   };
+          infoWindow.setContent(content);
+          infoWindow.open(map, marker);
+          
+          setActiveInfoWindow(infoWindow);
+        });
 
-   const addMarker = (
-      location: MapInfoCard,
-      allMarkers: google.maps.Marker[],
-      bounds: google.maps.LatLngBounds,
-   ) => {
-      if (map) {
-         const position = new google.maps.LatLng(
-            location.geoLocation.lat,
-            location.geoLocation.lng,
-         );
-         const marker = new google.maps.Marker({
-            map: map,
-            position: position,
-            title: location.title,
-         });
+        return marker;
+      });
+      
+      setMarkers(newMarkers);
+      setAllMarkers(newMarkers); // Maintain the complete list of markers
+    }
+  };
 
-         const infoWindow = new google.maps.InfoWindow();
+  const filterMarkers = (contractor: string) => {
+    if (map) {
+      const bounds = new window.google.maps.LatLngBounds();
 
-         marker.addListener('click', () => {
-            const content = document.createElement('div');
-            const root = createRoot(content);
-            root.render(
-               <MapInfoCardAerialView
-                  title={location.title}
-                  address={location.address}
-                  contractor={location.contractor}
-                  sqFt={location.sqFt}
-                  contractorWebsite={location.contractorWebsite}
-                  funFacts={location.funFacts}
-                  onClose={() => infoWindow.close()}
-                  geoLocation={location.geoLocation}
-               />,
-            );
-            infoWindow.setContent(content);
-            infoWindow.open(map, marker);
-
-            // Close the previously opened info window
-            if (activeInfoWindow) {
-               activeInfoWindow.close();
-            }
-            setActiveInfoWindow(infoWindow);
-         });
-
-         allMarkers.push(marker);
-         const markerPosition = marker.getPosition();
-         if (markerPosition) {
+      allMarkers.forEach((marker) => {
+        const location = locations.find((loc: any) => loc['Job Name'] === marker.getTitle());
+        if (location && (!contractor || location.GC === contractor)) {
+          marker.setMap(map);
+          const markerPosition = marker.getPosition();
+          if (markerPosition) {
             bounds.extend(markerPosition);
-         }
+          }
+        } else {
+          marker.setMap(null);
+        }
+      });
+
+      if (bounds.isEmpty()) {
+        map.setCenter({ lat: 47.6062, lng: -122.3321 });
+        map.setZoom(10);
+      } else {
+        map.fitBounds(bounds);
       }
-   };
+    }
+  };
 
-   const filterMarkers = (contractor: string) => {
-      if (map) {
-         const bounds = new window.google.maps.LatLngBounds();
-         const filteredMarkers = markers.filter((marker) => {
-            const location = locations.find(
-               (loc) => loc.title === marker.getTitle(),
-            );
-            return (
-               location && (!contractor || location.contractor === contractor)
-            );
-         });
+  const windowSize = useWindowSize();
+  const isMobile = windowSize.width <= 768;
 
-         filteredMarkers.forEach((marker) => {
-            marker.setMap(map);
-            const markerPosition = marker.getPosition();
-            if (markerPosition) {
-               bounds.extend(markerPosition);
-            }
-         });
-
-         markers.forEach((marker) => {
-            if (!filteredMarkers.includes(marker)) {
-               marker.setMap(null);
-            }
-         });
-
-         if (filteredMarkers.length === 1) {
-            const markerPosition = filteredMarkers[0].getPosition();
-            if (markerPosition) {
-               map.setCenter(markerPosition);
-               map.setZoom(15); // Adjust the zoom level as needed
-            }
-         } else if (!bounds.isEmpty()) {
-            // Fit bounds if there are multiple markers
-            map.fitBounds(bounds);
-         }
-      }
-   };
-
-   const windowSize = useWindowSize();
-   const isMobile = windowSize.width <= 768;
-   return (
-      <Flex
-         direction="column"
-         width="100%"
-         minHeight="80vh"
-         p={4}
-         alignItems="center"
+  return (
+    <Flex
+      direction="column"
+      width="100%"
+      minHeight="80vh"
+      p={4}
+      alignItems="center"
+    >
+      <Heading as="h1" mb={5} textAlign="center" color="green.600">
+        Our Job Locations
+      </Heading>
+      <Box
+        width={
+          isMobile
+            ? '90vw'
+            : `${Math.min(windowSize.width * 0.95, 1200)}px`
+        }
+        mx="auto"
       >
-         <Heading as="h1" mb={5} textAlign="center" color="green.600">
-            Our Job Locations
-         </Heading>
-         <Box
-            width={
-               isMobile
-                  ? '90vw'
-                  : `${Math.min(windowSize.width * 0.95, 1200)}px`
-            }
-            mx="auto"
-         >
-            <Select
-               value={selectedContractor}
-               onChange={(e) => setSelectedContractor(e.target.value)}
-               mb={4}
-               width="200px"
-               alignSelf="flex-start"
-            >
-               <option value="">All Contractors</option>
-               {contractors.map((contractor) => (
-                  <option key={contractor} value={contractor}>
-                     {contractor}
-                  </option>
-               ))}
-            </Select>
-         </Box>
-         <Box
-            id="map"
-            flexGrow="1"
-            height="66vh"
-            width={
-               isMobile
-                  ? '90vw'
-                  : `${Math.min(windowSize.width * 0.95, 1200)}px`
-            }
-            mx="auto"
-         />
-      </Flex>
-   );
+        <Select
+          value={selectedContractor}
+          onChange={(e) => setSelectedContractor(e.target.value)}
+          mb={4}
+          width="200px"
+          alignSelf="flex-start"
+        >
+          <option value="">All Contractors</option>
+          {contractors.map((contractor) => (
+            <option key={contractor} value={contractor}>
+              {contractor}
+            </option>
+          ))}
+        </Select>
+        <Box
+          id="map"
+          flexGrow="1"
+          height="66vh"
+          width={
+            isMobile
+              ? '90vw'
+              : `${Math.min(windowSize.width * 0.95, 1200)}px`
+          }
+          mx="auto"
+        />
+      </Box>
+    </Flex>
+  );
 };
 
 export default Map;
