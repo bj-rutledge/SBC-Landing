@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Box, Select, Heading, Flex } from '@chakra-ui/react';
 import MapInfoCardAerialView from './MapInfoCardAerialView';
-import { MapInfoCard } from '../types';
 import useWindowSize from '../hooks/useWindowSize';
 import { contractors } from './data/contractors'; 
 import useReadJsonFile from '../hooks/useReadJsonFile';
 
 const key = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
+//todo Need to set up a map ID in the Google Cloud Console
+//current map id is a placeholder
+const mapId = 'DEMO_MAP_ID'; 
 
 declare global {
   interface Window {
@@ -18,8 +20,8 @@ declare global {
 const Map: React.FC = () => {
   const [map, setMap] = useState<google.maps.Map | null>(null);
   const [selectedContractor, setSelectedContractor] = useState<string>('');
-  const [markers, setMarkers] = useState<google.maps.Marker[]>([]);
-  const [allMarkers, setAllMarkers] = useState<google.maps.Marker[]>([]);
+  const [markers, setMarkers] = useState<google.maps.marker.AdvancedMarkerElement[]>([]);
+  const [allMarkers, setAllMarkers] = useState<google.maps.marker.AdvancedMarkerElement[]>([]);
   const [activeInfoWindow, setActiveInfoWindow] = useState<google.maps.InfoWindow | null>(null);
   const [locations, setLocations] = useState<any>([]);
 
@@ -27,7 +29,7 @@ const Map: React.FC = () => {
 
   useEffect(() => {
     setLocations(jobLocations);
-  }, [jobLocations]); 
+  }, [jobLocations]);
 
   useEffect(() => {
     const initMap = () => {
@@ -37,6 +39,7 @@ const Map: React.FC = () => {
           center: { lat: 47.6062, lng: -122.3321 },
           zoom: 10,
           mapTypeId: google.maps.MapTypeId.SATELLITE,
+          mapId: mapId, // Use the mapId here
         });
         setMap(mapInstance);
       } else {
@@ -47,7 +50,7 @@ const Map: React.FC = () => {
     if (!map) {
       window.initMap = initMap;
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap&libraries=marker`;
       script.async = true;
       script.defer = true;
       document.head.appendChild(script);
@@ -61,15 +64,20 @@ const Map: React.FC = () => {
   }, [map, locations]);
 
   useEffect(() => {
-    if (map) {
+    if (map && selectedContractor !== '') {
       filterMarkers(selectedContractor);
+    } else if (map) {
+      // Show all markers if no contractor is selected
+      allMarkers.forEach((marker) => marker.map = map);
     }
   }, [selectedContractor]);
 
   const addMarkers = () => {
     if (map) {
+      const bounds = new window.google.maps.LatLngBounds();
+
       const newMarkers = locations.map((location: any) => {
-        const marker = new google.maps.Marker({
+        const marker = new google.maps.marker.AdvancedMarkerElement({
           position: location.geoLocation,
           title: location['Job Name'],
           map: map,
@@ -91,7 +99,7 @@ const Map: React.FC = () => {
               contractor={location.GC}
               sqFt={location['sq/ft']}
               contractorWebsite={location['Contractor Website']}
-              funFacts= { `\nTotal Exterior Linear Feet Built:${location['Exterior LF']}\nTotal Interior Linear Feet Built: ${location['Interior LF']}`}
+              funFacts={`\nTotal Exterior Linear Feet Built:${location['Exterior LF']}\nTotal Interior Linear Feet Built: ${location['Interior LF']}`}
               onClose={() => infoWindow.close()}
               geoLocation={location.geoLocation}
             />
@@ -99,15 +107,25 @@ const Map: React.FC = () => {
 
           infoWindow.setContent(content);
           infoWindow.open(map, marker);
-          
+
           setActiveInfoWindow(infoWindow);
         });
 
+        const markerPosition = marker.position;
+        if (markerPosition) {
+          bounds.extend(markerPosition);
+        }
+
         return marker;
       });
-      
+
       setMarkers(newMarkers);
       setAllMarkers(newMarkers); // Maintain the complete list of markers
+
+      // Adjust the map to fit all markers
+      if (!bounds.isEmpty()) {
+        map.fitBounds(bounds);
+      }
     }
   };
 
@@ -116,15 +134,15 @@ const Map: React.FC = () => {
       const bounds = new window.google.maps.LatLngBounds();
 
       allMarkers.forEach((marker) => {
-        const location = locations.find((loc: any) => loc['Job Name'] === marker.getTitle());
+        const location = locations.find((loc: any) => loc['Job Name'] === marker.title);
         if (location && (!contractor || location.GC === contractor)) {
-          marker.setMap(map);
-          const markerPosition = marker.getPosition();
+          marker.map = map;
+          const markerPosition = marker.position;
           if (markerPosition) {
             bounds.extend(markerPosition);
           }
         } else {
-          marker.setMap(null);
+          marker.map = null;
         }
       });
 
