@@ -5,7 +5,7 @@
 
 
 import React, { useEffect, useState } from 'react';
-import { Box, Heading, Text, SimpleGrid, List, useStyleConfig, theme } from '@chakra-ui/react';
+import { Box, Heading, Text, SimpleGrid, List, useStyleConfig } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Layout from '../components/Layout';
@@ -73,9 +73,9 @@ const IndexPage: React.FC = () => {
           animate={{ opacity: animate ? 1 : 0 }}
           transition={{ duration: 2, delay: 0.5 }} // Increase duration and add delay
         >
-          <Heading as="h1" size={{ base: '2xl', md: '4xl' }} mb={6}>
+          <Heading  as="h1" size={{ base: '2xl', md: '4xl' }} mb={6}>
             <motion.span
-              className="pop-in"
+              className="text-pop-in"
               initial={{ opacity: 0 }}
               animate={{ opacity: animate ? 1 : 0 }}
               transition={{ duration: 2, delay: 1 }} // Increase duration and add delay
@@ -83,7 +83,7 @@ const IndexPage: React.FC = () => {
               IDEA.
             </motion.span>{' '}
             <motion.span
-              className="pop-in"
+              className="text-pop-in"
               initial={{ opacity: 0 }}
               animate={{ opacity: animate ? 1 : 0 }}
               transition={{ duration: 2, delay: 2 }} // Increase duration and add delay
@@ -91,7 +91,7 @@ const IndexPage: React.FC = () => {
               DESIGN.
             </motion.span>{' '}
             <motion.span
-              className="pop-in"
+              className="text-pop-in"
               initial={{ opacity: 0 }}
               animate={{ opacity: animate ? 1 : 0 }}
               transition={{ duration: 2, delay: 3 }} // Increase duration and add delay
@@ -122,7 +122,7 @@ const IndexPage: React.FC = () => {
             as="h2"
             size={{ base: 'lg', md: '2xl' }}
             mb={4}
-            className='pop-in'
+            className='text-pop-in'
             textAlign="center"
           >
             {`${addCommasToNumber(data?.['Total Square Footage'])} Square Feet Built and Counting`}
@@ -137,7 +137,7 @@ const IndexPage: React.FC = () => {
         </SimpleGrid>
 
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} mb={10} alignItems="center">
-          <ClientImage
+          <ClientImage 
             src={eveningSite}
             alt="Evening Site"
             display={{ base: 'block', md: 'none' }}
@@ -160,7 +160,7 @@ const IndexPage: React.FC = () => {
                 mb={4}
                 textAlign={{ base: 'center', md: 'left' }}
                 sx={headingStyles}
-                color={theme.colors.green[600]}
+                color='green.600'
               >
                 Benefits of Using ACAD Design/Layout in a Controlled Manufacturing Environment
               </Heading>

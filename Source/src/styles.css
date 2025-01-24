@@ -50,26 +50,92 @@
    animation: slideInRight 1s forwards;
 }
 
-/* Styles for the pop-in effect */
-.pop-in {
+/*text shadow*/
+.text-shadow {
+   font-weight: bold;
+   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for pop effect */
+}
+
+/* Ensure the image container is responsive */
+.team-image-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   height: 400px;
+   max-height: 800px; /* Adjust as needed */
+   overflow: hidden;
+}
+/*account for different screen sizes */
+@media (max-width: 1200px) {
+   .team-image-container {
+      height: 300px; /* Adjust height for large tablets */
+   }
+}
+
+@media (max-width: 768px) {
+   .team-image-container {
+      height: 250px; /* Adjust height for small tablets */
+   }
+}
+
+@media (max-width: 480px) {
+   .team-image-container {
+      height: 200px; /* Adjust height for mobile devices */
+   }
+}
+
+/* Keyframes for pop-in effect */
+@keyframes popIn {
+   0% {
+      transform: scale(0.5);
+      opacity: 0;
+   }
+   50% {
+      transform: scale(1.2);
+      opacity: 0.5;
+   }
+   100% {
+      transform: scale(1);
+      opacity: 1;
+   }
+}
+
+.text-pop-in {
    /* display: inline-block; */
    animation: popIn 1s ease-in-out forwards;
    font-weight: bold;
    color: #319e74; /* Use a color that matches theme */
    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for pop effect */
 }
+/* Apply the pop-in animation to the pop-in class */
+.pop-in {
+   animation: popIn 1s ease-in-out;
+}
+
+/* Styles for the text container */
+.text-container {
+   position: relative;
+   display: inline-block;
+   padding: 20px;
+   margin: 20px;
+   color: white;
+   font-size: 2em;
+   font-weight: bold;
+   text-align: center;
+}
 
 .heading-overlay {
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
+   position: relative; /* Ensure the text position remains unchanged */
    color: white;
-   font-size: 4.5rem !important; /* Base size for larger screens */
+   /* font-size: 4.5rem !important; Base size for larger screens */
    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7); /* Larger and more visible shadow */
    z-index: 1;
    max-width: 90% !important; /* Ensure the text stays within the screen bounds */
    white-space: normal !important; /* Allow text wrapping */
+   padding: 10px; /* Add padding to create space around the text */
+   background: rgba(0, 0, 0, 0.2); /* Semi-transparent black background */
+   border-radius: 10px; /* Optional: Add rounded corners */
 }
 
 /* Responsive text for smaller screens */
@@ -89,4 +155,54 @@
    .heading-overlay {
       font-size: 1.2rem !important; /* Smaller size for mobile devices */
    }
+}
+/* Styles for the image container */
+.image-container {
+   position: relative;
+   width: 100%;
+   height: 100vh; /* Adjust as needed */
+   background-size: cover;
+   background-position: center;
+}
+
+/* Add a semi-transparent overlay with blur */
+.image-container::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+   backdrop-filter: blur(10px); /* Apply blur to the background image */
+   z-index: 1; /* Place the overlay above the image */
+}
+
+/* Keyframes for fade-in effect */
+@keyframes fadeIn {
+   0% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 1;
+   }
+}
+
+/* Apply the fade-in animation to the fade-in class */
+.fade-in {
+   animation: fadeIn 3s ease-in-out;
+}
+
+/* Ensure the card container has a fixed height */
+.card-container {
+   min-height: 400px; /* Adjust as needed */
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+/* Initially hide the cards */
+.hide-team-member-card {
+   opacity: 0;
+   transition: opacity 1s ease-in-out;
 }
