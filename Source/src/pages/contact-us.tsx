@@ -1,4 +1,4 @@
-// src/pages/contact-us.tsx
+
 import * as React from 'react';
 import Layout from '../components/Layout';
 import {
@@ -15,8 +15,9 @@ import {
 const ContactUsPage = () => (
    <Layout>
       <Box p={5}>
-         <Heading as="h1">Contact Us</Heading>
-         <Text mt={4}>
+         <Heading color='green.600' as="h1">Contact Us</Heading>
+         <Text 
+          mt={4}>
             We'd love to hear from you! Please fill out the form below and we'll
             get in touch with you as soon as possible.
          </Text>
@@ -33,7 +34,7 @@ const ContactUsPage = () => (
                <FormLabel>Message</FormLabel>
                <Textarea placeholder="Your Message" />
             </FormControl>
-            <Button mt={4} colorScheme="blue">
+            <Button  mt={4} bg='green.500'color='white' _hover={{ bg: 'green.600' }}>
                Submit
             </Button>
          </Box>
