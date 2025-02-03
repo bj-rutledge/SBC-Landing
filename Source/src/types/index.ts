@@ -21,6 +21,7 @@ export interface MapInfoCard {
   contractorWebsite?: string;
   funFacts?: string;
   contractor?: string;
+  framer?: string;
   sqFt?: string;
    geoLocation: {
       lat: number;

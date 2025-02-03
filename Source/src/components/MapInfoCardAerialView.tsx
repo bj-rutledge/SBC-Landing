@@ -3,6 +3,9 @@ import axios from 'axios';
 import { Box, Text, Heading, Link} from '@chakra-ui/react';
 import { keyframes } from '@emotion/react';
 import { MapInfoCard } from '../types';
+import { useSbcOutputData } from '../contexts/SbcOutputDataContext';
+
+
 const key = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
 let debugAerialCount = 0;
 let debugStreetCount = 0;
@@ -13,6 +16,7 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
   contractorWebsite,
   funFacts,
   contractor,
+  framer,
   sqFt,
   onClose,
 }) => {
@@ -145,7 +149,9 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
       opacity: 1;
     }
   `;
-
+  
+const { data: totalSquareFootage, loading, error } = useSbcOutputData();
+  
   return (
     <Box
       className="info-window"
@@ -191,7 +197,12 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
         </Text> */}
         {contractor && (
           <Text>
-            <strong>Contractor:</strong> {contractor}
+            <strong>General Contractor:</strong> {contractor}
+          </Text>
+        )}
+        {framer && (
+          <Text>
+            <strong>Framer:</strong> {framer}
           </Text>
         )}
         {sqFt && (
