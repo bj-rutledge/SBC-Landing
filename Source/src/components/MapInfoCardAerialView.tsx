@@ -180,7 +180,7 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
       )}
       <Box className="info-window-content" p={4}>
         <Text fontSize="lg" textAlign="center" fontWeight="bold" mb={6}>
-          Over the last 20 years, we have built a total of 13,584,812 square feet of projects!
+          Since 2013 we have built a total of 13,584,812 square feet of projects!
         </Text>
         <Heading as="h1" size="md" textAlign="center">
           <strong>{title}</strong>
