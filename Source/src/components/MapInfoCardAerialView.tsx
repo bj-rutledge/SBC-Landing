@@ -3,6 +3,9 @@ import axios from 'axios';
 import { Box, Text, Heading, Link} from '@chakra-ui/react';
 import { keyframes } from '@emotion/react';
 import { MapInfoCard } from '../types';
+// import { useSbcOutputData } from '../contexts/SbcOutputDataContext';
+
+
 const key = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
 let debugAerialCount = 0;
 let debugStreetCount = 0;
@@ -13,6 +16,7 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
   contractorWebsite,
   funFacts,
   contractor,
+  framer,
   sqFt,
   onClose,
 }) => {
@@ -24,6 +28,7 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
   const [isAerialViewLoaded, setAerialViewLoaded] = useState(false);
   const [isStreetViewLoaded, setStreetViewLoaded] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+  // const {data, loading, error } = useSbcOutputData();
 
   const fetchAerialViewUrl = useCallback(async () => {
     if(isAerialViewLoaded) return;
@@ -145,7 +150,8 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
       opacity: 1;
     }
   `;
-
+  
+  
   return (
     <Box
       className="info-window"
@@ -179,9 +185,9 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
         <Text>Loading aerial view or street view...</Text>
       )}
       <Box className="info-window-content" p={4}>
-        <Text fontSize="lg" textAlign="center" fontWeight="bold" mb={6}>
-          Since 2013 we have built a total of 13,584,812 square feet of projects!
-        </Text>
+        {/* <Text fontSize="lg" textAlign="center" fontWeight="bold" mb={6}>
+          {data? `Total Square Footage: ${data["Total Square Footage"]}` : ''}
+        </Text> */}
         <Heading as="h1" size="md" textAlign="center">
           <strong>{title}</strong>
         </Heading>
@@ -191,7 +197,12 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
         </Text> */}
         {contractor && (
           <Text>
-            <strong>Contractor:</strong> {contractor}
+            <strong>General Contractor:</strong> {contractor}
+          </Text>
+        )}
+        {framer && (
+          <Text>
+            <strong>Framer:</strong> {framer}
           </Text>
         )}
         {sqFt && (

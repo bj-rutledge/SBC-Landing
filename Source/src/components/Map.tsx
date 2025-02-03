@@ -97,6 +97,7 @@ const Map: React.FC = () => {
               title={location['Job Name']}
               address={location.Address}
               contractor={location.GC}
+              framer={location.Framer}
               sqFt={location['sq/ft']}
               contractorWebsite={location['Contractor Website']}
               funFacts={`\nTotal Exterior Linear Feet Built:${location['Exterior LF']}\nTotal Interior Linear Feet Built: ${location['Interior LF']}`}
