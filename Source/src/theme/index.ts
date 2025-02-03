@@ -103,7 +103,7 @@ const theme = extendTheme({
         display: 'inline-block',
         animation: 'popIn 1s ease-in-out forwards',
         fontWeight: 'bold',
-        color: 'tomato', // Use a color from your theme or a custom color
+        color: 'green.600',
         textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', // Add shadow for pop effect
       },
     },
