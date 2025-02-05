@@ -191,10 +191,10 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
         <Heading as="h1" size="md" textAlign="center">
           <strong>{title}</strong>
         </Heading>
-        {address && (<Text>{address}</Text>)}
-        {/* <Text>
+        {/* {address && (<Text>{address}</Text>)} */}
+        <Text>
           <strong>Address:</strong> {address}
-        </Text> */}
+        </Text>
         {contractor && (
           <Text>
             <strong>General Contractor:</strong> {contractor}
