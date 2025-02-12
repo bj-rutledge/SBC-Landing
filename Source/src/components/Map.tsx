@@ -1,3 +1,7 @@
+/**
+ * Created by BJ Rutledge
+ * Date: 2024-12-11
+ **/
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Box, Select, Heading, Flex } from '@chakra-ui/react';
@@ -7,8 +11,10 @@ import { contractors } from './data/contractors';
 import useReadJsonFile from '../hooks/useReadJsonFile';
 
 const key = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
+
 //todo Need to set up a map ID in the Google Cloud Console
-//current map id is a placeholder
+//current map id is a placeholder. Map ID is required for the map to render 
+//under the new AdvancedMarkerElement
 const mapId = 'DEMO_MAP_ID'; 
 
 declare global {
@@ -92,6 +98,9 @@ const Map: React.FC = () => {
 
           const content = document.createElement('div');
           const root = createRoot(content);
+          //funFacts is a string that contains the total exterior and interior linear feet built
+          //if neither are avaialble, it will be undefined
+          const funFacts = location['Exterior LF'] && location['Interior LF'] ? `\nTotal Exterior Linear Feet Built:${location['Exterior LF']}\nTotal Interior Linear Feet Built: ${location['Interior LF']}` : undefined;
           root.render(
             <MapInfoCardAerialView
               title={location['Job Name']}
@@ -100,7 +109,7 @@ const Map: React.FC = () => {
               framer={location.Framer}
               sqFt={location['sq/ft']}
               contractorWebsite={location['Contractor Website']}
-              funFacts={`\nTotal Exterior Linear Feet Built:${location['Exterior LF']}\nTotal Interior Linear Feet Built: ${location['Interior LF']}`}
+              funFacts={funFacts}
               onClose={() => infoWindow.close()}
               geoLocation={location.geoLocation}
             />
