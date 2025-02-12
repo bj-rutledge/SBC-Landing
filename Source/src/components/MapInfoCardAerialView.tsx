@@ -202,7 +202,7 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
         )}
         {framer && (
           <Text>
-            <strong>Framer:</strong> {framer}
+            <strong>Framing Contractor:</strong> {framer}
           </Text>
         )}
         {sqFt && (

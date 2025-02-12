@@ -7,7 +7,7 @@ import { ReactNode } from 'react';
 import {
    Box,
    Flex,
-   Menu,
+   Menu,  
    MenuButton,
    MenuList,
    MenuItem,
@@ -19,11 +19,12 @@ import {
 import { Link as GatsbyLink } from 'gatsby';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import NavLink from './NavLink'; // Import the NavLink component
-import logo from '../images/sbc-logo.jpg'; // Import the logo image
+import logo from '../images/sbc-site-logo.png'; // Import the logo image
 
 interface LayoutProps {
    children: ReactNode;
 }
+
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
    const isMobile = useBreakpointValue({ base: true, md: false });
