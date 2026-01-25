@@ -1,3 +1,7 @@
+/**
+ * Created by BJ Rutledge
+ * Date: 2024-12-11
+ **/
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Box, Select, Heading, Flex } from '@chakra-ui/react';
@@ -8,7 +12,8 @@ import useReadJsonFile from '../hooks/useReadJsonFile';
 
 const key = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
 //todo Need to set up a map ID in the Google Cloud Console
-//current map id is a placeholder
+//current map id is a placeholder. Map ID is required for the map to render 
+//under the new AdvancedMarkerElement
 const mapId = 'DEMO_MAP_ID'; 
 
 declare global {
