@@ -3,7 +3,8 @@
 
 # Start a simple http server so we can 
 # mimic api calls in dev. 
-
+# Run script: 
+# . http-dev-file-server.sh -d ../convert-sbc-jobs-to-json/
 # Default values
 directory=$(pwd)
 port=8080
