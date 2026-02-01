@@ -19,7 +19,6 @@ import sunset from '../images/landing/sunset.jpg';
 import quotes from '../components/data/quotes';
 import { useSbcOutputData } from '../contexts/SbcOutputDataContext';
 import addCommasToNumber from '../components/helpers/addCommasToNumber';
-import '../styles.css'; // Import the custom CSS file
 
 const IndexPage: React.FC = () => {
   const [animate, setAnimate] = useState(false);
@@ -100,7 +99,7 @@ const IndexPage: React.FC = () => {
             </motion.span>
           </Heading>
           <Text fontSize={{ base: 'lg', md: '2xl' }} fontWeight="bold">
-            Driven by a passion for innovative and timeless design combined with superior craftsmanship, Sound Building Inc. delivers building solutions that are high quality and affordable.
+            Driven by a passion for innovation, timeless design, and superior craftsmanship, SBC delivers high-quality, cost-effective building solutions—specializing in precision-engineered wall panels for residential and multi-family projects. Our collaborative design process identifies and resolves potential issues early, before concrete is poured or framing begins, minimizing costly on-site changes and ensuring a trade-friendly, seamless construction experience from start to finish.
           </Text>
         </MotionBox>
       </Box>
@@ -132,7 +131,7 @@ const IndexPage: React.FC = () => {
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} mb={10} alignItems="center">
           <ClientImage src={bigCrane} alt="Big Crane" />
           <Text fontSize={{ base: 'md', md: 'lg' }} textAlign={{ base: 'center', md: 'left' }}>
-            Sound Building Components (SBC) was formed out of necessity to modernize the “Wall Panel” component for building Multi-family projects. Wall Panels are wood framed walls built in a factory environment to maximize the percent of materials used and minimize waste caused by typical onsite framing practices. SBC is dedicated to building high quality wall panels to aid in the construction of residential buildings. Collectively SBC has over 20 years in the wall panel industry. Our goal is to make Sound Building Components a household name among Architects, Structural Engineers, General Contractors and Framers in the Pacific Northwest.
+            Sound Building Components Inc. (SBC) was formed in 2013 out of necessity to modernize the “Wall Panel” component for building multi-family / mixed used projects. Wall Panels are wood framed walls built in a factory environment to maximize the percentage of materials used and minimize waste caused by typical onsite framing practices.  SBC specializes in 5 & 6 story wood framed buildings ranging from 30,000sq/ft to 250,000 + sq/ft. SBC is dedicated to building high quality wall panels to aid in the construction of all projects; our systematic design process is what sets us apart from all other wall panel companies. Collectively, SBC has over 35 years in the wall panel industry. Our goal is to make Sound Building Components a household name among Architects, Structural Engineers, Developers, General Contractors, and Framers in the Pacific Northwest.
           </Text>
         </SimpleGrid>
 

@@ -5,7 +5,7 @@
 import * as React from 'react';
 import Layout from '../components/Layout';
 import { Box, Heading, Text, SimpleGrid } from '@chakra-ui/react';
-const {useInView} = require('react-intersection-observer');
+import { useInView } from 'react-intersection-observer';
 import Card from '../components/AboutCard';
 import MotionBox from '../components/MotionBox';
 import gregImg from '../images/greg.jpg';
@@ -15,7 +15,6 @@ import ClientImage from '../components/ClientImage'; // Import the ClientImage c
 import daveyJones from '../images/davey-bg.jpg';
 import steve from '../images/steve.jpg';
 import team from '../images/team.jpg';
-import '../styles.css';
 
 const OurTeamPage: React.FC = () =>{
    const {ref: ref1, inView: inView1} = useInView({
@@ -83,12 +82,12 @@ const OurTeamPage: React.FC = () =>{
                   <Box
                      ref={ref1}
                      className={inView1 ? 'fade-in' : 'fade-out'}
-                  >
+                  >  {/*description="James began his career in wall panels in 1998 at Fabricated Wood Products in Owatonna, MN. By 1999, he joined a La Conner, WA panel company mastering traditional blueprint methods. Leveraging early opportunities to create shop drawings, he developed the precise, efficient process SBC uses today. In 2005, he launched Pfaff Contracting & Design, building homes hands-on in framing, siding, roofing, and finish carpentry—sharpening his design expertise. From 2006–2012, he consulted while framing by day and designing panels by night. In 2013, he founded SBC."*/}
                      <Card
                         imageSrc={james}
                         name="James Pfaff"
-                        description="With a diverse 25-year plus career in construction and wall panel design, James has designed over 23 million square feet of residential space, leveraging his hands-on experience in framing, siding, roofing, and finish work, and his expertise in using AutoCAD for wall panel design."
                         ImageComponent={ClientImage} // Use ClientImage for loading the image
+                     description="With a diverse 25-year plus career in construction and wall panel design, James has designed over 23 million square feet of residential space, leveraging his hands-on experience in framing, siding, roofing, and finish work, and his expertise in using AutoCAD for wall panel design."   
                      />
                   </Box>
                   <Box
