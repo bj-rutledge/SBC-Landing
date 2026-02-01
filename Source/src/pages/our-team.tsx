@@ -16,27 +16,56 @@ import daveyJones from '../images/davey-bg.jpg';
 import steve from '../images/steve.jpg';
 import team from '../images/team.jpg';
 
-const OurTeamPage: React.FC = () =>{
-   const {ref: ref1, inView: inView1} = useInView({
-      triggerOnce: true,
-      threshold: 0.1,
-   });   
-   const {ref: ref2, inView: inView2} = useInView({
-      triggerOnce: true,
-      threshold: 0.1,
-   });      
-   const {ref: ref3, inView: inView3} = useInView({
-      triggerOnce: true,
-      threshold: 0.1,
-   });      
-   const {ref: ref4, inView: inView4} = useInView({
-      triggerOnce: true,
-      threshold: 0.1,
-   });  
-   const {ref: ref5, inView: inView5} = useInView({
-      triggerOnce: true,
-      threshold: 0.1,
-   }); 
+// Define team member data structure
+interface TeamMember {
+  name: string;
+  imageSrc: any; // Using any for image import types for simplicity, or use ImageDataLike
+  description: string;
+}
+
+const teamMembers: TeamMember[] = [
+  {
+    name: "James Pfaff",
+    imageSrc: james,
+    description: "With a diverse 25-year plus career in construction and wall panel design, James has designed over 23 million square feet of residential space, leveraging his hands-on experience in framing, siding, roofing, and finish work, and his expertise in using AutoCAD for wall panel design."
+  },
+  {
+    name: "Julia Phay Pfaff",
+    imageSrc: julia,
+    description: "Julia is our office Manager, and is dedicated to making Sound Building Components a safe and welcoming environment where employees are proud of the work they accomplish."
+  },
+  {
+    name: "Greg Norvell",
+    imageSrc: gregImg,
+    description: "Greg, starting in the Wall Panel Industry in 1992, has spent 28 years building and shipping panelized homes and apartments to Alaska, Japan, and Greater Seattle, proving his dedication to quality, excellent managerial skills, and timely project completion."
+  },
+  {
+    name: "Davey Jones",
+    imageSrc: daveyJones,
+    description: "With a diverse 25-year career in construction and wall panel design, James has designed over 23 million square feet of residential space. He leverages hands-on experience in framing, siding, roofing, and finish work, along with expertise in AutoCAD for wall panel design."
+  },
+  {
+    name: "Steve Dausey",
+    imageSrc: steve,
+    description: "Steve is a super cool dude who knows karate!"
+  }
+];
+
+// Reusable component for individual team members to handle their own animation state
+const TeamMemberCard: React.FC<TeamMember> = ({ name, imageSrc, description }) => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  return (
+    <Box ref={ref} className={inView ? 'fade-in' : 'fade-out'}>
+      <Card imageSrc={imageSrc} name={name} description={description} ImageComponent={ClientImage} />
+    </Box>
+  );
+};
+
+const OurTeamPage: React.FC = () => {
    return (
    
       <Layout>
@@ -79,61 +108,9 @@ const OurTeamPage: React.FC = () =>{
    
             <Box mt={8} className='card-container'>
                <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={4}>
-                  <Box
-                     ref={ref1}
-                     className={inView1 ? 'fade-in' : 'fade-out'}
-                  >  {/*description="James began his career in wall panels in 1998 at Fabricated Wood Products in Owatonna, MN. By 1999, he joined a La Conner, WA panel company mastering traditional blueprint methods. Leveraging early opportunities to create shop drawings, he developed the precise, efficient process SBC uses today. In 2005, he launched Pfaff Contracting & Design, building homes hands-on in framing, siding, roofing, and finish carpentry—sharpening his design expertise. From 2006–2012, he consulted while framing by day and designing panels by night. In 2013, he founded SBC."*/}
-                     <Card
-                        imageSrc={james}
-                        name="James Pfaff"
-                        ImageComponent={ClientImage} // Use ClientImage for loading the image
-                     description="With a diverse 25-year plus career in construction and wall panel design, James has designed over 23 million square feet of residential space, leveraging his hands-on experience in framing, siding, roofing, and finish work, and his expertise in using AutoCAD for wall panel design."   
-                     />
-                  </Box>
-                  <Box
-                     ref={ref2}
-                     className={inView2 ? 'fade-in' : 'fade-out'}
-                  >
-                     <Card
-                        imageSrc={julia}
-                        name="Julia Phay Pfaff"
-                        description="Julia is our office Manager, and is dedicated to making Sound Building Components a safe and welcoming environment where employees are proud of the work they accomplish."
-                        ImageComponent={ClientImage} // Use ClientImage for loading the image
-                     />
-                  </Box>
-                  <Box
-                     ref={ref3}
-                     className={inView3 ? 'fade-in' : 'fade-out'}
-                  >
-                     <Card
-                        imageSrc={gregImg}
-                        name="Greg Norvell"
-                        description="Greg, starting in the Wall Panel Industry in 1992, has spent 28 years building and shipping panelized homes and apartments to Alaska, Japan, and Greater Seattle, proving his dedication to quality, excellent managerial skills, and timely project completion."
-                        ImageComponent={ClientImage} // Use ClientImage for loading the image
-                     />
-                  </Box>
-                  <Box
-                     ref={ref4}
-                     className={inView4 ? 'fade-in' : 'fade-out'}
-                  >
-                     <Card
-                        imageSrc={daveyJones}
-                        name="Davey Jones"
-                        description="With a diverse 25-year career in construction and wall panel design, James has designed over 23 million square feet of residential space. He leverages hands-on experience in framing, siding, roofing, and finish work, along with expertise in AutoCAD for wall panel design."
-                        ImageComponent={ClientImage}
-                     />
-                  </Box>
-                  <Box
-                     ref={ref5}
-                     className={inView5 ? 'fade-in' : 'fade-out'}
-                  >
-                     <Card
-                        imageSrc={steve}
-                        name="Steve Dausey"
-                        description="Steve is a super cool dude who knows karate!"
-                        ImageComponent={ClientImage}
-                     />
-                  </Box>
+                  {teamMembers.map((member, index) => (
+                     <TeamMemberCard key={index} {...member} />
+                  ))}
                </SimpleGrid>
             </Box>
          </Box>

@@ -55,7 +55,7 @@ const Map: React.FC = () => {
     if (!map) {
       window.initMap = initMap;
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap&libraries=marker`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap&libraries=marker&loading=async`;
       script.async = true;
       script.defer = true;
       document.head.appendChild(script);
@@ -90,7 +90,7 @@ const Map: React.FC = () => {
 
         const infoWindow = new google.maps.InfoWindow();
 
-        marker.addListener('click', () => {
+        marker.addListener('gmp-click', () => {
           if (activeInfoWindow) {
             activeInfoWindow.close();
           }

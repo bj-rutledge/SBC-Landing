@@ -3,9 +3,7 @@ import type { GatsbySSR } from 'gatsby';
 import { ColorModeScript } from '@chakra-ui/react';
 import { WrapRootElement } from './src/provider';
 import customTheme from './src/theme';
-// @ts-ignore
 import './src/global.css';
-// @ts-ignore
 import './src/styles.css';
 
 export const onRenderBody: GatsbySSR['onRenderBody'] = ({

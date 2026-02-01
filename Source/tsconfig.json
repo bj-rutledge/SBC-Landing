@@ -98,6 +98,8 @@
       "./src/**/*",
       "./gatsby-node.ts",
       "./gatsby-config.ts",
+      "./gatsby-browser.tsx",
+      "./gatsby-ssr.tsx",
       "./plugins/**/*",
       "./custom.d.ts"
    ]
