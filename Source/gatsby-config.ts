@@ -34,7 +34,7 @@ const config: GatsbyConfig = {
             background_color: '#ffffff',
             theme_color: '#319795',
             display: 'standalone',
-            icon: './src/images/sbcfavicon.png',
+            icon: './static/sbcfavicon.png',
          },
       },
       // Other plugins...

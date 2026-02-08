@@ -16,7 +16,9 @@
       "clean": "gatsby clean",
       "typecheck": "tsc --noEmit",
       "theme": "chakra-cli tokens src/theme/index.ts",
-      "theme:watch": "chakra-cli tokens src/theme/index.ts --watch"
+      "theme:watch": "chakra-cli tokens src/theme/index.ts --watch",
+      "update-jobs": "cd ../convert-sbc-jobs-to-json && node index.js",
+      "dev-server": "sh http-dev-file-server.sh -d ../convert-sbc-jobs-to-json/"
    },
    "dependencies": {
       "@chakra-ui/icons": "^2.2.4",

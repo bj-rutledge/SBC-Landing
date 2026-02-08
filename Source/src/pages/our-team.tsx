@@ -27,7 +27,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "James Pfaff",
     imageSrc: james,
-    description: "With a diverse 25-year plus career in construction and wall panel design, James has designed over 23 million square feet of residential space, leveraging his hands-on experience in framing, siding, roofing, and finish work, and his expertise in using AutoCAD for wall panel design."
+    description: "James began his career in wall panels in 1999 in La Conner, WA. Leveraging early opportunities to create shop drawings, using AutoCAD, he started developing the design process SBC uses today. In 2005, he launched Pfaff Contracting and Design, building homes hands-on framing, siding, roofing, and finish carpentry.  From 2006 -2012, he framed by day – sharpening his design expertise and consulted designing wall panels by night.  In 2013 he started SBC, with design being his prime focus. He averaged almost 1 million sq/ft per year for the first 5 years.  He has mastered the design process, creating the precise, efficient methods used today."
   },
   {
     name: "Julia Phay Pfaff",

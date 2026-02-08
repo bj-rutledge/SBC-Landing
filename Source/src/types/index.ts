@@ -28,6 +28,7 @@ export interface MapInfoCard {
       lng: number;
    };
   onClose: () => void;
+  images?: string[];
 }
 
 export interface SbcOutputData {
@@ -36,4 +37,3 @@ export interface SbcOutputData {
   "Total Miles Built": number;
   "Total Square Footage": number;
 }
-
