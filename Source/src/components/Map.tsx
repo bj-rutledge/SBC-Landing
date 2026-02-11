@@ -8,7 +8,7 @@ import { Box, Select, Heading, Flex } from '@chakra-ui/react';
 import MapInfoCardAerialView from './MapInfoCardAerialView';
 import useWindowSize from '../hooks/useWindowSize';
 import { contractors } from './data/contractors'; 
-import useReadJsonFile from '../hooks/useReadJsonFile';
+import jobsData from '../resources/working-sbc-website-jobs-list.json';
 
 const key = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
 //todo Need to set up a map ID in the Google Cloud Console
@@ -28,13 +28,7 @@ const Map: React.FC = () => {
   const [markers, setMarkers] = useState<google.maps.marker.AdvancedMarkerElement[]>([]);
   const [allMarkers, setAllMarkers] = useState<google.maps.marker.AdvancedMarkerElement[]>([]);
   const [activeInfoWindow, setActiveInfoWindow] = useState<google.maps.InfoWindow | null>(null);
-  const [locations, setLocations] = useState<any>([]);
-
-  const jobLocations = useReadJsonFile();
-
-  useEffect(() => {
-    setLocations(jobLocations);
-  }, [jobLocations]);
+  const [locations, setLocations] = useState<any>(jobsData);
 
   useEffect(() => {
     const initMap = () => {
@@ -55,7 +49,7 @@ const Map: React.FC = () => {
     if (!map) {
       window.initMap = initMap;
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap&libraries=marker`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap&libraries=marker&loading=async`;
       script.async = true;
       script.defer = true;
       document.head.appendChild(script);
@@ -90,7 +84,7 @@ const Map: React.FC = () => {
 
         const infoWindow = new google.maps.InfoWindow();
 
-        marker.addListener('click', () => {
+        marker.addListener('gmp-click', () => {
           if (activeInfoWindow) {
             activeInfoWindow.close();
           }
@@ -108,6 +102,7 @@ const Map: React.FC = () => {
               funFacts={`\nTotal Exterior Linear Feet Built:${location['Exterior LF']}\nTotal Interior Linear Feet Built: ${location['Interior LF']}`}
               onClose={() => infoWindow.close()}
               geoLocation={location.geoLocation}
+              images={location.images}
             />
           );
 

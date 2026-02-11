@@ -99,7 +99,7 @@ const IndexPage: React.FC = () => {
             </motion.span>
           </Heading>
           <Text fontSize={{ base: 'lg', md: '2xl' }} fontWeight="bold">
-            Driven by a passion for innovation, timeless design, and superior craftsmanship, SBC delivers high-quality, cost-effective building solutions—specializing in precision-engineered wall panels for residential and multi-family projects. Our collaborative design process identifies and resolves potential issues early, before concrete is poured or framing begins, minimizing costly on-site changes and ensuring a trade-friendly, seamless construction experience from start to finish.
+            Driven by a passion for innovation, timeless design, and superior craftsmanship, SBC delivers high-quality, cost-effective building solutions—specializing in custom wall panels for residential and multi-family projects. Our collaborative design process identifies and resolves potential issues early, before concrete is poured or framing begins, minimizing costly on-site changes and ensuring a trade-friendly, seamless construction experience from start to finish.
           </Text>
         </MotionBox>
       </Box>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
-import { Box, Text, Heading, Link} from '@chakra-ui/react';
+import { Box, Text, Heading, Link, IconButton, Image } from '@chakra-ui/react';
+import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { keyframes } from '@emotion/react';
 import { MapInfoCard } from '../types';
 // import { useSbcOutputData } from '../contexts/SbcOutputDataContext';
@@ -19,6 +20,7 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
   framer,
   sqFt,
   onClose,
+  images = [],
 }) => {
   const [state, setState] = useState({
     aerialViewUrl: '',
@@ -27,13 +29,14 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
   });
   const [isAerialViewLoaded, setAerialViewLoaded] = useState(false);
   const [isStreetViewLoaded, setStreetViewLoaded] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
   // const {data, loading, error } = useSbcOutputData();
 
   const fetchAerialViewUrl = useCallback(async () => {
-    if(isAerialViewLoaded) return;
+    if(isAerialViewLoaded) return false;
     try {
-      
+
       console.debug('Fetching Arial View', ++debugAerialCount);
       const videoResponse = await axios.get(
         `https://aerialview.googleapis.com/v1/videos:lookupVideo?address=${encodeURIComponent(
@@ -150,34 +153,89 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
       opacity: 1;
     }
   `;
-  
-  
+
+  const mediaItems = React.useMemo(() => {
+    const items: { type: 'image' | 'video'; url: string }[] = [];
+
+    // 1. Load all available job images
+    if (images && Array.isArray(images)) {
+      images.forEach((img) => {
+        items.push({ type: 'image', url: encodeURI(`${img}`) });
+      });
+    }
+
+    // 2. Append sky view
+    if (state.aerialViewUrl) {
+      items.push({ type: 'video', url: state.aerialViewUrl });
+    }
+
+    // 3. Fallback: If no job images exist, show street view (if aerial is also missing, this logic handles it by checking items.length)
+    // Note: If aerial exists, items is not empty, so street view is skipped.
+    if (items.length === 0 && state.streetViewUrl) {
+      items.push({ type: 'image', url: state.streetViewUrl });
+    }
+
+    return items;
+  }, [images, state.aerialViewUrl, state.streetViewUrl]);
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % mediaItems.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + mediaItems.length) % mediaItems.length);
+
+  // Reset slide when content changes
+  useEffect(() => setCurrentSlide(0), [mediaItems.length]);
+
   return (
     <Box
       className="info-window"
       ref={cardRef}
       onClick={(e) => e.stopPropagation()} // Stop propagation on click inside the card
     >
-      {state.aerialViewUrl ? (
+      {mediaItems.length > 0 ? (
         <Box
+          position="relative"
           width="100%"
           maxWidth="300px"
           mx="auto"
           animation={`${fadeIn} 2s ease-in-out`}
         >
-          <video controls autoPlay loop width="100%">
-            <source src={state.aerialViewUrl} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </Box>
-      ) : state.streetViewUrl ? (
-        <Box
-          width="100%"
-          maxWidth="300px"
-          mx="auto"
-          animation={`${fadeIn} 2s ease-in-out`}
-        >
-          <img src={state.streetViewUrl} alt="Street View" width="100%" />
+          {mediaItems[currentSlide].type === 'video' ? (
+            <video controls autoPlay loop width="100%">
+              <source src={mediaItems[currentSlide].url} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          ) : (
+            <Image 
+              src={mediaItems[currentSlide].url} 
+              alt="Job Site" 
+              width="100%" 
+              objectFit="cover"
+              maxH="200px"
+            />
+          )}
+
+          {mediaItems.length > 1 && (
+            <Box display="flex" justifyContent="center" mt={2}>
+              <IconButton
+                aria-label="Previous"
+                icon={<ChevronLeftIcon />}
+                onClick={prevSlide}
+                size="sm"
+                colorScheme="gray"
+                isRound
+              />
+              <Text mx={4} alignSelf="center">
+                {currentSlide + 1} / {mediaItems.length}
+              </Text>
+              <IconButton
+                aria-label="Next"
+                icon={<ChevronRightIcon />}
+                onClick={nextSlide}
+                size="sm"
+                colorScheme="gray"
+                isRound
+              />
+            </Box>
+          )}
         </Box>
       ) : state.error ? (
         <Text>{state.error}</Text>
