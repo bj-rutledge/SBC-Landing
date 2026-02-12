@@ -33,8 +33,7 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
   const cardRef = useRef<HTMLDivElement>(null);
   // const {data, loading, error } = useSbcOutputData();
 
-  const fetchAerialViewUrl = useCallback(async () => {
-    if(isAerialViewLoaded) return false;
+  const fetchAerialViewUrl = useCallback(async (): Promise<string | null> => {
     try {
 
       console.debug('Fetching Arial View', ++debugAerialCount);
@@ -50,20 +49,20 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
         videoData.uris &&
         videoData.uris.MP4_HIGH
       ) {
+        const url = videoData.uris.MP4_HIGH.landscapeUri;
         setState((prevState) => ({
           ...prevState,
-          aerialViewUrl: videoData.uris.MP4_HIGH.landscapeUri,
+          aerialViewUrl: url,
         }));
-      } else if (videoData.state === 'PROCESSING') {
-        setState((prevState) => ({
-          ...prevState,
-          error: 'Aerial view video is still processing. Please check back later.',
-        }));
+        setAerialViewLoaded(true);
+        return url;
       } else {
         setState((prevState) => ({
           ...prevState,
-          error: 'No Aerial Video Available',
+          error: videoData.state === 'PROCESSING' ? 'Aerial view video is still processing. Please check back later.' : 'No Aerial Video Available',
         }));
+        setAerialViewLoaded(false);
+        return null;
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -89,61 +88,86 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
           error: 'An unknown error occurred.',
         }));
       }
+      setAerialViewLoaded(false);
+      return null;
     }
-    setAerialViewLoaded(true);
   }, [address]);
 
-  const fetchStreetViewUrl = useCallback(async () => {
-    if(isStreetViewLoaded) return;
-    console.debug('Fetching street view', ++debugStreetCount);
-    try {
-      const response = await axios.get(
-        `https://maps.googleapis.com/maps/api/streetview?size=600x300&location=${encodeURIComponent(
-          address,
-        )}&key=${key}`,
-      );
-      // If the response is successful, update the state with the street view URL
-      if (response.status === 200) {
+    const fetchStreetViewUrl = useCallback(async (): Promise<string | null> => {
+      try {
+        console.debug('Fetching street view', ++debugStreetCount);
+        const response = await axios.get(
+          `https://maps.googleapis.com/maps/api/streetview?size=600x300&location=${encodeURIComponent(
+            address,
+          )}&key=${key}`,
+        );
+        // If the response is successful, update the state with the street view URL
+        if (response.status === 200) {
+          const url = response.config.url || '';
+          setState((prevState) => ({
+            ...prevState,
+            streetViewUrl: url,
+          }));
+          setStreetViewLoaded(true);
+          return url;
+        } else {
+          // If the response is not successful, update the state with an error message
+          setState((prevState) => ({
+            ...prevState,
+            error: 'No Street View Available',
+          }));
+          setStreetViewLoaded(false);
+          return null;
+        }
+      } catch (error) {
         setState((prevState) => ({
           ...prevState,
-          streetViewUrl: response.config.url || '',
+          error: 'Error fetching street view.',
         }));
-      } else {
-        // If the response is not successful, update the state with an error message
-        setState((prevState) => ({
-          ...prevState,
-          error: 'No Street View Available',
-        }));
+        setStreetViewLoaded(false);
+        return null;
       }
-    } catch (error) {
-      setState((prevState) => ({
-        ...prevState,
-        error: 'Error fetching street view.',
-      }));
+    }, [address]);
+  const handleClickOutside = useCallback((event: MouseEvent) => {
+    if (cardRef.current && !cardRef.current.contains(event.target as Node)) {
+      onClose();
     }
-    setStreetViewLoaded(true);
-  }, [address]);
+  }, [onClose]);
+
+  const fetchedAddressRef = useRef<string | null>(null);
 
   useEffect(() => {
-        fetchAerialViewUrl().then(() => {
-          if (!state.aerialViewUrl) {
-            fetchStreetViewUrl();
-          }
-    }, );
+    // Only proceed if the address has changed since the last fetch
+    // or if it's the initial mount and we haven't fetched anything yet.
+    if (fetchedAddressRef.current === address) {
+      return;
+    }
 
-    const handleClickOutside = (event: MouseEvent) => {
-      if (cardRef.current && !cardRef.current.contains(event.target as Node)) {
-        onClose();
+    const loadData = async () => {
+      // Clear previous state before fetching new data for a new address
+      setState({ aerialViewUrl: '', streetViewUrl: '', error: '' });
+      setAerialViewLoaded(false);
+      setStreetViewLoaded(false);
+
+      const aerialUrl = await fetchAerialViewUrl();
+
+      // If no aerial URL, then try fetching street view
+      if (!aerialUrl) {
+        await fetchStreetViewUrl();
       }
+      // Mark this address as fetched.
+      fetchedAddressRef.current = address;
     };
 
+    loadData();
+
+    // Event listener for click outside logic
     document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  // }, [address, onClose, fetchAerialViewUrl, fetchStreetViewUrl, state.aerialViewUrl, isAerialViewLoaded, isStreetViewLoaded]);
-  }, []);
+  }, [address, fetchAerialViewUrl, fetchStreetViewUrl, handleClickOutside]);
 
   const fadeIn = keyframes`
     from {
@@ -188,7 +212,10 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
     <Box
       className="info-window"
       ref={cardRef}
-      onClick={(e) => e.stopPropagation()} // Stop propagation on click inside the card
+      onClick={(e) => {
+        console.log('info-window clicked');
+        e.stopPropagation();
+      }} // Stop propagation on click inside the card
     >
       {mediaItems.length > 0 ? (
         <Box

@@ -979,7 +979,7 @@
   {
     "Job Code": "20-A",
     "Job Name": "Pioneer Belmont",
-    "Address": "1717-1723 belmont AVE",
+    "Address": "1717 Belmont AVE,  Seattle, WA 98122",
     "Framer": "Superior",
     "GC": "walsh",
     "sq/ft": 30635,
@@ -987,8 +987,8 @@
     "Exterior LF": 1905,
     "Designer": "James",
     "geoLocation": {
-      "lat": 41.9394804,
-      "lng": -87.67184449999999
+      "lat": 47.61704,
+      "lng": -122.32471
     },
     "images": [
       "/images/jobs/20-A/Pioneer-Belmont-(Aspen-Terrace)-1.jpg",
@@ -2848,14 +2848,14 @@
   {
     "Job Code": "24-G",
     "Job Name": "Pasco Clinic",
-    "Address": "Corner of road 68 & Three Rivers Drive, Pasco WA 99301",
+    "Address": "7405 Three Rivers Dr, Pasco, WA 99301",
     "GC": "Aldrich-Associates ",
     "Designer": "Steve ",
     "geoLocation": {
       "lat": 46.2812534,
       "lng": -119.1877502
     },
-    "images": []
+    "images": ["/images/jobs/24-G/CBHA-Job-Site-Panel-Option-1-1.jpg"]
   },
   {
     "Job Code": "19-I",

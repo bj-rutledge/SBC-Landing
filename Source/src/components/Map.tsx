@@ -91,6 +91,14 @@ const Map: React.FC = () => {
 
           const content = document.createElement('div');
           const root = createRoot(content);
+          const funFacts = [];
+          if (location['Exterior LF']) {
+            funFacts.push(`Total Exterior Linear Feet Built: ${Number(location['Exterior LF']).toLocaleString()}`);
+          }
+          if (location['Interior LF']) {
+            funFacts.push(`Total Interior Linear Feet Built: ${Number(location['Interior LF']).toLocaleString()}`);
+          }
+
           root.render(
             <MapInfoCardAerialView
               title={location['Job Name']}
@@ -99,8 +107,11 @@ const Map: React.FC = () => {
               framer={location.Framer}
               sqFt={location['sq/ft']}
               contractorWebsite={location['Contractor Website']}
-              funFacts={`\nTotal Exterior Linear Feet Built:${location['Exterior LF']}\nTotal Interior Linear Feet Built: ${location['Interior LF']}`}
-              onClose={() => infoWindow.close()}
+              funFacts={funFacts.join('\n')}
+              onClose={() => {
+                console.log('onClose called');
+                infoWindow.close();
+              }}
               geoLocation={location.geoLocation}
               images={location.images}
             />

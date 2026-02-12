@@ -30,7 +30,7 @@ const teamMembers: TeamMember[] = [
     description: "James began his career in wall panels in 1999 in La Conner, WA. Leveraging early opportunities to create shop drawings, using AutoCAD, he started developing the design process SBC uses today. In 2005, he launched Pfaff Contracting and Design, building homes hands-on framing, siding, roofing, and finish carpentry.  From 2006 -2012, he framed by day – sharpening his design expertise and consulted designing wall panels by night.  In 2013 he started SBC, with design being his prime focus. He averaged almost 1 million sq/ft per year for the first 5 years.  He has mastered the design process, creating the precise, efficient methods used today."
   },
   {
-    name: "Julia Phay Pfaff",
+    name: "Julia Phay",
     imageSrc: julia,
     description: "Julia is our office Manager, and is dedicated to making Sound Building Components a safe and welcoming environment where employees are proud of the work they accomplish."
   },
