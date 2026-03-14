@@ -4,7 +4,7 @@
  **/
 import { useState, useEffect } from 'react';
 import jobsData from '../../resources/working-sbc-website-jobs-list.json';
-import { MapInfoCard } from '../../types';
+import { MapInfoCard } from '../../models/types';
 
 const useReadJsonFile = (): MapInfoCard[] => {
   const [sbcJobs, setSbcJobs] = useState<MapInfoCard[]>([]);

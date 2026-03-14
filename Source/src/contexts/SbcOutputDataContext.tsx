@@ -6,19 +6,8 @@
  **/
 import React, { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react';
 import totalOutputData from '../data/Total-Output-Data.json';
-
-interface SbcOutputData {
-  "Total Exterior Linear Feet": number;
-  "Total Interial Linear Feet": number;
-  "Total Miles Built": number;
-  "Total Square Footage": number;
-}
-
-interface SbcOutputDataContextProps {
-  data: SbcOutputData | null;
-  loading: boolean;
-  error: string | null;
-}
+import { SbcOutputData } from '../models/types';
+import { SbcOutputDataContextProps } from '../models/interfaces';
 
 const SbcOutputDataContext = createContext<SbcOutputDataContextProps | undefined>(undefined);
 

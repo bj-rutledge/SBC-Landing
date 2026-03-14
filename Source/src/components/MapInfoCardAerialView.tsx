@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Box, Text, Heading, Link, IconButton, Image } from '@chakra-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { keyframes } from '@emotion/react';
-import { MapInfoCard } from '../types';
+import { MapInfoCard } from '../models/types';
 // import { useSbcOutputData } from '../contexts/SbcOutputDataContext';
 
 
