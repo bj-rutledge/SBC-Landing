@@ -22,7 +22,7 @@ const dataEndpoint = `${process.env.GATSBY_DATA_ENDPOINT}/Total-Output-Data.json
         })
         .catch(error => {
           setError('Error fetching data');
-          console.error('Error fetching data:', error);
+          // console.error('Error fetching data:', error);
         })
         .finally(() => {
           setLoading(false);

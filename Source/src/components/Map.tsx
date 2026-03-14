@@ -14,7 +14,7 @@ const key = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
 //todo Need to set up a map ID in the Google Cloud Console
 //current map id is a placeholder. Map ID is required for the map to render 
 //under the new AdvancedMarkerElement
-const mapId = 'DEMO_MAP_ID'; 
+const mapId = 'SBC_Map'; 
 
 declare global {
   interface Window {
@@ -42,7 +42,7 @@ const Map: React.FC = () => {
         });
         setMap(mapInstance);
       } else {
-        console.error('Map container element not found');
+        // Map container element not found
       }
     };
 
