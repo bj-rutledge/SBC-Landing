@@ -31,6 +31,7 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
   const [isStreetViewLoaded, setStreetViewLoaded] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
+  const mountTime = useRef(Date.now());
   // const {data, loading, error } = useSbcOutputData();
 
   const fetchAerialViewUrl = useCallback(async () => {
@@ -95,7 +96,7 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
 
   const fetchStreetViewUrl = useCallback(async () => {
     if(isStreetViewLoaded) return;
-    console.debug('Fetching street view', ++debugStreetCount);
+    // console.debug('Fetching street view', ++debugStreetCount);
     try {
       const response = await axios.get(
         `https://maps.googleapis.com/maps/api/streetview?size=600x300&location=${encodeURIComponent(
@@ -125,24 +126,27 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
   }, [address]);
 
   useEffect(() => {
-        fetchAerialViewUrl().then(() => {
-          if (!state.aerialViewUrl) {
-            fetchStreetViewUrl();
-          }
-    }, );
+    fetchAerialViewUrl().then(() => {
+      if (!state.aerialViewUrl) {
+        fetchStreetViewUrl();
+      }
+    });
 
     const handleClickOutside = (event: MouseEvent) => {
+      // Ignore clicks within the first 100ms after mount to prevent immediate close on mobile taps
+      if (Date.now() - mountTime.current < 100) return;
+
       if (cardRef.current && !cardRef.current.contains(event.target as Node)) {
         onClose();
       }
     };
 
+    // Attach the listener immediately, but ignore early events
     document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  // }, [address, onClose, fetchAerialViewUrl, fetchStreetViewUrl, state.aerialViewUrl, isAerialViewLoaded, isStreetViewLoaded]);
   }, []);
 
   const fadeIn = keyframes`
@@ -189,6 +193,7 @@ const MapInfoCardAerialView: React.FC<MapInfoCard> = ({
       className="info-window"
       ref={cardRef}
       onClick={(e) => e.stopPropagation()} // Stop propagation on click inside the card
+      onMouseDown={(e) => e.stopPropagation()} // Stop mousedown propagation to prevent outside click handler
     >
       {mediaItems.length > 0 ? (
         <Box
