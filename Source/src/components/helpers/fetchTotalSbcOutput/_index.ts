@@ -3,11 +3,9 @@
  * Date: December 26, 2024
  **/
 
-import { useState, useEffect, useCallback } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from 'react';
+import totalOutputData from '../../data/Total-Output-Data.json';
 import { SbcOutputData } from '../../../types';
-
-const dataEndpoint = `${process.env.GATSBY_DATA_ENDPOINT}/Total-Output-Data.json`;
 
 
   const useFetchSbcOutputData = () => {
@@ -15,25 +13,13 @@ const dataEndpoint = `${process.env.GATSBY_DATA_ENDPOINT}/Total-Output-Data.json
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
   
-    const fetchData = useCallback(() => {
-      axios.get(dataEndpoint)
-        .then(response => {
-          setData(response.data);
-        })
-        .catch(error => {
-          setError('Error fetching data');
-          console.error('Error fetching data:', error);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    }, []);
-  
     useEffect(() => {
-      fetchData();
-    }, [fetchData]);
-  
-    return { data, loading, error };
-  };
-  
+      try {
+        setData(totalOutputData);
+      } catch (err) {
+        setError('Error loading data');
+      } finally {
+        setLoading(false);
+      }
+    }, []);
   export default useFetchSbcOutputData;

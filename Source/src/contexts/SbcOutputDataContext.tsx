@@ -5,9 +5,7 @@
  * throughout the app. This context provider will allow us to do that.
  **/
 import React, { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react';
-import axios from 'axios';
-
-const dataEndpoint = `${process.env.GATSBY_DATA_ENDPOINT}Total-Output-Data.json`;
+import totalOutputData from '../data/Total-Output-Data.json';
 
 interface SbcOutputData {
   "Total Exterior Linear Feet": number;
@@ -29,23 +27,15 @@ export const SbcOutputDataProvider: React.FC<{ children: ReactNode }> = ({ child
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchData = useCallback(() => {
-    axios.get(dataEndpoint)
-      .then(response => {
-        setData(response.data);
-      })
-      .catch(error => {
-        setError('Error fetching data');
-        console.error('Error fetching data:', error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
-
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+    try {
+      setData(totalOutputData);
+    } catch (err) {
+      setError('Error loading data');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   return (
     <SbcOutputDataContext.Provider value={{ data, loading, error }}>
