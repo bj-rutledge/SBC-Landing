@@ -10,21 +10,13 @@ const useReadJsonFile = (): MapInfoCard[] => {
   const [sbcJobs, setSbcJobs] = useState<MapInfoCard[]>([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      // console.debug('Fetching JSON Location data');
-      try {
-        const response = await axios.get(dataEndpoint);
-        const jobs = response.data;
-
-        const validJobs: any = jobs
-          .filter((job: any) => job.Address && job.Address.trim() !== '' && job['Job Name'] && job['Job Name'].trim() !== '')
-        setSbcJobs(validJobs);
-      } catch (error) {
-        // console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
+    try {
+      const validJobs: any = jobsData
+        .filter((job: any) => job.Address && job.Address.trim() !== '' && job['Job Name'] && job['Job Name'].trim() !== '')
+      setSbcJobs(validJobs);
+    } catch (error) {
+      // console.error('Error fetching data:', error);
+    }
   }, []);
 
   return sbcJobs;
