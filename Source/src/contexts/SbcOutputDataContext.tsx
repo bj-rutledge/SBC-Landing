@@ -9,7 +9,7 @@ import totalOutputData from '../data/Total-Output-Data.json';
 
 interface SbcOutputData {
   "Total Exterior Linear Feet": number;
-  "Total Interial Linear Feet": number;
+  "Total Internal Linear Feet": number;
   "Total Miles Built": number;
   "Total Square Footage": number;
 }
