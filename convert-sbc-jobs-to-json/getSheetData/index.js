@@ -9,6 +9,6 @@ const sheetDataToJson = (filePath, sheetName) => {
    fs.writeFileSync(outputFileName, JSON.stringify(output, null, 2), 'utf-8');
 };
 
-const filePath = '../spreadsheets/sbc-website-jobs-list.xlsm';
+const filePath = '../working-sbc-website-jobs-list 02.24.26.xlsm';
 sheetDataToJson(filePath, 'Total Output Data');
 // sheetDataToJson(filePath, 'Total Square Footage');
