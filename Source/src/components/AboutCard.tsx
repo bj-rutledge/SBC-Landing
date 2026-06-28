@@ -49,12 +49,16 @@ const Card: React.FC<CardProps> = ({
             flexDirection="column"
             justifyContent="space-between"
             height="100%"
+            flex="1"
+            minH={0}
          >
-            <VStack spacing={4} mt={4}>
+            <VStack spacing={4} mt={4} flex="1" minH={0} align="stretch">
                <Text fontWeight="bold" fontSize="2xl" color='green.600' >
                   {name}
                </Text>
-               <Text color='primary'> {description}</Text>
+               <Box flex="1" minH={0} overflowY="auto" overflowX="hidden" pr={1}>
+                  <Text color='primary'> {description}</Text>
+               </Box>
             </VStack>
          </Flex>
       </Box>

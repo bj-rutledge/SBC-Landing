@@ -30,7 +30,7 @@ const teamMembers: TeamMember[] = [
     description: "James began his career in wall panels in 1999 in La Conner, WA. Leveraging early opportunities to create shop drawings, using AutoCAD, he started developing the design process SBC uses today. In 2005, he launched Pfaff Contracting and Design, building homes hands-on framing, siding, roofing, and finish carpentry.  From 2006 -2012, he framed by day – sharpening his design expertise and consulted designing wall panels by night.  In 2013 he started SBC, with design being his prime focus. He averaged almost 1 million sq/ft per year for the first 5 years.  He has mastered the design process, creating the precise, efficient methods used today."
   },
   {
-    name: "Julia Phay Pfaff",
+    name: "Julia Phay",
     imageSrc: julia,
     description: "Julia is our office Manager, and is dedicated to making Sound Building Components a safe and welcoming environment where employees are proud of the work they accomplish."
   },
@@ -47,7 +47,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "Steve Dausey",
     imageSrc: steve,
-    description: "Steve is a super cool dude who knows karate!"
+    description: "Steve started his design career in 1979, selling his first set of house plans at age 15 while still in High School.  Continuing on with jobs as Architectural Design Manager for a Custom Residential Developer in California, as Engineering Manager for a Modular Manufacturer in Washington and as Technical Design Manager at a Wall Panel/Truss Manufacturing Company in Minnesota.  Then opening his own Architectural Design business for 25+ years, providing Custom Residential Design.  Since coming to SBC, I have helped create the Design Standards as well as assisting with the training of new Designers.  All told I have 47 years in the Design/Construction Industries with both Commercial and Residential projects throughout Washington, California, Alaska and the Upper Midwest."
   }
 ];
 
