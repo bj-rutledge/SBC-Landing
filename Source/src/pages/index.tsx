@@ -13,8 +13,8 @@ import CustomerQuotes from '../components/CustomerQuotes';
 import MotionBox from '../components/MotionBox'; // Import your custom MotionBox
 import ClientImage from '../components/ClientImage';
 import MotionListItem from '../components/MotionListItem'; // Import MotionListItem
-import bigCrane from '../images/landing/craneBG.jpg';
-import eveningSite from '../images/landing/eveningSite.jpg';
+import bigCrane from '../images/landing/101.jpeg';
+import eveningSite from '../images/landing/175.jpeg';
 import sunset from '../images/landing/sunset.jpg';
 import quotes from '../components/data/quotes';
 import { useSbcOutputData } from '../contexts/SbcOutputDataContext';
