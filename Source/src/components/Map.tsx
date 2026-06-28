@@ -8,7 +8,7 @@ import { Box, Select, Heading, Flex } from '@chakra-ui/react';
 import MapInfoCardAerialView from './MapInfoCardAerialView';
 import useWindowSize from '../hooks/useWindowSize';
 import { contractors } from './data/contractors'; 
-import jobsData from '../resources/working-sbc-website-jobs-list.json';
+import jobsData from '../resources/working-sbc-website-jobs-list 02.24.26.json';
 
 const key = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
 //todo Need to set up a map ID in the Google Cloud Console
