@@ -13,9 +13,9 @@ import CustomerQuotes from '../components/CustomerQuotes';
 import MotionBox from '../components/MotionBox'; // Import your custom MotionBox
 import ClientImage from '../components/ClientImage';
 import MotionListItem from '../components/MotionListItem'; // Import MotionListItem
-import bigCrane from '../images/landing/101.jpeg';
-import eveningSite from '../images/landing/175.jpeg';
-import sunset from '../images/landing/sunset.jpg';
+import topView from '../images/landing/101.jpeg';
+import wallPanel from '../images/landing/175.jpeg';
+import mppFlyVideo from '../images/landing/UW_Haggett_Hall_Drone_Footage/MPP_Fly.mp4';
 import quotes from '../components/data/quotes';
 import { useSbcOutputData } from '../contexts/SbcOutputDataContext';
 import addCommasToNumber from '../components/helpers/addCommasToNumber';
@@ -57,9 +57,7 @@ const IndexPage: React.FC = () => {
         position="relative"
         width="100%"
         height="100vh"
-        bgImage={`url(${sunset})`}
-        bgSize="cover"
-        bgPosition="center"
+        overflow="hidden"
         display="flex"
         alignItems="center"
         justifyContent="center"
@@ -67,7 +65,24 @@ const IndexPage: React.FC = () => {
         color="white"
         p={5}
       >
+        <Box
+          as="video"
+          src={mppFlyVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+          position="absolute"
+          inset={0}
+          width="100%"
+          height="100%"
+          objectFit="cover"
+          zIndex={0}
+        />
+        <Box position="absolute" inset={0} bg="blackAlpha.500" zIndex={1} />
         <MotionBox
+          position="relative"
+          zIndex={2}
           initial={{ opacity: 0 }}
           animate={{ opacity: animate ? 1 : 0 }}
           transition={{ duration: 2, delay: 0.5 }} // Increase duration and add delay
@@ -129,7 +144,7 @@ const IndexPage: React.FC = () => {
         </MotionBox>
 
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} mb={10} alignItems="center">
-          <ClientImage src={bigCrane} alt="Big Crane" />
+          <ClientImage src={topView} alt="Big Crane" />
           <Text fontSize={{ base: 'md', md: 'lg' }} textAlign={{ base: 'center', md: 'left' }}>
             Sound Building Components Inc. (SBC) was formed in 2013 out of necessity to modernize the “Wall Panel” component for building multi-family / mixed used projects. Wall Panels are wood framed walls built in a factory environment to maximize the percentage of materials used and minimize waste caused by typical onsite framing practices.  SBC specializes in 5 & 6 story wood framed buildings ranging from 30,000sq/ft to 250,000 + sq/ft. SBC is dedicated to building high quality wall panels to aid in the construction of all projects; our systematic design process is what sets us apart from all other wall panel companies. Collectively, SBC has over 35 years in the wall panel industry. Our goal is to make Sound Building Components a household name among Architects, Structural Engineers, Developers, General Contractors, and Framers in the Pacific Northwest.
           </Text>
@@ -137,7 +152,7 @@ const IndexPage: React.FC = () => {
 
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} mb={10} alignItems="center">
           <ClientImage 
-            src={eveningSite}
+            src={wallPanel}
             alt="Evening Site"
             display={{ base: 'block', md: 'none' }}
             ref={ref3}
@@ -186,7 +201,7 @@ const IndexPage: React.FC = () => {
             </List>
           </Box>
           <ClientImage
-            src={eveningSite}
+            src={wallPanel}
             alt="Evening Site"
             display={{ base: 'none', md: 'block' }}
             ref={ref3}
