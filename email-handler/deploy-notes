@@ -1,0 +1,54 @@
+SBC Email Handler Deployment Notes (GCP Cloud Functions Gen 2)
+
+1) Go to the function project folder
+cd d:/OneDrive/Documents/projects/SBC/SBC-Landing/email-handler
+
+2) Prepare local deploy settings
+- Copy deploy.local.env.example to deploy.local.env
+- Fill in PROJECT_ID and any overrides (REGION, FUNCTION_NAME, etc.)
+
+Example deploy.local.env values:
+PROJECT_ID="your-gcp-project-id"
+REGION="us-west1"
+FUNCTION_NAME="contact-us-email-handler"
+RUNTIME="nodejs20"
+ENTRY_POINT="contactUsEmailHandler"
+ENV_FILE="env.production.yaml"
+ALLOW_UNAUTH="true"
+
+3) Prepare production function environment variables
+- Copy env.production.yaml.example to env.production.yaml
+- Fill in real values
+
+Required env.production.yaml keys:
+RESEND_API_KEY: "replace_with_resend_api_key"
+RESEND_FROM_EMAIL: "Sound Building Components <contact@yourdomain.com>"
+CONTACT_TO_EMAIL: "your-inbox@yourdomain.com"
+ALLOWED_ORIGIN: "https://sbc-landing-three.vercel.app"
+
+Optional keys:
+LIVE_ALLOWED_ORIGIN: "https://www.soundbuildingcomponents.com"
+ALLOWED_ORIGINS: "https://sbc-landing-three.vercel.app,https://www.soundbuildingcomponents.com"
+
+4) Deploy
+npm run deploy:gcp
+
+5) Get the function URL
+gcloud functions describe contact-us-email-handler --gen2 --region=us-west1 --project=your-gcp-project-id --format="value(serviceConfig.uri)"
+
+6) Wire frontend to the deployed function URL
+- In Gatsby env, set:
+GATSBY_CONTACT_FORM_ENDPOINT=<function-url-from-step-5>
+- Rebuild and redeploy frontend.
+
+7) Verify
+- Submit the Contact Us form in production.
+- Confirm email arrives at CONTACT_TO_EMAIL.
+
+8) If needed, check function logs
+gcloud functions logs read contact-us-email-handler --gen2 --region=us-west1 --project=your-gcp-project-id --limit=50
+
+Operational notes
+- Do not commit .env, deploy.local.env, or env.production.yaml.
+- Rotate RESEND_API_KEY immediately if it was ever exposed.
+- Use a verified sending domain in Resend for production delivery.

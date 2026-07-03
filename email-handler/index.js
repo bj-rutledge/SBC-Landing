@@ -111,9 +111,9 @@ exports.contactUsEmailHandler = async (req, res) => {
     const safeEmail = escapeHtml(email.trim());
     const safeMessage = escapeHtml(message.trim());
 
-    await resend.emails.send({
+    const resendResponse = await resend.emails.send({
       from: RESEND_FROM_EMAIL,
-      to: CONTACT_TO_EMAIL,
+      to: [CONTACT_TO_EMAIL],
       replyTo: email,
       subject: `New Contact Form Submission from ${name.trim()}`,
       html: `
@@ -125,6 +125,13 @@ exports.contactUsEmailHandler = async (req, res) => {
       `,
       text: `New Contact Request\n\nName: ${name.trim()}\nEmail: ${email.trim()}\n\nMessage:\n${message.trim()}`,
     });
+
+    if (resendResponse?.error) {
+      console.error('Resend send failed:', resendResponse.error);
+      return res.status(502).json({
+        error: 'Unable to send message right now. Please try again shortly.',
+      });
+    }
 
     return res.status(200).json({
       ok: true,
