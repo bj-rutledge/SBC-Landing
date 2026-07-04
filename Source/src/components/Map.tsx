@@ -7,8 +7,8 @@ import { createRoot } from 'react-dom/client';
 import { Box, Select, Heading, Flex } from '@chakra-ui/react';
 import MapInfoCardAerialView from './MapInfoCardAerialView';
 import useWindowSize from '../hooks/useWindowSize';
-import { contractors } from './data/contractors'; 
-import jobsData from '../resources/working-sbc-website-jobs-list 02.24.26.json';
+import contractors  from './/data/contractors.json'; 
+import jobsData from './/data/sbc-website-jobs-list.json';
 
 const key = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
 //todo Need to set up a map ID in the Google Cloud Console
@@ -136,7 +136,10 @@ const Map: React.FC = () => {
 
       allMarkers.forEach((marker) => {
         const location = locations.find((loc: any) => loc['Job Name'] === marker.title);
-        if (location && (!contractor || location.GC === contractor)) {
+        const locationContractor = location?.GC ? String(location.GC).toLowerCase() : '';
+        const selectedContractorLower = contractor ? contractor.toLowerCase() : '';
+
+        if (location && (!contractor || locationContractor === selectedContractorLower)) {
           marker.map = map;
           const markerPosition = marker.position;
           if (markerPosition) {

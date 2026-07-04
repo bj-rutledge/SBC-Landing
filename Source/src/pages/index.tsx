@@ -80,6 +80,17 @@ const IndexPage: React.FC = () => {
           zIndex={0}
         />
         <Box position="absolute" inset={0} bg="blackAlpha.500" zIndex={1} />
+        <Text
+          position="absolute"
+          bottom={{ base: 3, md: 5 }}
+          right={{ base: 3, md: 5 }}
+          zIndex={3}
+          fontSize={{ base: 'xs', md: 'sm' }}
+          color="whiteAlpha.800"
+          textAlign="right"
+        >
+          Video and images courtesy of Absher Construction
+        </Text>
         <MotionBox
           position="relative"
           zIndex={2}
