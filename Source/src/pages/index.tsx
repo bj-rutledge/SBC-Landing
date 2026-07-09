@@ -89,7 +89,7 @@ const IndexPage: React.FC = () => {
           color="whiteAlpha.800"
           textAlign="right"
         >
-          Video and images courtesy of Absher Construction
+          Video and images courtesy of EWS Solutions, Inc. All rights reserved.
         </Text>
         <MotionBox
           position="relative"
