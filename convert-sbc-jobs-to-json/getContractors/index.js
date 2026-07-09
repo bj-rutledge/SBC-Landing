@@ -10,46 +10,32 @@
  **/
 
 const fs = require('fs');
-const data = require('../sbc-website-jobs-list.json');
+const path = require('path');
+const data = require('..//working-sbc-website-jobs-list 06.27.26.json');
 
 const dataOut = [];
 const memo = {};
 
-function toTitleCaseWords(name) {
-   const isAllCapsWord = (value) => value === value.toUpperCase();
-
-   return name
-      .trim()
-      .split(/\s+/)
-      .map((word) =>
-         word
-            .split('-')
-            .map((part) => {
-               if (!part) {
-                  return part;
-               }
-
-               if (isAllCapsWord(part)) {
-                  return part;
-               }
-
-               return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
-            })
-            .join('-'),
-      )
-      .join(' ');
-}
+const sourceOutputPath = path.resolve(
+   __dirname,
+   '../../Source/src/components/data/Contractors.json',
+);
+const localOutputPath = path.resolve(__dirname, 'Contractors.json');
 
 data.forEach((job) => {
    if (job.GC && job.GC != '') {
-      const originalGcName = String(job.GC).trim();
+      const originalGcName = String(job.GC).trim().replace(/\s+/g, ' ');
       const gcLookupKey = originalGcName.toLowerCase();
 
       if (!memo[gcLookupKey]) {
-         dataOut.push(toTitleCaseWords(originalGcName));
+         dataOut.push(originalGcName);
          memo[gcLookupKey] = true;
       }
    }
 });
 
-fs.writeFileSync('Contractors.json', JSON.stringify(dataOut, null, 2), 'utf-8');
+dataOut.sort((a, b) => a.localeCompare(b));
+
+const outJson = `${JSON.stringify(dataOut, null, 2)}\n`;
+fs.writeFileSync(sourceOutputPath, outJson, 'utf-8');
+fs.writeFileSync(localOutputPath, outJson, 'utf-8');

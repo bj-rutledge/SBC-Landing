@@ -33,5 +33,10 @@ addGeolocations(dataArray).then((dataWithGeo) => {
       JSON.stringify(dataWithPhotos, null, 2),
       'utf-8',
    );
+   //write to the Source/src/components/data folder for use in the website
+   fs.writeFileSync('../Source/src/components/data/sbc-website-jobs-list.json', 
+      JSON.stringify(dataWithPhotos, 
+      null, 2), 
+      'utf-8');  
    console.log(`Excel data converted to JSON and saved to ${outputFileName}`);
 });

@@ -2,12 +2,12 @@
  * Created by BJ Rutledge
  * Date: 2024-12-11
  **/
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Box, Select, Heading, Flex } from '@chakra-ui/react';
 import MapInfoCardAerialView from './MapInfoCardAerialView';
 import useWindowSize from '../hooks/useWindowSize';
-import contractors  from './/data/contractors.json'; 
+import contractors  from './/data/Contractors.json'; 
 import jobsData from './/data/sbc-website-jobs-list.json';
 
 const key = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
@@ -15,6 +15,28 @@ const key = process.env.GATSBY_GOOGLE_MAPS_API_KEY;
 //current map id is a placeholder. Map ID is required for the map to render 
 //under the new AdvancedMarkerElement
 const mapId = 'SBC_Map'; 
+
+const normalizeContractorName = (value: unknown): string =>
+  String(value ?? '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
+    .replace(/\s+/g, ' ');
+
+const contractorNamesMatch = (locationContractor: unknown, selectedContractor: string): boolean => {
+  const locationNormalized = normalizeContractorName(locationContractor);
+  const selectedNormalized = normalizeContractorName(selectedContractor);
+
+  if (!selectedNormalized) {
+    return true;
+  }
+
+  return (
+    locationNormalized === selectedNormalized ||
+    locationNormalized.startsWith(`${selectedNormalized} `) ||
+    selectedNormalized.startsWith(`${locationNormalized} `)
+  );
+};
 
 declare global {
   interface Window {
@@ -29,6 +51,14 @@ const Map: React.FC = () => {
   const [allMarkers, setAllMarkers] = useState<google.maps.marker.AdvancedMarkerElement[]>([]);
   const [activeInfoWindow, setActiveInfoWindow] = useState<google.maps.InfoWindow | null>(null);
   const [locations, setLocations] = useState<any>(jobsData);
+
+  const availableContractors = useMemo(
+    () =>
+      contractors.filter((contractor) =>
+        locations.some((location: any) => contractorNamesMatch(location.GC, contractor)),
+      ),
+    [locations],
+  );
 
   useEffect(() => {
     const initMap = () => {
@@ -134,12 +164,10 @@ const Map: React.FC = () => {
     if (map) {
       const bounds = new window.google.maps.LatLngBounds();
 
-      allMarkers.forEach((marker) => {
-        const location = locations.find((loc: any) => loc['Job Name'] === marker.title);
-        const locationContractor = location?.GC ? String(location.GC).toLowerCase() : '';
-        const selectedContractorLower = contractor ? contractor.toLowerCase() : '';
+      allMarkers.forEach((marker, index) => {
+        const location = locations[index];
 
-        if (location && (!contractor || locationContractor === selectedContractorLower)) {
+        if (location && contractorNamesMatch(location.GC, contractor)) {
           marker.map = map;
           const markerPosition = marker.position;
           if (markerPosition) {
@@ -189,7 +217,7 @@ const Map: React.FC = () => {
           alignSelf="flex-start"
         >
           <option value="">All Contractors</option>
-          {contractors.map((contractor) => (
+          {availableContractors.map((contractor) => (
             <option key={contractor} value={contractor}>
               {contractor}
             </option>
