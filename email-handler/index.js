@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { Resend } = require('resend');
-
+ 
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN;
 const LIVE_ALLOWED_ORIGIN = process.env.LIVE_ALLOWED_ORIGIN;
 const ALLOWED_ORIGINS = process.env.ALLOWED_ORIGINS;
