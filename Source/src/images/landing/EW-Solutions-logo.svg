@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
+  <g transform="translate(16, 0)">
+    
+    <g transform="translate(0, 335)">
+      <g fill="#A6A6A6">
+        <rect x="0" y="5" width="345" height="15" rx="1" ry="1" />
+        <rect x="67" y="115" width="209" height="18" rx="1" ry="1" />
+        
+        <polygon points="35,20  95,115  103,115  43,20" />
+        <polygon points="95,115  172,20   181,20   104,115" />
+        <polygon points="172,20  249,115  257,115  181,20" />
+        <polygon points="249,115  309,20   317,20   257,115" />
+      </g>
+
+      <text x="350" y="122" 
+            font-family="'Times New Roman', Times, serif" 
+            font-size="142px" 
+            font-style="italic" 
+            fill="#A6A6A6" 
+            letter-spacing="-3px">
+        EWS<tspan font-style="normal" font-size="112px" dy="-5px" letter-spacing="-1px">olutions</tspan>
+      </text>
+    </g>
+
+    <g transform="translate(0, 498)">
+      <rect x="125" y="0" width="720" height="15" fill="#A6A6A6" />
+      <rect x="125" y="6" width="720" height="3" fill="#7F7F7F" />
+      
+      <rect x="125" y="73" width="720" height="15" fill="#A6A6A6" />
+      <rect x="125" y="79" width="720" height="3" fill="#7F7F7F" />
+      
+      <rect x="125" y="15" width="4" height="58" fill="#A6A6A6" />
+      <rect x="841" y="15" width="4" height="58" fill="#A6A6A6" />
+    </g>
+
+    <text x="484" y="643" 
+          font-family="'Times New Roman', Times, serif" 
+          font-size="44px" 
+          fill="#A6A6A6" 
+          text-anchor="middle" 
+          letter-spacing="1px">
+      ENGINEERED WOOD SOLUTIONS, INC.
+    </text>
+    
+  </g>
+</svg>

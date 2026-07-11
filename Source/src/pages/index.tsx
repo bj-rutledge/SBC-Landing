@@ -5,7 +5,7 @@
 
 
 import React, { useEffect, useState } from 'react';
-import { Box, Heading, Text, SimpleGrid, List, useStyleConfig } from '@chakra-ui/react';
+import { Box, Heading, Text, SimpleGrid, List, Image, Link, useStyleConfig } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Layout from '../components/Layout';
@@ -16,6 +16,7 @@ import MotionListItem from '../components/MotionListItem'; // Import MotionListI
 import topView from '../images/landing/101.jpeg';
 import wallPanel from '../images/landing/175.jpeg';
 import mppFlyVideo from '../images/landing/UW_Haggett_Hall_Drone_Footage/MPP_Fly.mp4';
+import ewsSolutionsLogo from '../images/landing/EW-Solutions-logo.svg';
 import quotes from '../components/data/quotes';
 import { useSbcOutputData } from '../contexts/SbcOutputDataContext';
 import addCommasToNumber from '../components/helpers/addCommasToNumber';
@@ -80,6 +81,36 @@ const IndexPage: React.FC = () => {
           zIndex={0}
         />
         <Box position="absolute" inset={0} bg="blackAlpha.500" zIndex={1} />
+        <Box
+          position="absolute"
+          bottom={{ base: 0, md: 1 }}
+          right={{ base: 3, md: 5 }}
+          zIndex={3}
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          textAlign="center"
+        >
+          {/* Video and images courtesy of EWS Solutions, Inc. All rights reserved. */}
+          <Text
+            fontSize={{ base: 'xs', md: 'sm' }}
+            color="#A6A6A6"
+            mb={1}
+            position="relative"
+            top={{ base: '32px', md: '56px' }}
+          >
+            Video and images courtesy of:
+          </Text>
+          <Link href="https://www.ewsolutions.net/" isExternal aria-label="Visit EWS Solutions website">
+            <Image
+              src={ewsSolutionsLogo}
+              alt="EWS Solutions, Inc. logo"
+              h={{ base: '132px', md: '180px' }}
+              w="auto"
+              opacity={1}
+            />
+          </Link>
+        </Box>
         <MotionBox
           position="relative"
           zIndex={2}

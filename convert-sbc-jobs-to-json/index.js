@@ -4,12 +4,12 @@ const readInExcelSheet = require('./readInExcelSheet');
 const addGeolocations = require('./addGeolocationProperty');
 const getPhotosForJob = require('./attachPhotos');
 require('dotenv').config();
-
+console.log('starting conversion process...');
 const apiKey = process.env.MAPS_API_KEY;
 
 // Read Excel file and add geo location property to objects
-const filePath = './spreadsheets/working-sbc-website-jobs-list 02.24.26.xlsm';
-const sheetName = 'SBC';
+const filePath = './spreadsheets/working-sbc-website-jobs-list 06.27.26.xlsm';
+const sheetName = 'SBC Original Data';
 const dataArray = readInExcelSheet(filePath, sheetName);
 //add geolocation data and then proceed to attach photos
 addGeolocations(dataArray).then((dataWithGeo) => {
@@ -33,5 +33,10 @@ addGeolocations(dataArray).then((dataWithGeo) => {
       JSON.stringify(dataWithPhotos, null, 2),
       'utf-8',
    );
+   //write to the Source/src/components/data folder for use in the website
+   fs.writeFileSync('../Source/src/components/data/sbc-website-jobs-list.json', 
+      JSON.stringify(dataWithPhotos, 
+      null, 2), 
+      'utf-8');  
    console.log(`Excel data converted to JSON and saved to ${outputFileName}`);
 });

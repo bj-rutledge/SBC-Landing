@@ -42,7 +42,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "Davey Jones",
     imageSrc: daveyJones,
-    description: "With a diverse 25-year career in construction and wall panel design, James has designed over 23 million square feet of residential space. He leverages hands-on experience in framing, siding, roofing, and finish work, along with expertise in AutoCAD for wall panel design."
+    description: "Davey Jones is a Lead Wall Panel Designer at Sound Building Components who believes design is not just about creating beautiful visuals, but also about solving problems. With 30 years of industry experience, he has worked with clients across many sectors, including architects, engineers, general contractors, framing contractors, HVAC contractors, plumbing contractors, and electricians. His areas of expertise include attention to detail, problem solving, lumber material lists, and communication. Davie is passionate about collaborating with clients to create designs that are visually compelling and aligned with their business goals. Born and raised in the beautiful Pacific Northwest, he is also a proud father of three awesome daughters."
   },
   {
     name: "Steve Dausey",
