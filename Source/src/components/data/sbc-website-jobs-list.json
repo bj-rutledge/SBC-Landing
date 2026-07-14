@@ -200,8 +200,8 @@
     "sq/ft": 137624,
     "Designer": "MIKE 75%/JAMES 25% ",
     "geoLocation": {
-      "lat": 47.5383827,
-      "lng": -122.0205408
+      "lat": 47.5382531,
+      "lng": -122.0207752
     },
     "images": []
   },
@@ -1277,7 +1277,7 @@
   {
     "Job Code": "18-H",
     "Job Name": "La Quinta Hotel",
-    "Address": "1750 S. Burlington Blvd. Burlington, WA 98233",
+    "Address": "1670 S. Burlington Blvd. Burlington, WA 98233",
     "Framer": "Faber Construction Corp.",
     "GC": "Faber Construction Corp.",
     "sq/ft": 56604,
@@ -1285,8 +1285,8 @@
     "Exterior LF": 2139,
     "Designer": "Mike",
     "geoLocation": {
-      "lat": 48.4530045,
-      "lng": -122.3351319
+      "lat": 48.4541112,
+      "lng": -122.3341078
     },
     "images": []
   },
@@ -2942,8 +2942,8 @@
     "Exterior LF": 1486,
     "Designer": "Mike",
     "geoLocation": {
-      "lat": 47.78582859999999,
-      "lng": -122.3441188
+      "lat": 47.7854556,
+      "lng": -122.34479
     },
     "images": []
   },
@@ -2958,8 +2958,8 @@
     "Exterior LF": 1825,
     "Designer": "Mike",
     "geoLocation": {
-      "lat": 47.78582859999999,
-      "lng": -122.3441188
+      "lat": 47.7854556,
+      "lng": -122.34479
     },
     "images": []
   },
