@@ -16,6 +16,7 @@ import MotionListItem from '../components/MotionListItem'; // Import MotionListI
 import topView from '../images/landing/101.jpeg';
 import wallPanel from '../images/landing/175.jpeg';
 import mppFlyVideo from '../images/landing/UW_Haggett_Hall_Drone_Footage/MPP_Fly.mp4';
+import heroFirstFrame from '../images/landing/UW_Haggett_Hall_Drone_Footage/first-frame.jpg';
 import ewsSolutionsLogo from '../images/landing/EW-Solutions-logo.svg';
 import quotes from '../components/data/quotes';
 import { useSbcOutputData } from '../contexts/SbcOutputDataContext';
@@ -23,6 +24,7 @@ import addCommasToNumber from '../components/helpers/addCommasToNumber';
 
 const IndexPage: React.FC = () => {
   const [animate, setAnimate] = useState(false);
+  const [isHeroVideoReady, setIsHeroVideoReady] = useState(false);
 
   useEffect(() => {
     setAnimate(true);
@@ -67,18 +69,36 @@ const IndexPage: React.FC = () => {
         p={5}
       >
         <Box
-          as="video"
-          src={mppFlyVideo}
-          autoPlay
-          muted
-          loop
-          playsInline
+          as="img"
+          src={heroFirstFrame}
+          alt="SBC project aerial view"
           position="absolute"
           inset={0}
           width="100%"
           height="100%"
           objectFit="cover"
           zIndex={0}
+          opacity={isHeroVideoReady ? 0 : 1}
+          transition="opacity 400ms ease"
+        />
+        <Box
+          as="video"
+          src={mppFlyVideo}
+          poster={heroFirstFrame}
+          preload="metadata"
+          autoPlay
+          muted
+          loop
+          playsInline
+          onCanPlay={() => setIsHeroVideoReady(true)}
+          position="absolute"
+          inset={0}
+          width="100%"
+          height="100%"
+          objectFit="cover"
+          zIndex={0}
+          opacity={isHeroVideoReady ? 1 : 0}
+          transition="opacity 600ms ease"
         />
         <Box position="absolute" inset={0} bg="blackAlpha.500" zIndex={1} />
         <Box
