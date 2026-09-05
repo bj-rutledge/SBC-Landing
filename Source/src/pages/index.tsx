@@ -190,7 +190,7 @@ const IndexPage: React.FC = () => {
             className='text-pop-in'
             textAlign="center"
           >
-            {`${addCommasToNumber(data?.['Total Square Footage'])} Square Feet Built and Counting`}
+            {`${addCommasToNumber(data?.['Total Square Footage'] === undefined ? undefined : Math.round(data['Total Square Footage']))} Square Feet Built and Counting`}
           </Heading>
         </MotionBox>
 
